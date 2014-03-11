@@ -5,6 +5,7 @@ nmap <leader>gs :Gst<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>go :Git pull<cr>
 nmap <leader>gp :Git push<cr>
+nmap <D-p> :CtrlP<cr>
 
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
 if !has('mac')
@@ -26,9 +27,9 @@ nmap <leader>/ :let @/=""<bar>echo "search cleared"<cr>
 " Funcional keys
 map <silent> <f2> <esc>:w<cr>
 map <silent> <f3> <esc>:CtrlPBuffer<CR>
-map <F7> <esc>:bp<cr>
-map <F8> <esc>:bn<cr>
-map <F4> <esc>:NERDTreeToggle<cr>
+map <f7> <esc>:bp<cr>
+map <f8> <esc>:bn<cr>
+map <f4> <esc>:NERDTreeToggle<cr>
 
 " < & > - делаем отступы для блоков
 vmap < <gv
