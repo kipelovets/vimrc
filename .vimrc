@@ -6,7 +6,7 @@ let b = expand('~/.vim/bundle/')
 let n = expand(b . 'neobundle.vim')
 if !isdirectory(n)
     if !isdirectory(b) 
-        call mkdir(b, 'p')
+        silent !mkdir ~/.vim/bundle
     endif
 	execute '!git clone --depth=1 https://github.com/Shougo/neobundle.vim.git ' . shellescape(n, 1)
 endif
@@ -24,7 +24,7 @@ NeoBundle "vim-scripts/Align"
 " junegunn/vim-easy-align
 NeoBundle "vim-scripts/DirDiff.vim"
 NeoBundle "artnez/vim-wipeout" " replacement for BufOnly
-NeoBundle 'tpope/sensible'
+NeoBundle 'tpope/vim-sensible'
 NeoBundle "tpope/vim-commentary" " NERD_commenter
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle "tpope/vim-surround"
@@ -47,6 +47,6 @@ filetype plugin indent on
 
 NeoBundleCheck
 
-runtime 'settings.vim'
-runtime 'mappings.vim'
-runtime 'options.vim'
+source ~/.vim/settings.vim
+source ~/.vim/mappings.vim
+source ~/.vim/options.vim
