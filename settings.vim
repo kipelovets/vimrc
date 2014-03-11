@@ -10,10 +10,6 @@ set diffopt=filler,iwhite,vertical
 " показывать меню даже если только один вариант
 set completeopt=preview,menu,menuone
 
-" выключаем NERDTree для :e <dirname>
-let NERDTreeHijackNetrw=0
-
-set background=dark
 if has('gui_running')
     " в GUI-режиме устанавливаем правильный шрифт 
     if has('win32')
@@ -28,7 +24,7 @@ if has('gui_running')
    set guioptions-=m
    set guioptions-=lrLR
    set guioptions-=L
-   colorscheme solarized "wombat desert wombat ir_black torte impact default | morning murphy pablo peachpuff
+   colorscheme base16-flat
 else
    set t_Co=256
    " Выключаем control-flow в терминале, чтобы можно было использовать <c-q>, <c-s>
@@ -45,7 +41,7 @@ set termencoding=utf-8
 set encoding=utf-8 
 
 " выключаем подсветку строки курсора, она тормозит :(
-set nocursorline
+set cursorline
 "set cursorline
 "hi CursorLine guibg=#4e4c4e 
 
@@ -88,3 +84,5 @@ set wildignore=*.o,*.obj,.git,.svn,*.jpg,*.png,*.gif
 set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
+
+set background=dark
