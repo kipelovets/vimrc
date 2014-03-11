@@ -18,8 +18,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'Shougo/vimproc.vim'
 NeoBundle 'Shougo/vimshell'
-" NeoBundle 'Shougo/neosnippet.vim'
-" NeoBundle 'Shougo/neosnippet-snippets'
+NeoBundle 'Shougo/neosnippet.vim'
+NeoBundle 'honza/vim-snippets'
+NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle "vim-scripts/Align"
 " junegunn/vim-easy-align
 NeoBundle "vim-scripts/DirDiff.vim"
@@ -44,6 +45,7 @@ NeoBundle "bling/vim-airline"
 NeoBundle "evindor/vim-rusmode"
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'StanAngeloff/php.vim'
 
 filetype plugin indent on
 

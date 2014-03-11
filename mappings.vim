@@ -6,6 +6,9 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>go :Git pull<cr>
 nmap <leader>gp :Git push<cr>
 nmap <D-p> :CtrlP<cr>
+nmap <D-f> :NERDTreeFind<cr>
+nmap <D-left> :tabprev<cr>
+nmap <D-right> :tabprev<cr>
 
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
 if !has('mac')
@@ -25,7 +28,7 @@ nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 nmap <leader>/ :let @/=""<bar>echo "search cleared"<cr>
 
 " Funcional keys
-map! <silent> <f2> <esc>:w<cr>
+map <silent> <f2> <esc>:w<cr>
 map <silent> <f3> <esc>:CtrlPBuffer<CR>
 map <f7> <esc>:bp<cr>
 map <f8> <esc>:bn<cr>
@@ -46,6 +49,7 @@ map <c-n> <esc>"=strftime("%d.%m.%Y %X")." georgy.k: "<CR>
 " Pretty XML
 "command! PrettyXML :silent 1,$!xmllint --format --recover - 2>/dev/null
 command! PrettyXML :silent 1,$!XMLLINT_INDENT='    ' xmllint --format --recover - 2>/dev/null
+command! PrettyJSON :silent %!json-pretty
 command! CTagsCreate :silent !ctags -f ./.tags -h ".php.class.module" --langmap=php:.php.class.module -R --exclude="\.svn" --totals=yes --tag-relative=yes --PHP-kinds=+cf --fields=+S --regex-PHP='/abstract class ([^ ]*)/\1/c/' --regex-PHP='/interface ([^ ]*)/\1/c/' --regex-PHP='/(public |static |abstract |protected |private )+function ([^ (]*)/\2/f/' 
 command! CTagsCreateJava :silent !ctags -f ./.tags --language-force=java -R --exclude="\.svn" --totals=yes --tag-relative=yes --fields=+S  
 

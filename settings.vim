@@ -1,6 +1,8 @@
 " Basic options
 set vb t_vb=
 
+set hidden
+
 " опции diff-режима: 
 "   filler - показывать пустые строки для синхронизации просматриваемых файлов
 "   iwhite - игнорировать изменения в количестве пробельных символов
@@ -24,7 +26,7 @@ if has('gui_running')
    set guioptions-=m
    set guioptions-=lrLR
    set guioptions-=L
-   colorscheme base16-flat
+   colorscheme base16-mocha
 else
    set t_Co=256
    " Выключаем control-flow в терминале, чтобы можно было использовать <c-q>, <c-s>
