@@ -32,7 +32,7 @@ NeoBundle "moll/vim-bbye" " Bclose
 NeoBundle "itchyny/calendar.vim" " mattn/calendar-vim
 NeoBundle "brookhong/DBGPavim" " debugger.py
 NeoBundle "stephpy/vim-phpdoc"
-NeoBundle "amiorin/vim-project" " project
+NeoBundle "mhinz/vim-startify"
 NeoBundle "scrooloose/nerdtree"
 NeoBundle "scrooloose/syntastic"
 NeoBundle "vimwiki/vimwiki"
@@ -42,6 +42,8 @@ NeoBundle "bronson/vim-visual-star-search"
 NeoBundle "altercation/vim-colors-solarized"
 NeoBundle "bling/vim-airline"
 NeoBundle "evindor/vim-rusmode"
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'airblade/vim-gitgutter'
 
 filetype plugin indent on
 
