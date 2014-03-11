@@ -25,7 +25,7 @@ nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 nmap <leader>/ :let @/=""<bar>echo "search cleared"<cr>
 
 " Funcional keys
-map <silent> <f2> <esc>:w<cr>
+map! <silent> <f2> <esc>:w<cr>
 map <silent> <f3> <esc>:CtrlPBuffer<CR>
 map <f7> <esc>:bp<cr>
 map <f8> <esc>:bn<cr>
