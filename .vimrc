@@ -46,6 +46,8 @@ NeoBundle "evindor/vim-rusmode"
 NeoBundle 'chriskempson/base16-vim'
 NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'StanAngeloff/php.vim'
+NeoBundle 'gregsexton/gitv'
+NeoBundle 'stephpy/vim-yaml'
 
 filetype plugin indent on
 

@@ -17,7 +17,7 @@ if has('gui_running')
     if has('win32')
         set guifont=Consolas:h10:cRUSSIAN::
     elseif has('mac')
-        set guifont=DejaVu\ Sans\ Mono\ for\ Powerline:h12
+        set guifont=Consolas:h12
     else 
         set guifont=Consolas\ 10
     endif
@@ -88,3 +88,5 @@ set iminsert=0
 set imsearch=0
 
 set background=dark
+
+set tags=.tags

@@ -5,10 +5,7 @@ nmap <leader>gs :Gst<cr>
 nmap <leader>gc :Gcommit<cr>
 nmap <leader>go :Git pull<cr>
 nmap <leader>gp :Git push<cr>
-nmap <D-p> :CtrlP<cr>
-nmap <D-f> :NERDTreeFind<cr>
-nmap <D-left> :tabprev<cr>
-nmap <D-right> :tabprev<cr>
+nmap <leader>s :Startify<cr>
 
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
 if !has('mac')
@@ -28,8 +25,10 @@ nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
 nmap <leader>/ :let @/=""<bar>echo "search cleared"<cr>
 
 " Funcional keys
-map <silent> <f2> <esc>:w<cr>
-map <silent> <f3> <esc>:CtrlPBuffer<CR>
+map <f2> <esc>:w<cr>
+inoremap <f2> <c-o>:w<cr>
+map <f3> <esc>:CtrlPBuffer<CR>
+inoremap <f3> <esc>:CtrlPBuffer<CR>
 map <f7> <esc>:bp<cr>
 map <f8> <esc>:bn<cr>
 map <f4> <esc>:NERDTreeToggle<cr>
