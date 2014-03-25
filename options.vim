@@ -67,3 +67,9 @@ let g:neocomplete#enable_at_startup = 1
 
 " remove vim-fugitive vim diff buffers on hide
 autocmd BufReadPost fugitive://* set bufhidden=delete
+
+let g:calendar_google_calendar = 1
+let g:calendar_google_task = 1
+
+let g:pdv_cfg_Author = "Георгий Коршунов <georgy.k@nevosoft.ru>"
+
