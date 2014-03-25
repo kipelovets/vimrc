@@ -30,7 +30,7 @@ NeoBundle "tpope/vim-commentary" " NERD_commenter
 NeoBundle 'tpope/vim-fugitive'
 NeoBundle "tpope/vim-surround"
 NeoBundle "moll/vim-bbye" " Bclose
-NeoBundle "itchyny/calendar.vim" " mattn/calendar-vim
+NeoBundle "mattn/calendar-vim"
 NeoBundle "brookhong/DBGPavim" " debugger.py
 NeoBundle "stephpy/vim-phpdoc"
 NeoBundle "mhinz/vim-startify"
@@ -48,6 +48,7 @@ NeoBundle 'airblade/vim-gitgutter'
 NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'stephpy/vim-yaml'
+NeoBundle 'jiangmiao/auto-pairs'
 
 filetype plugin indent on
 
