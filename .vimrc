@@ -12,7 +12,7 @@ if !isdirectory(n)
 endif
 let &rtp.=(empty(&rtp)?'':',').n
 
-call neobundle#rc(b)
+call neobundle#begin(b)
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
@@ -49,6 +49,8 @@ NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'jiangmiao/auto-pairs'
+
+call neobundle#end()
 
 filetype plugin indent on
 
