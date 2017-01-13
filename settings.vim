@@ -1,3 +1,8 @@
+" Parameters
+let colorscheme='habiLight'
+execute 'colorscheme ' colorscheme
+set background=light
+
 " Basic options
 set vb t_vb=
 
@@ -12,24 +17,8 @@ set diffopt=filler,iwhite,vertical
 " показывать меню даже если только один вариант
 set completeopt=preview,menu,menuone
 
-if has('gui_running')
-    " в GUI-режиме устанавливаем правильный шрифт 
-    if has('win32')
-        set guifont=Consolas:h10:cRUSSIAN::
-    elseif has('mac')
-        set guifont=Consolas:h12
-    else 
-        set guifont=Consolas\ 10
-    endif
-   " выключаем меню и панель инструментов
-   set guioptions-=T
-   set guioptions-=m
-   set guioptions-=lrLR
-   set guioptions-=L
-   colorscheme base16-mocha
-else
+if !has('gui_running')
    set t_Co=256
-   " Выключаем control-flow в терминале, чтобы можно было использовать <c-q>, <c-s>
    colorscheme wombat256
    exec "silent !stty -ixon -ixoff"
 endif
@@ -87,6 +76,5 @@ set keymap=russian-jcukenwin
 set iminsert=0
 set imsearch=0
 
-set background=dark
 
 set tags=.tags

@@ -16,13 +16,7 @@ call neobundle#begin(b)
 
 NeoBundleFetch 'Shougo/neobundle.vim'
 
-NeoBundle 'Shougo/vimproc.vim'
-NeoBundle 'Shougo/vimshell'
-NeoBundle 'Shougo/neosnippet.vim'
-NeoBundle 'honza/vim-snippets'
-NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle "vim-scripts/Align"
-" junegunn/vim-easy-align
 NeoBundle "vim-scripts/DirDiff.vim"
 NeoBundle "artnez/vim-wipeout" " replacement for BufOnly
 NeoBundle 'tpope/vim-sensible'
@@ -49,6 +43,24 @@ NeoBundle 'StanAngeloff/php.vim'
 NeoBundle 'gregsexton/gitv'
 NeoBundle 'stephpy/vim-yaml'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'flazz/vim-colorschemes'
+NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'Shougo/vimproc.vim', {
+\ 'build' : {
+\     'windows' : 'tools\\update-dll-mingw',
+\     'cygwin' : 'make -f make_cygwin.mak',
+\     'mac' : 'make',
+\     'linux' : 'make',
+\     'unix' : 'gmake',
+\    },
+\ }
+NeoBundle 'Shougo/vimshell.vim'
+NeoBundle 'crater2150/vim-theme-chroma'
+NeoBundle 'machakann/vim-colorscheme-tatami'
+NeoBundle 'vim-scripts/habiLight'
+NeoBundle 'kshenoy/vim-signature'
+NeoBundle 'Shougo/neocomplete'
+NeoBundle 'Shougo/unite.vim'
 
 call neobundle#end()
 
@@ -59,3 +71,4 @@ NeoBundleCheck
 source ~/.vim/settings.vim
 source ~/.vim/mappings.vim
 source ~/.vim/options.vim
+source ~/.vim/filetype.vim
