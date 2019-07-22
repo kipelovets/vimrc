@@ -6,6 +6,7 @@ nmap <leader>gc :Gcommit<cr>
 nmap <leader>go :Git pull<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>s :Startify<cr>
+nmap <leader>ee :e /Users/gkorshunov/vimwiki/Enums.wiki<cr>
 
 " C-c and C-v - Copy/Paste в "глобальный клипборд"
 if !has('mac')
@@ -70,3 +71,12 @@ nnoremap <leader>cF :let @*=expand("%:p")<CR>
 
 map <leader>vc <Plug>(vimshell_create)
 " autocmd BufReadPost vimwiki nnoremap <Leader>tt <Plug>VimwikiToggleListItem
+"
+map <leader>j :%!php -r 'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);'<cr>:set filetype=json<cr>
+map <leader>J :%!php -r 'echo json_encode(json_decode(file_get_contents("php://stdin")));'<cr>:set filetype=json<cr>
+
+" map <d-*> :vim 
+map <d-/> gcc
+map <d-a> ggVG
+
+nnoremap gr :grep <cword> *<CR>

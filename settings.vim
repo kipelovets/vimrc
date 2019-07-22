@@ -1,7 +1,7 @@
 " Parameters
-let colorscheme='habiLight'
+let colorscheme='darcula'
 execute 'colorscheme ' colorscheme
-set background=light
+set background=dark
 
 " Basic options
 set vb t_vb=
@@ -78,3 +78,4 @@ set imsearch=0
 
 
 set tags=.tags
+set conceallevel=0

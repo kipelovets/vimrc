@@ -17,6 +17,7 @@ call neobundle#begin(b)
 NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle "vim-scripts/Align"
+NeoBundle "blueshirts/darcula"
 NeoBundle "vim-scripts/DirDiff.vim"
 NeoBundle "artnez/vim-wipeout" " replacement for BufOnly
 NeoBundle 'tpope/vim-sensible'
@@ -61,6 +62,9 @@ NeoBundle 'vim-scripts/habiLight'
 NeoBundle 'kshenoy/vim-signature'
 NeoBundle 'Shougo/neocomplete'
 NeoBundle 'Shougo/unite.vim'
+NeoBundle 'keith/swift.vim'
+NeoBundle 'xolox/vim-misc'
+NeoBundle 'xolox/vim-colorscheme-switcher'
 
 call neobundle#end()
 

@@ -51,3 +51,4 @@ let g:calendar_google_task = 1
 
 let g:pdv_cfg_Author = "Георгий Коршунов <georgy.k@nevosoft.ru>"
 
+let g:syntastic_swift_checkers = []
