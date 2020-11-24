@@ -65,6 +65,9 @@ NeoBundle 'Shougo/unite.vim'
 NeoBundle 'keith/swift.vim'
 NeoBundle 'xolox/vim-misc'
 NeoBundle 'xolox/vim-colorscheme-switcher'
+NeoBundle 'darfink/vim-plist'
+NeoBundle 'vim-scripts/httplog'
+NeoBundle 'lumiliet/vim-twig'
 
 call neobundle#end()
 

@@ -80,3 +80,98 @@ map <d-/> gcc
 map <d-a> ggVG
 
 nnoremap gr :grep <cword> *<CR>
+
+nnoremap <expr> <silent> <s-F3>   (&diff ? "]c:call \<sid>NextDiff()\<cr>" : ":cn\<cr>")
+
+function! s:GotoWinline(w_l)
+  normal! H
+  while winline() < a:w_l
+    normal! j
+  endwhile
+  " todo: beware of cases where the window is too little
+endfunction
+
+" Better ]c, [c jump
+function! s:NextDiff()
+  if ! &diffopt =~ 'filler' | return | endif
+
+  let ignore_blanks = &diffopt =~ 'iwhite'
+
+  " Assert: called just after a ]c or a [c
+  " Forces the cursos to be synchronized in all synced windows
+  " let diff_l = line()
+  try 
+    let foldenable = &foldenable
+    set nofoldenable
+
+    let w_l = winline() " problematic with enabled lines (from diff...)
+    " echomsg w_l.'|'.line('.').'|'.getline('.')
+
+    let lines = {}
+    windo if &diff | call <sid>GotoWinline(w_l) | let lines[winnr()]={'text':getline('.'), 'number':line('.')} | endif
+  finally
+    let &foldenable = foldenable
+  endtry
+
+  " echomsg string(lines)
+  if len(lines) < 2 | return | endif
+
+  let indices = repeat([0], len(lines))
+  let tLines = values(lines)
+  let found = 0
+  " infinite loop on two empty texts...
+  while ! found
+    let c = ''
+    let next_idx = []
+    let i = 0
+    while i != len(indices)
+      let crt_line = tLines[i].text
+      let n = indices[i]
+      if len(crt_line) == n
+    let found = 1
+    break
+      endif
+
+      let c2 = (len(crt_line) == n) ? 'EOL' : crt_line[n]
+      if empty(c) 
+    let c = c2
+      endif
+
+      " checks match
+      let n += 1
+      if c =~ '\s'
+    if (c2 != c) && (ignore_blanks && c2 !~ '\s')
+      let found = 1
+      break
+    else " advance
+      while ignore_blanks && (n == len(crt_line) || crt_line[n] =~ '\s')
+        let n += 1
+      endwhile
+    endif
+      else
+    if c2 != c
+      let found = 1
+      break
+    endif
+      endif
+      let next_idx += [n]
+
+      let i += 1
+    endwhile
+    if found | break | endif
+
+    let indices = next_idx
+  endwhile
+
+  " now goto the right column
+  let windows = keys(lines)
+  " Assert len(windows) == len(indices)
+  let w = 0
+  while w != len(windows)
+    " echomsg 'W#'.windows[w].' -> :'(tLines[w].number).'normal! '.(indices[w]+1).'|'
+    exe windows[w].'wincmd w'
+    silent! exe (tLines[w].number).'normal! 0'.(indices[w]).'l'
+    let w += 1
+  endwhile
+  " echomsg string(indices)
+endfunction
