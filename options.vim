@@ -49,6 +49,6 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
 
-let g:pdv_cfg_Author = "Георгий Коршунов <georgy.k@nevosoft.ru>"
+let g:pdv_cfg_Author = "Georgii Korshunov <kipelovets@mail.ru>"
 
 let g:syntastic_swift_checkers = []
