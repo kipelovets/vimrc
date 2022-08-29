@@ -72,8 +72,8 @@ nnoremap <leader>cF :let @*=expand("%:p")<CR>
 map <leader>vc <Plug>(vimshell_create)
 " autocmd BufReadPost vimwiki nnoremap <Leader>tt <Plug>VimwikiToggleListItem
 "
-map <leader>j :%!php -r 'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);'<cr>:set filetype=json<cr>
-map <leader>J :%!php -r 'echo json_encode(json_decode(file_get_contents("php://stdin")));'<cr>:set filetype=json<cr>
+map <leader>j :%!/opt/homebrew/bin/php -r 'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);'<cr>:set filetype=json<cr>
+map <leader>J :%!/opt/homebrew/bin/php -r 'echo json_encode(json_decode(file_get_contents("php://stdin")));'<cr>:set filetype=json<cr>
 
 " map <d-*> :vim 
 map <d-/> gcc
