@@ -1,8 +1,8 @@
 nmap <leader>f :set foldlevel=1<cr>
 nmap <leader>F :set foldlevel=99<cr>
 nmap <leader>gw :Gw<cr>
-nmap <leader>gs :Gst<cr>
-nmap <leader>gc :Gcommit<cr>
+nmap <leader>gs :G<cr>
+nmap <leader>gc :G commit<cr>
 nmap <leader>go :Git pull<cr>
 nmap <leader>gp :Git push<cr>
 nmap <leader>s :Startify<cr>
