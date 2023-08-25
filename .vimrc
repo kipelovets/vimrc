@@ -68,6 +68,9 @@ NeoBundle 'xolox/vim-colorscheme-switcher'
 NeoBundle 'darfink/vim-plist'
 NeoBundle 'vim-scripts/httplog'
 NeoBundle 'lumiliet/vim-twig'
+NeoBundle 'godlygeek/tabular'
+NeoBundle 'mtdl9/vim-log-highlighting'
+NeoBundle 'azabiong/vim-highlighter'
 
 call neobundle#end()
 
