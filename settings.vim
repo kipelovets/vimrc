@@ -1,20 +1,12 @@
-" Parameters
-let colorscheme='darcula'
-execute 'colorscheme ' colorscheme
-set background=dark
-
-" Basic options
-set vb t_vb=
-
+syntax on
+set hlsearch
 set hidden
 
-" опции diff-режима: 
-"   filler - показывать пустые строки для синхронизации просматриваемых файлов
-"   iwhite - игнорировать изменения в количестве пробельных символов
-"   vertical - всегда использовать вертикальное разделение окон
+colorscheme retrobox " darcula sorbet
+set background=dark
+
+set vb t_vb=
 set diffopt=filler,iwhite,vertical
-" опции omnicomplete: показывать предпросмотр с параметрами, показывать меню,
-" показывать меню даже если только один вариант
 set completeopt=preview,menu,menuone
 
 if !has('gui_running')
@@ -25,47 +17,26 @@ endif
 
 autocmd BufNewFile,Bufread *.xsl,*.html,*.phtml setlocal et ts=2 sw=2 sts=2
 
-" приоритет кодировок
 set fencs=utf-8,cp1251,koi8-r,ucs-2,cp866
-" Кодировка текста по умолчанию
 set termencoding=utf-8
 set encoding=utf-8 
 
-" выключаем подсветку строки курсора, она тормозит :(
 set cursorline
-"set cursorline
-"hi CursorLine guibg=#4e4c4e 
-
-" Включаем нумерацию строк
 set nu
 
-" Фолдинг по отсупам, по умолчанию выключен
 set foldmethod=indent
 set foldlevel=99
 
-set hlsearch
-
-" Поддержка мыши
 set mouse=a
 set mousemodel=popup
-" Скрывать указатель мыши, когда печатаем
 set mousehide
 
-" Сделать строку команд высотой в одну строку
 set ch=1
 
-" Влючить подстветку синтаксиса
-syntax on
-
-" Преобразование Таба в пробелы
 set expandtab
-
-" Размер табулации по умолчанию
 set shiftwidth=4
 set softtabstop=4
 set tabstop=4
-
-" Включаем "умные" отспупы ( например, автоотступ после {)
 set smartindent
 
 set nobackup
@@ -80,3 +51,8 @@ set imsearch=0
 set tags=.tags
 set conceallevel=0
 
+" https://spec.draculatheme.com/#sec-Color-Palette
+hi VimwikiHeader1 guifg=#FF5555
+hi VimwikiHeader2 guifg=#50FA7B
+hi VimwikiHeader3 guifg=#BD93F9
+hi VimwikiLink guifg=#8BE9FD
