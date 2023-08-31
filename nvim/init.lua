@@ -1,1 +1,1 @@
-require("kipelovets")
+require("my")

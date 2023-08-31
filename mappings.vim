@@ -8,16 +8,13 @@ nmap <leader>gp :Git push<cr>
 nmap <leader>s :Startify<cr>
 nmap <leader>ee :e /Users/gkorshunov/vimwiki/Enums.wiki<cr>
 
-" C-c and C-v - Copy/Paste в "глобальный клипборд"
+" C-c and C-v - Copy/Paste 
 if !has('mac')
     vmap <C-C> "+yi
     imap <C-V> <esc>"+gPi
     " В нормальном режиме c-v выделяет строку
     nmap <C-C> ^v$h"+yj
 endif
-
-" создаем PhpDoc-комментарии
-nmap <c-h> :call PhpDoc()<cr>
 
 " Поиск и замена слова под курсором
 nmap ; :%s/\<<c-r>=expand("<cword>")<cr>\>/
@@ -44,8 +41,6 @@ imap <Ins> <Esc>i
 " С-q - закрыть текущий буфер
 map <c-q> <Esc>:Bdelete<cr>
 map <c-s-q> <Esc>:Bdelete!<cr>
-
-map <c-n> <esc>"=strftime("%d.%m.%Y %X")." georgy.k: "<CR>
 
 " Pretty XML
 "command! PrettyXML :silent 1,$!xmllint --format --recover - 2>/dev/null

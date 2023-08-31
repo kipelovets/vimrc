@@ -18,4 +18,22 @@ vim.keymap.set({"n", "v"}, "<leader>d", [["_d]])
 
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
-vim.opt.termguicolors = true
+
+vim.keymap.set("n", "<leader>gw", ":Gw<cr>")
+vim.keymap.set("n", "<leader>gs", ":G<cr>")
+vim.keymap.set("n", "<leader>gc", ":G commit<cr>")
+vim.keymap.set("n", "<leader>go", ":Git pull<cr>")
+vim.keymap.set("n", "<leader>gp", ":Git push<cr>")
+vim.keymap.set("n", "<leader>s", ":Dashboard<cr>")
+
+local nmap = function (shortcut, command)
+	vim.keymap.set("n", shortcut, command)
+end
+
+nmap('<D-c>', '^v$h"+yj')
+nmap('<leader>/', ':let @/=""<bar>echo "search cleared"<cr>')
+
+vim.keymap.set({"n", "i"}, "<D-s>", "<esc>:w<cr>")
+
+nmap('<D-left>', ':tabprev<cr>')
+nmap('<D-right>', ':tabnext<cr>')

@@ -1,4 +1,3 @@
-" выключаем NERDTree для :e <dirname>
 let NERDTreeHijackNetrw=0
 
 let g:ctrlp_extensions = ['tag', 'buffertag', 'line', 'mixed', 'funky']
@@ -48,7 +47,5 @@ autocmd BufReadPost fugitive://* set bufhidden=delete
 
 let g:calendar_google_calendar = 1
 let g:calendar_google_task = 1
-
-let g:pdv_cfg_Author = "Georgii Korshunov <kipelovets@mail.ru>"
 
 let g:syntastic_swift_checkers = []
