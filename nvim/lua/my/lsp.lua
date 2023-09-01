@@ -2,7 +2,6 @@ local lsp = require('lsp-zero').preset({})
 
 local on_attach = function(client, bufnr)
     -- see :help lsp-zero-keybindings
-    -- to learn the available actions
     lsp.default_keymaps({ buffer = bufnr })
 
     local nmap = function(keys, func, desc)
@@ -17,7 +16,6 @@ local on_attach = function(client, bufnr)
     nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
     nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-    -- See `:help K` for why this keymap
     nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
     nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
 
@@ -28,7 +26,7 @@ local on_attach = function(client, bufnr)
                 if cmp.visible() then
                     cmp.confirm()
                 else
-                    fallback() -- If you use vim-endwise, this fallback will behave the same as vim-endwise.
+                    fallback() 
                 end
             end,
             ['<C-Space>'] = cmp.mapping.complete(),
@@ -36,15 +34,14 @@ local on_attach = function(client, bufnr)
         }
     }
 
-    nmap('<leader>do', '<cmd>lua vim.diagnostic.open_float()<CR>')
-    nmap('<leader>d[', '<cmd>lua vim.diagnostic.goto_prev()<CR>')
-    nmap('<leader>d]', '<cmd>lua vim.diagnostic.goto_next()<CR>')
+    nmap('<leader>do', vim.diagnostic.open_float)
+    nmap('<leader>d[', vim.diagnostic.goto_prev)
+    nmap('<leader>d]', vim.diagnostic.goto_next)
     nmap('<leader>dd', '<cmd>Telescope diagnostics<CR>')
 end
 
 lsp.on_attach(on_attach)
 
--- (Optional) Configure lua language server for neovim
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 lspconfig.tsserver.setup({
