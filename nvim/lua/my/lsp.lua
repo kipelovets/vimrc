@@ -1,6 +1,6 @@
 local lsp = require('lsp-zero').preset({})
 
-lsp.on_attach(function(client, bufnr)
+local on_attach = function(client, bufnr)
 	-- see :help lsp-zero-keybindings
 	-- to learn the available actions
 	lsp.default_keymaps({buffer = bufnr})
@@ -20,9 +20,16 @@ lsp.on_attach(function(client, bufnr)
 	-- See `:help K` for why this keymap
 	nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
 	nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
-end)
+end
+
+lsp.on_attach(on_attach)
 
 -- (Optional) Configure lua language server for neovim
-require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig = require('lspconfig')
+lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
+lspconfig.tsserver.setup({
+    on_attach = on_attach,
+    filetypes = {"typescript", "typescriptreact", "typescript.tsx"},
+})
 
 lsp.setup()

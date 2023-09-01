@@ -36,7 +36,7 @@ require("lazy").setup({
 			local configs = require("nvim-treesitter.configs")
 
 			configs.setup({
-				ensure_installed = { "lua", "vim", "vimdoc", "typescript", "php", "go", "javascript", "html", "bash" },
+				ensure_installed = { "lua", "vim", "vimdoc", "typescript", "php", "go", "javascript", "html", "bash", "tsx" },
 				sync_install = false,
 				highlight = { enable = true },
 				indent = { enable = true },
@@ -74,7 +74,8 @@ require("lazy").setup({
 			"MunifTanjim/nui.nvim",
 		},
 		config = function ()
-			vim.keymap.set('n', '<leader>t', ':Neotree<cr>', {})
+			vim.keymap.set('n', '<leader>t', ':Neotree reveal<cr>', {})
+			vim.keymap.set('n', '<leader>T', ':Neotree close<cr>', {})
 			require("neo-tree").setup({
 				use_libuv_file_watcher=true,
 				follow_current_file = {
