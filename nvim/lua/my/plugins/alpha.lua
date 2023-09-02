@@ -37,7 +37,7 @@ function M.config()
         position = "center",
     }
 
-    local function make_header(header_lines) 
+    local function make_header(header_lines)
         local lines = {}
         for i, line in ipairs(header_lines) do
             table.insert(lines, {
@@ -122,14 +122,13 @@ function M.config()
         }
     end
 
-    require("alpha.term")
-
     local header = make_header(gwent)
 
     if jit.os == "OSX" then
+        require("alpha.term")
         header = {
-        type = "terminal",
-        command = "bash ~/.config/nvim/gwent-logo.sh",
+            type = "terminal",
+            command = "bash ~/.config/nvim/gwent-logo.sh",
             width = 80,
             height = 20,
             opts = {

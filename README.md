@@ -13,6 +13,15 @@ brew tap homebrew/cask-fonts
 brew install --cask font-fira-code-nerd-font
 ```
 
+## Windows
+
+Config should be linked to `~/AppData/Local/nvim`
+
+
+```
+scoop install neovim neovide ripgrep zig
+```
+
 ## Fun
 
 ```

@@ -39,62 +39,19 @@ function M.config()
 			separator_style = "thick",
 			enforce_regular_tabs = false,
 			always_show_bufferline = true,
-			sort_by = "directory",
+			sort_by = "insert_after_current",
 			offsets = {
 				{
-					filetype = "aerial",
-					text = "Outline",
+					filetype = "neo-tree",
+					text = "NeoTree",
 					text_align = "center",
-					separator = false,
-				},
-				{
-					filetype = "OverseerList",
-					text = "Tasks",
-					text_align = "center",
-					separator = false,
+					separator = true,
 				},
 			},
-			-- groups = {
-			-- 	options = {
-			-- 		toggle_hidden_on_enter = true, -- when you re-enter a hidden group this options re-opens the group
-			-- 	},
-			-- 	items = {
-			-- 		require("bufferline.groups").builtin.pinned:with({ icon = "" }),
-			-- 		{
-			-- 			name = "Docs",
-			-- 			highlight = { bold = false, italic = false, sp = "green" },
-			-- 			auto_close = false,
-			-- 			priority = 1,
-			-- 			matcher = function(buf)
-			-- 				return buf.filename:match("%.md") or buf.filename:match("%.txt")
-			-- 			end,
-			-- 		},
-			-- 		{
-			-- 			name = "Tests",
-			-- 			highlight = { bold = false, italic = false, sp = "blue" },
-			-- 			auto_close = false,
-			-- 			priority = 2,
-			-- 			matcher = function(buf)
-			-- 				return buf.filename:match("%.test") or buf.filename:match("%.spec")
-			-- 			end,
-			-- 		},
-			-- 		{
-			-- 			name = "Config",
-			-- 			highlight = { bold = false, italic = false, sp = "red" },
-			-- 			auto_close = false,
-			-- 			priority = 3,
-			-- 			matcher = function(buf)
-			-- 				return buf.filename:match("%.toml")
-			-- 					or buf.filename:match("%.yaml")
-			-- 					or buf.filename:match("%.cfg")
-			-- 			end,
-			-- 		},
-			-- 	},
-			-- },
 		},
 	})
 
-	require("scope").setup()
+	-- require("scope").setup()
 end
 
 return M
