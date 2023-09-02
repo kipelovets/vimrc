@@ -3,7 +3,7 @@ local nmap = function (shortcut, command)
 end
 
 if vim.g.neovide then
-    nmap("<D-n>", ":!neovide<cr>")
+    nmap("<D-n>", ":silent exec '!neovide'<cr>")
 end
 
 -- keeping cursor where it was when merging lines
@@ -62,3 +62,5 @@ nmap('<leader>fc', builtin.colorscheme)
 
 nmap('<leader>t', ':Neotree reveal<cr>')
 nmap('<leader>T', ':Neotree close<cr>')
+
+nmap('<leader>s', ':Alpha<cr>')
