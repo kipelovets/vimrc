@@ -1,0 +1,1 @@
+return { "artnez/vim-wipeout" }

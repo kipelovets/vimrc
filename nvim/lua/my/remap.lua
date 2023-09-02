@@ -40,12 +40,10 @@ nmap('<leader>/', ':let @/=""<bar>echo "search cleared"<cr>')
 
 vim.keymap.set({"n", "i"}, "<D-s>", "<esc>:w<cr>")
 
-nmap('<D-left>', ':tabprev<cr>')
-nmap('<D-right>', ':tabnext<cr>')
-nmap('<C-S-[>', ':tabprev<cr>')
-nmap('<C-S-]>', ':tabnext<cr>')
+nmap('<D-left>', ':bp<cr>')
+nmap('<D-right>', ':bn<cr>')
 
-nmap('<D-t>', ':tabnew<cr>')
+nmap('<D-t>', ':enew<cr>')
 nmap('<C-q>', ':bd<cr>')
 
 local telescope = require("telescope")
