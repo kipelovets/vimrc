@@ -98,13 +98,17 @@ function M.config()
             end
             project_name = project_name:gsub("[/\\]", "")
 
+            local cmd = "<cmd>lua require('telescope.builtin').find_files( { cwd = '"
+                .. project.path:gsub("\\", "/")
+                .. "' }) <cr>"
+
+            cmd = "<cmd>lua require('my.utils').cd('" .. project.path .. "')<cr>"
+
             -- create button element
             local file_button_el = dashboard.button(
                 letter,
                 icon .. display_path,
-                "<cmd>lua require('telescope.builtin').find_files( { cwd = '"
-                .. project.path:gsub("\\", "/")
-                .. "' }) <cr>"
+                cmd
             )
 
             -- create hl group for the start of the path

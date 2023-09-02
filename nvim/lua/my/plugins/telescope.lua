@@ -5,6 +5,7 @@ return {
         'nvim-lua/plenary.nvim',
     },
     config = function()
+        local project_actions = require("telescope._extensions.project.actions")
         require('telescope').setup({
             pickers = {
                 find_files = {
@@ -21,6 +22,17 @@ return {
                     theme = "dropdown",
                 },
             },
+            extensions = {
+                project = {
+                    theme = "dropdown",
+                    order_by = "asc",
+                    search_by = "title",
+                    sync_with_nvim_tree = true,     
+                    on_project_selected = function(prompt_bufnr)
+                        project_actions.change_working_directory(prompt_bufnr, false)
+                    end
+                }
+            }
         })
     end
 }

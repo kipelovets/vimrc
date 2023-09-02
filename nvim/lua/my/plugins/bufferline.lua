@@ -47,6 +47,12 @@ function M.config()
 					text_align = "center",
 					separator = true,
 				},
+				{
+					filetype = "NvimTree",
+					text = "NvimTree",
+					text_align = "center",
+					separator = true,
+				},
 			},
 		},
 	})

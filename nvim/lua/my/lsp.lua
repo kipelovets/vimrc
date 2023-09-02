@@ -1,4 +1,5 @@
 local lsp = require('lsp-zero').preset({})
+local keybindings = require('my.keybindings')
 
 local on_attach = function(client, bufnr)
     -- see :help lsp-zero-keybindings
@@ -8,37 +9,44 @@ local on_attach = function(client, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction')
-    nmap("<leader>f", vim.lsp.buf.format)
+    nmap(keybindings.rename, vim.lsp.buf.rename, '[R]e[n]ame')
+    nmap(keybindings.code_action, vim.lsp.buf.code_action, '[C]ode [A]ction')
+    nmap(keybindings.format, vim.lsp.buf.format)
 
-    nmap('gd', vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+    nmap(keybindings.goto_definition, vim.lsp.buf.definition, '[G]oto [D]efinition')
+    nmap(keybindings.goto_references, require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+    nmap(keybindings.symbols, require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+    nmap(keybindings.all_symbols, require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
 
-    nmap('K', vim.lsp.buf.hover, 'Hover Documentation')
-    nmap('<C-k>', vim.lsp.buf.signature_help, 'Signature Documentation')
+    nmap(keybindings.doc, vim.lsp.buf.hover, 'Hover Documentation')
+    nmap(keybindings.signature, vim.lsp.buf.signature_help, 'Signature Documentation')
 
     local cmp = require("cmp")
     cmp.setup {
         mapping = {
-            ['<CR>'] = function(fallback)
+            [keybindings.cmp_confirm] = function(fallback)
                 if cmp.visible() then
-                    cmp.confirm()
+                    cmp.confirm({ select = true })
                 else
-                    fallback() 
+                    fallback()
                 end
             end,
-            ['<C-Space>'] = cmp.mapping.complete(),
-            ['<C-e>'] = cmp.mapping.abort(),
+            [keybindings.cmp_next] = function(fallback)
+                if cmp.visible() then
+                    cmp.select_next_item()
+                else
+                    fallback()
+                end
+            end,
+            [keybindings.cmp_complete] = cmp.mapping.complete(),
+            [keybindings.cmp_abort] = cmp.mapping.abort(),
         }
     }
 
-    nmap('<leader>do', vim.diagnostic.open_float)
-    nmap('<leader>d[', vim.diagnostic.goto_prev)
-    nmap('<leader>d]', vim.diagnostic.goto_next)
-    nmap('<leader>dd', '<cmd>Telescope diagnostics<CR>')
+    nmap(keybindings.diag_open, vim.diagnostic.open_float)
+    nmap(keybindings.diag_prev, vim.diagnostic.goto_prev)
+    nmap(keybindings.diag_next, vim.diagnostic.goto_next)
+    nmap(keybindings.diag_show, '<cmd>Telescope diagnostics<CR>')
 end
 
 lsp.on_attach(on_attach)
