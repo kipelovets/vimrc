@@ -37,6 +37,23 @@ function M.config()
         position = "center",
     }
 
+    local function make_header(header_lines) 
+        local lines = {}
+        for i, line in ipairs(header_lines) do
+            table.insert(lines, {
+                type = "text",
+                val = line,
+                opts = { position = "center" },
+            })
+        end
+
+        return {
+            type = "group",
+            val = lines,
+            opts = { position = "center" },
+        }
+    end
+
     -- MRU
     local function get_mru(max_shown)
         local tbl = {
@@ -107,16 +124,20 @@ function M.config()
 
     require("alpha.term")
 
-    local header = {
+    local header = make_header(gwent)
+
+    if jit.os == "OSX" then
+        header = {
         type = "terminal",
         command = "bash ~/.config/nvim/gwent-logo.sh",
-        width = 80,
-        height = 20,
-        opts = {
-            position = "center",
-            hl = "String",
-        },
-    }
+            width = 80,
+            height = 20,
+            opts = {
+                position = "center",
+                hl = "String",
+            },
+        }
+    end
 
     -- Layout
     theme.config.layout = {
