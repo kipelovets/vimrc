@@ -19,7 +19,10 @@ Config should be linked to `~/AppData/Local/nvim`
 
 
 ```
-scoop install neovim neovide ripgrep zig
+scoop bucket add nerd-fonts
+scoop install neovim neovide ripgrep zig FiraCode-NF-Mono 
+# for python
+scoop install python
 ```
 
 ## Fun

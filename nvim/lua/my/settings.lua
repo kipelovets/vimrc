@@ -1,5 +1,5 @@
 if vim.g.neovide then
-	vim.o.guifont = "FiraCode Nerd Font Mono:h12"
+	vim.o.guifont = "FiraCode Nerd Font Mono:h10"
 end
 
 vim.o.mouse = "a"

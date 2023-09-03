@@ -39,13 +39,18 @@ function M.config()
 
     local function make_header(header_lines)
         local lines = {}
-        for i, line in ipairs(header_lines) do
+        for _, line in ipairs(header_lines) do
             table.insert(lines, {
                 type = "text",
                 val = line,
-                opts = { position = "center" },
+                opts = { 
+                    hl = "Gwent",
+                    position = "center"
+                },
             })
         end
+
+        vim.api.nvim_set_hl(0, 'Gwent', { fg = '#038742' })
 
         return {
             type = "group",
@@ -126,7 +131,7 @@ function M.config()
         }
     end
 
-    local header = make_header(gwent)
+    local header
 
     if jit.os == "OSX" then
         require("alpha.term")
@@ -140,6 +145,8 @@ function M.config()
                 hl = "String",
             },
         }
+    else
+        header = make_header(gwent)
     end
 
     -- Layout
