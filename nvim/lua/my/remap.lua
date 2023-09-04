@@ -63,3 +63,11 @@ nmap('<leader>t', ':NvimTreeOpen<cr>')
 nmap('<leader>T', ':NvimTreeToggle<cr>')
 
 nmap('<leader>s', ':Alpha<cr>')
+
+vim.keymap.set(
+    {"n", "x"},
+    "<leader>rr",
+    function() require('refactoring').select_refactor() end
+)
+
+vim.keymap.set({"i"}, "<Tab>", '<Plug>luasnip-expand-or-jump')
