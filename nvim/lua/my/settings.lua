@@ -1,5 +1,9 @@
 if vim.g.neovide then
-	vim.o.guifont = "FiraCode Nerd Font Mono:h10"
+    if jit.os == "OSX" then
+        vim.o.guifont = "Fira Code:h12"
+    else
+        vim.o.guifont = "FiraCode Nerd Font Mono:h10"
+    end
 end
 
 vim.o.mouse = "a"
@@ -11,8 +15,8 @@ vim.o.termguicolors = true
 vim.o.cursorline = true
 vim.o.scrolloff = 8
 
-vim.o.foldmethod="indent"
-vim.o.foldlevel=99
+vim.o.foldmethod = "indent"
+vim.o.foldlevel = 99
 
 vim.o.mousehide = true
 
