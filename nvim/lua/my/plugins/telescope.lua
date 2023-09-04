@@ -36,6 +36,12 @@ return {
                     theme = "ivy",
                     hijack_netrw = true,
                 },
+                gitmoji = {
+                    action = function (entry)
+                        vim.fn.setreg('"', entry.value.value)
+                        vim.notify("Emoji copied: " .. entry.value.value)
+                    end
+                },
             }
         })
     end

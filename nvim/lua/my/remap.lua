@@ -58,6 +58,7 @@ nmap('<leader>fh', builtin.help_tags)
 nmap('<leader>fo', builtin.oldfiles)
 nmap('<leader>fc', builtin.colorscheme)
 nmap('<leader>fd', ':Telescope file_browser<cr>')
+nmap('<leader>fe', ':Telescope gitmoji<cr>')
 
 nmap('<leader>t', ':NvimTreeOpen<cr>')
 nmap('<leader>T', ':NvimTreeToggle<cr>')
