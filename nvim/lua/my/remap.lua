@@ -86,3 +86,7 @@ function _G.my_set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://* lua my_set_terminal_keymaps()')
+
+nmap('<leader>j', ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>')
+nmap('<leader>J', ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
+
