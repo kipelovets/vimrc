@@ -58,5 +58,8 @@ lspconfig.tsserver.setup({
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 })
 lspconfig.pylsp.setup({})
+lspconfig.sqlls.setup{
+    root_dir = lspconfig.util.find_git_ancestor
+}
 
 lsp.setup()
