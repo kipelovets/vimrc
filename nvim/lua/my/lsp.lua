@@ -1,7 +1,7 @@
 local lsp = require('lsp-zero').preset({})
 local keybindings = require('my.keybindings')
 
-local on_attach = function(client, bufnr)
+local on_attach = function(_, bufnr)
     -- see :help lsp-zero-keybindings
     lsp.default_keymaps({ buffer = bufnr })
 

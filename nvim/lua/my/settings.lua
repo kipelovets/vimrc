@@ -1,4 +1,5 @@
 if vim.g.neovide then
+    vim.g.neovide_transparency = 0.98
     if jit.os == "OSX" then
         vim.o.guifont = "Fira Code:h12"
     else
