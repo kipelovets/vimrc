@@ -71,7 +71,7 @@ vim.keymap.set(
     function() require('refactoring').select_refactor() end
 )
 
-vim.keymap.set({ "i" }, "<Tab>", '<Plug>luasnip-expand-or-jump')
+vim.keymap.set({ "i" }, "<c-t>", '<Plug>luasnip-expand-or-jump')
 
 nmap('<c-`>', ':ToggleTerm<cr>')
 function _G.my_set_terminal_keymaps()
@@ -90,3 +90,8 @@ vim.cmd('autocmd! TermOpen term://* lua my_set_terminal_keymaps()')
 nmap('<leader>j', ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>')
 nmap('<leader>J', ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
 
+local font = require("my.font")
+vim.keymap.set({ 'n' }, '<D-=>', font.increase_font)
+vim.keymap.set({ 'n' }, '<D-->', font.decrease_font)
+vim.keymap.set({ 'n' }, '<D-0>', font.reset_font)
+vim.keymap.set({ 'n' }, '<leader>p', font.present)
