@@ -66,7 +66,9 @@ nmap('<leader>fg', builtin.live_grep)
 nmap('<leader>fb', builtin.buffers)
 nmap('<leader>fh', builtin.help_tags)
 nmap('<leader>fo', builtin.oldfiles)
-nmap('<leader>fc', builtin.colorscheme)
+nmap('<leader>fc', function()
+    builtin.colorscheme { enable_preview = true, preview = true }
+end)
 nmap('<leader>fd', ':Telescope file_browser<cr>')
 nmap('<leader>fe', ':Telescope gitmoji<cr>')
 
@@ -97,8 +99,10 @@ end
 
 vim.cmd('autocmd! TermOpen term://* lua my_set_terminal_keymaps()')
 
-nmap('<leader>j', ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>')
-nmap('<leader>J', ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
+nmap('<leader>j',
+    ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>')
+nmap('<leader>J',
+    ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
 
 local font = require("my.font")
 vim.keymap.set({ 'n' }, '<D-=>', font.increase_font)
