@@ -11,6 +11,7 @@ return {
                 find_files = {
                     theme = "dropdown",
                     hidden = true,
+                    no_ignore = true,
                 },
                 buffers = {
                     theme = "dropdown",
@@ -37,7 +38,7 @@ return {
                     hijack_netrw = true,
                 },
                 gitmoji = {
-                    action = function (entry)
+                    action = function(entry)
                         vim.fn.setreg('"', entry.value.value)
                         vim.notify("Emoji copied: " .. entry.value.value)
                     end
