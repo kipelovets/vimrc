@@ -2,10 +2,20 @@ return {
     "nvim-tree/nvim-tree.lua",
     config = function()
         require("nvim-tree").setup({
+            hijack_cursor = true,
             update_focused_file = {
                 enable = true,
-                -- update_root = true,
+                update_root = true,
+            },
+            sync_root_with_cwd = true,
+            reload_on_bufenter = true,
+            respect_buf_cwd = true,
+            select_prompts = true,
+            filters = {
+                git_ignored = false,
+                custom = { "^\\.git$", "^\\.idea$" }
             }
+
         })
         vim.api.nvim_create_autocmd("BufEnter", {
             nested = true,
