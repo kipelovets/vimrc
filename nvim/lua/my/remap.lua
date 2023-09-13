@@ -56,8 +56,7 @@ nmap('<silent><leader>$', '<Cmd>BufferLineGoToBuffer -1<CR>')
 nmap(keybindings.new_tab, ':enew<cr>')
 nmap('<C-q>', ':bd<cr>')
 
-local telescope = require("telescope")
-nmap('<leader>fp', telescope.extensions.project.project)
+nmap('<leader>fp', ":Telescope project theme=dropdown<cr>")
 
 local builtin = require('telescope.builtin')
 nmap(keybindings.find_files, builtin.find_files)
@@ -70,7 +69,7 @@ nmap('<leader>fc', function()
     builtin.colorscheme { enable_preview = true, preview = true }
 end)
 nmap('<leader>fd', ':Telescope file_browser<cr>')
-nmap('<leader>fe', ':Telescope gitmoji<cr>')
+nmap('<leader>fe', ':Telescope gitmoji theme=dropdown<cr>')
 nmap('<leader>ft', ':Telescope treesitter<cr>')
 nmap('<leader>gb', ':Telescope git_branches<cr>')
 nmap('<leader>fs', ':Telescope lsp_document_symbols<cr>')

@@ -31,7 +31,7 @@ function M.config()
     local links = {
         type = "group",
         val = {
-            dashboard.button("p", "🚧 Projects", "<cmd>Telescope project<CR>"),
+            dashboard.button("p", "🚧 Projects", "<cmd>Telescope project theme=dropdown<CR>"),
             dashboard.button("d", "📁 Explore", "<cmd>Telescope file_browser<CR>"),
             dashboard.button("e", "✏️  Empty buffer", "<cmd>Alpha<CR>"),
         },
