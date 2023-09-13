@@ -6,6 +6,7 @@ return {
             update_focused_file = {
                 enable = true,
                 update_root = true,
+                ignore_list = {"vimwiki"}
             },
             sync_root_with_cwd = true,
             reload_on_bufenter = true,
