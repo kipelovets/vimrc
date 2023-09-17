@@ -30,8 +30,3 @@ scoop install python
 ```
 :CellularAutomaton make_it_rain
 ```
-
-## TODO
-
-* LRU in gitmoji
-* oldfiles per project
