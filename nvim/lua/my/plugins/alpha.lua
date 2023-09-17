@@ -9,6 +9,8 @@ local M = {
     event = "VimEnter",
 }
 
+local utils = require("my.utils")
+
 local gwent = {
     [[ ██████╗ ██╗    ██╗███████╗███╗   ██╗████████╗]],
     [[██╔════╝ ██║    ██║██╔════╝████╗  ██║╚══██╔══╝]],
@@ -18,16 +20,72 @@ local gwent = {
     [[ ╚═════╝  ╚══╝╚══╝ ╚══════╝╚═╝  ╚═══╝   ╚═╝   ]],
 }
 
-function M.config()
-    local theme = require("alpha.themes.theta")
-    local project_list = require("telescope._extensions.project.utils").get_projects("recent")
-    local path_ok, plenary_path = pcall(require, "plenary.path")
-    if not path_ok then
-        return
+local function get_extension(fn)
+    fn = fn or ""
+    local match = fn:match("^.+(%..+)$")
+    local ext = ""
+    if match ~= nil then
+        ext = match:sub(2)
+    end
+    return ext
+end
+
+local function get_icon(fn)
+    local nwd = require("nvim-web-devicons")
+    local ext = get_extension(fn)
+    return nwd.get_icon(fn, ext, { default = true })
+end
+
+local function file_button(fn, sc, short_fn)
+    fn = fn or ""
+    local dashboard = require("alpha.themes.dashboard")
+    short_fn = short_fn or fn
+    local ico_txt
+    local fb_hl = {}
+
+    local ico, hl = get_icon(fn)
+    if hl then
+        table.insert(fb_hl, { hl, 0, #ico })
+    end
+    ico_txt = ico .. "  "
+    local file_button_el = dashboard.button(sc, ico_txt .. short_fn, "<cmd>e " .. fn .. " <CR>")
+    local fn_start = short_fn:match(".*[/\\]")
+    if fn_start ~= nil then
+        table.insert(fb_hl, { "Comment", #ico_txt - 2, #fn_start + #ico_txt })
+    end
+    file_button_el.opts.hl = fb_hl
+    return file_button_el
+end
+
+local function mru(start, items_number)
+    local tbl = {
+        { type = "text", val = "Recent Files", opts = { hl = "SpecialComment", position = "center" } },
+    }
+    local counter = 0
+    for i, fname in pairs(vim.v.oldfiles) do
+        if counter >= items_number then
+            break
+        end
+        if vim.fn.filereadable(fname) == 1 then
+            local short_fn = utils.shorten_path(fname)
+            print(fname .. " -> " .. short_fn)
+            local shortcut = tostring(counter + start)
+
+            local file_button_el = file_button(fname, shortcut, short_fn)
+            tbl[counter] = file_button_el
+            counter = counter + 1
+        end
     end
 
-    -- Links / tools
+    return tbl
+end
+
+function M.config()
+    local theme = require("alpha.themes.theta")
     local dashboard = require("alpha.themes.dashboard")
+    local project_list = require("telescope._extensions.project.utils").get_projects("recent")
+
+    -- Links / tools
     local links = {
         type = "group",
         val = {
@@ -44,7 +102,7 @@ function M.config()
             table.insert(lines, {
                 type = "text",
                 val = line,
-                opts = { 
+                opts = {
                     hl = "Gwent",
                     position = "center"
                 },
@@ -62,16 +120,7 @@ function M.config()
 
     -- MRU
     local function get_mru(max_shown)
-        local tbl = {
-            { type = "text", val = "Recent Files", opts = { hl = "SpecialComment", position = "center" } },
-        }
-
-        local mru_list = theme.mru(10, "", max_shown)
-        for _, file in ipairs(mru_list.val) do
-            table.insert(tbl, file)
-        end
-
-        return { type = "group", val = tbl, opts = {} }
+        return { type = "group", val = mru(10, max_shown), opts = {} }
     end
 
     -- Projects
@@ -87,25 +136,18 @@ function M.config()
 
             local icon = "📁 "
 
-            -- create shortened path for display
-            local target_width = 35
-            local display_path = project.path:gsub("/", "\\"):gsub("\\\\", "\\")
-            if #display_path > target_width then
-                display_path = plenary_path.new(display_path):shorten(1, { -2, -1 })
-                if #display_path > target_width then
-                    display_path = plenary_path.new(display_path):shorten(1, { -1 })
-                end
-            end
+            local project_path = project.path
+            local display_path = utils.shorten_path(project_path)
 
             local letter = "" .. i
-            local project_name = display_path:match("[/\\][%w%s%.%-]*$")
+            local project_name = display_path:match("/[^/]+$")
             if project_name == nil then
                 project_name = display_path
             end
-            project_name = project_name:gsub("[/\\]", "")
+            project_name = project_name:gsub("/", "")
 
             local cmd = "<cmd>lua require('telescope.builtin').find_files( { cwd = '"
-                .. project.path:gsub("\\", "/")
+                .. project_path
                 .. "' }) <cr>"
 
             cmd = "<cmd>lua require('my.utils').cd('" .. project.path .. "')<cr>"
