@@ -68,7 +68,6 @@ local function mru(start, items_number)
         end
         if vim.fn.filereadable(fname) == 1 then
             local short_fn = utils.shorten_path(fname)
-            print(fname .. " -> " .. short_fn)
             local shortcut = tostring(counter + start)
 
             local file_button_el = file_button(fname, shortcut, short_fn)
@@ -136,7 +135,7 @@ function M.config()
 
             local icon = "📁 "
 
-            local project_path = project.path
+            local project_path = project.path:gsub("\\", "/")
             local display_path = utils.shorten_path(project_path)
 
             local letter = "" .. i
@@ -146,11 +145,7 @@ function M.config()
             end
             project_name = project_name:gsub("/", "")
 
-            local cmd = "<cmd>lua require('telescope.builtin').find_files( { cwd = '"
-                .. project_path
-                .. "' }) <cr>"
-
-            cmd = "<cmd>lua require('my.utils').cd('" .. project.path .. "')<cr>"
+            local cmd = "<cmd>lua require('my.utils').cd('" .. project_path .. "')<cr>"
 
             -- create button element
             local file_button_el = dashboard.button(
