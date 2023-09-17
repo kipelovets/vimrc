@@ -38,8 +38,8 @@ else
     keybindings.duplicate = '<C-S-d>'
     keybindings.select_all = '<C-a>'
     keybindings.save = "<C-s>"
-    keybindings.prev_tab = '<C-}>'
-    keybindings.next_tab = '<C-{>'
+    keybindings.prev_tab = '<C-{>'
+    keybindings.next_tab = '<C-}>'
     keybindings.new_tab = '<C-t>'
     keybindings.find_files = '<C-p>'
 end
