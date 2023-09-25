@@ -33,7 +33,7 @@ function M.config()
 			component_separators = "",
 			disabled_filetypes = {
 				statusline = { "alpha" },
-				winbar = { "neo-tree", "aerial", "OverseerList", "alpha", "dap-repl" },
+				winbar = { "neo-tree", "OverseerList", "alpha", "dap-repl" },
 			},
 			refresh = {
 				statusline = 1000,
@@ -189,58 +189,7 @@ function M.config()
 			lualine_y = {},
 			lualine_z = {},
 		},
-		winbar = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = {
-				{ "filetype", colored = true, icon_only = true },
-				{
-					"filename",
-					-- color = { fg = colours.bufSelected },
-					symbols = {
-						modified = "*", -- Text to show when the file is modified.
-						readonly = "(RO)", -- Text to show when the file is non-modifiable or readonly.
-					},
-					padding = { left = 0, right = 4 },
-				},
-				{
-					"aerial",
-					depth = 3,
-					on_click = function()
-						vim.cmd("AerialToggle")
-					end,
-				},
-			},
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = {},
-		},
-		inactive_winbar = {
-			lualine_a = {},
-			lualine_b = {},
-			lualine_c = {
-				{
-					"filetype",
-					colored = false,
-					icon_only = true,
-					-- color = { fg = colours.bufVisible },
-				},
-				{
-					"filename",
-					-- color = { fg = colours.bufVisible },
-					symbols = {
-						modified = "", -- Text to show when the file is modified.
-						readonly = "(RO)", -- Text to show when the file is non-modifiable or readonly.
-					},
-					padding = { left = 0, right = 4 },
-				},
-			},
-			lualine_x = {},
-			lualine_y = {},
-			lualine_z = {},
-		},
 		extensions = {
-			"aerial",
             "lazy",
 			"man",
 			"neo-tree",
