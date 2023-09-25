@@ -5,8 +5,6 @@ M.cd = function(path)
     print("CD -> " .. path)
     _utils.change_project_dir(path)
     vim.cmd("Alpha")
-    local api = require("nvim-tree.api")
-    api.tree.open()
 end
 
 M.shorten_path = function(path)

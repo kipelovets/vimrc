@@ -1,12 +1,12 @@
 local keybindings = {}
 
-keybindings.rename = '<leader>rn'
+keybindings.rename = '<leader>cr'
 keybindings.code_action = '<leader>ca'
-keybindings.format = '<leader>f'
-keybindings.goto_definition = 'gd'
-keybindings.goto_references = 'gr'
-keybindings.symbols = '<leader>ds'
-keybindings.all_symbols = '<leader>ws'
+keybindings.format = '<leader>cf'
+keybindings.goto_definition = '<leader>cd'
+keybindings.goto_references = '<leader>cu'
+keybindings.symbols = '<leader>cs'
+keybindings.all_symbols = '<leader>cS'
 keybindings.doc = 'K'
 keybindings.signature = '<C-k>'
 keybindings.cmp_confirm = '<CR>'

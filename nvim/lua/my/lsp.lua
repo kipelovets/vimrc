@@ -9,14 +9,14 @@ local on_attach = function(_, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap(keybindings.rename, vim.lsp.buf.rename, '[R]e[n]ame')
-    nmap(keybindings.code_action, vim.lsp.buf.code_action, '[C]ode [A]ction')
-    nmap(keybindings.format, vim.lsp.buf.format)
+    nmap(keybindings.rename, vim.lsp.buf.rename, 'Rename')
+    nmap(keybindings.code_action, vim.lsp.buf.code_action, 'Code Action')
+    nmap(keybindings.format, vim.lsp.buf.format, "Format code")
 
-    nmap(keybindings.goto_definition, vim.lsp.buf.definition, '[G]oto [D]efinition')
-    nmap(keybindings.goto_references, require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
-    nmap(keybindings.symbols, require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
-    nmap(keybindings.all_symbols, require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+    nmap(keybindings.goto_definition, vim.lsp.buf.definition, 'Goto Definition')
+    nmap(keybindings.goto_references, require('telescope.builtin').lsp_references, 'Goto References')
+    nmap(keybindings.symbols, require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+    nmap(keybindings.all_symbols, require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
     nmap(keybindings.doc, vim.lsp.buf.hover, 'Hover Documentation')
     nmap(keybindings.signature, vim.lsp.buf.signature_help, 'Signature Documentation')
