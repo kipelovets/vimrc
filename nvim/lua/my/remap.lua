@@ -35,6 +35,7 @@ nmap("<leader>gs", ":G<cr>")
 nmap("<leader>gc", ":G commit<cr>")
 nmap("<leader>go", ":Git pull<cr>")
 nmap("<leader>gp", ":Git push<cr>")
+nmap("<leader>gf", ":Flog<cr>")
 
 nmap('<leader>/', ':let @/=""<bar>echo "search cleared"<cr>')
 
