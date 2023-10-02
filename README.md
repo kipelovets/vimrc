@@ -30,3 +30,11 @@ scoop install python
 ```
 :CellularAutomaton make_it_rain
 ```
+
+# Decision log
+
+## PHP Language server
+
+* `psalm` - only supports diagnostics & goto definition, doesn't support symbol list and refactoring
+* `intellephense` - incorrect parent class detection
+* `phpactor` - supports goto, symbols, refactoring
