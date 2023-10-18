@@ -15,6 +15,7 @@ local on_attach = function(_, bufnr)
 
     nmap(keybindings.goto_definition, vim.lsp.buf.definition, 'Goto Definition')
     nmap(keybindings.goto_references, require('telescope.builtin').lsp_references, 'Goto References')
+    nmap(keybindings.implementations, require('telescope.builtin').lsp_implementations, 'Implementations')
     nmap(keybindings.symbols, require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
     nmap(keybindings.all_symbols, require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
@@ -62,5 +63,6 @@ lspconfig.sqlls.setup {
     root_dir = lspconfig.util.find_git_ancestor
 }
 lspconfig.phpactor.setup{}
+lspconfig.bashls.setup{}
 
 lsp.setup()

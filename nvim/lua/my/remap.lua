@@ -8,10 +8,6 @@ if vim.g.neovide then
     nmap(keybindings.neovide, ":silent exec '!neovide'<cr>")
 end
 
--- keeping cursor where it was when merging lines
-vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
-
 -- keeping cursor in the center
 nmap("<C-d>", "<C-d>zz")
 nmap("<C-u>", "<C-u>zz")
