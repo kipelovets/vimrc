@@ -12,6 +12,9 @@ return {
                     theme = "dropdown",
                     hidden = true,
                     no_ignore = true,
+                    file_ignore_patterns = {
+                        "node_modules"
+                    }
                 },
                 buffers = {
                     theme = "dropdown",
@@ -43,7 +46,8 @@ return {
                         vim.notify("Emoji copied: " .. entry.value.value)
                     end
                 },
-            }
+            },
+            
         })
     end
 }
