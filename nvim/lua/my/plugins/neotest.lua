@@ -5,14 +5,20 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-neotest/neotest-python",
+        "DasOhmoff/neotest-jest",
     },
     config = function()
         require("neotest").setup({
-            require("neotest-python")({
-                args = { "--log-level", "DEBUG", "--quiet" },
-                runner = "pytest",
-            }),
-            require("plenary"),
+            adapters = {
+                require("neotest-python")({
+                    args = { "--log-level", "DEBUG", "--quiet" },
+                    runner = "pytest",
+                }),
+
+                require('neotest-jest')({
+                    jestCommand = "yarn test",
+                }),
+            }
         })
     end
 }

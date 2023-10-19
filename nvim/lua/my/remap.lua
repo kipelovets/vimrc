@@ -134,3 +134,16 @@ nmap("<leader>dp", "<cmd>lua require'dap'.pause.toggle()<cr>", "Pause")
 nmap("<leader>dq", "<cmd>lua require'dap'.close()<cr>", "Quit")
 nmap("<leader>dr", "<cmd>lua require'dap'.repl.toggle()<cr>", "Toggle Repl")
 nmap("<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", "Terminate")
+
+-- Testing
+
+nmap("<leader>ta", "<cmd>lua require('neotest').run.attach()<cr>", "Attach")
+nmap("<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File")
+nmap("<leader>tF", "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File")
+nmap("<leader>tl", "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last")
+nmap("<leader>tL", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug Last")
+nmap("<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest")
+nmap("<leader>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest")
+nmap("<leader>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output")
+nmap("<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", "Stop")
+nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary")
