@@ -13,7 +13,7 @@ return {
                     hidden = true,
                     no_ignore = true,
                     file_ignore_patterns = {
-                        "node_modules"
+                        "node_modules/"
                     }
                 },
                 buffers = {
