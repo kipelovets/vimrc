@@ -36,3 +36,5 @@ vim.api.nvim_set_hl(0, 'VimwikiHeader1', { fg = '#ff5555' })
 vim.api.nvim_set_hl(0, 'VimwikiHeader2', { fg = '#50FA7B' })
 vim.api.nvim_set_hl(0, 'VimwikiHeader3', { fg = '#BD93F9' })
 vim.api.nvim_set_hl(0, 'VimwikiLink', { fg = '#8BE9FD' })
+
+vim.o.title = true
