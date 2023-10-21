@@ -5,7 +5,7 @@ return {
             hijack_cursor = true,
             update_focused_file = {
                 enable = true,
-                update_root = true,
+                update_root = false,
                 ignore_list = { "vimwiki", "help" }
             },
             sync_root_with_cwd = true,
