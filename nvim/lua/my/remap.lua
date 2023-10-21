@@ -33,7 +33,10 @@ nmap("<leader>go", ":Git pull<cr>")
 nmap("<leader>gp", ":Git push<cr>")
 nmap("<leader>gf", ":Flog<cr>")
 
-nmap('<leader>/', ':let @/=""<bar>echo "search cleared"<cr>')
+nmap('<leader>/', function()
+    vim.api.nvim_command(':let @/=""')
+    require('noice').cmd("dismiss")
+end)
 
 vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<esc>:w<cr>")
 
