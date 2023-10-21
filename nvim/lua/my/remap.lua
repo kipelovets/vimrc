@@ -99,9 +99,15 @@ vim.keymap.set(
 vim.keymap.set({ "i" }, "<c-t>", '<Plug>luasnip-expand-or-jump')
 
 nmap('<c-`>', ':ToggleTerm<cr>')
+nmap('<c-`>1', ':1ToggleTerm<cr>')
+nmap('<c-`>2', ':2ToggleTerm<cr>')
+nmap('<c-`>3', ':3ToggleTerm<cr>')
 function _G.my_set_terminal_keymaps()
     local opts = { buffer = 0 }
     vim.keymap.set('t', '<c-`>', '<cmd>ToggleTerm<cr>', opts)
+    vim.keymap.set('t', '<c-`>1', '<cmd>1ToggleTerm<cr>')
+    vim.keymap.set('t', '<c-`>2', '<cmd>2ToggleTerm<cr>')
+    vim.keymap.set('t', '<c-`>3', '<cmd>3ToggleTerm<cr>')
     vim.keymap.set('t', '<esc>', [[<C-\><C-n>]], opts)
     vim.keymap.set('t', '<C-h>', [[<Cmd>wincmd h<CR>]], opts)
     vim.keymap.set('t', '<C-j>', [[<Cmd>wincmd j<CR>]], opts)
