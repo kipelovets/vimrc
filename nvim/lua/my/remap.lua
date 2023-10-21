@@ -55,12 +55,20 @@ nmap('<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
 nmap(keybindings.new_tab, ':enew<cr>')
 nmap('<C-q>', ':bd<cr>')
 
+-- Telescope
+
 nmap('<leader>fp', ":Telescope project theme=dropdown<cr>")
 
 local builtin = require('telescope.builtin')
 nmap(keybindings.find_files, builtin.find_files)
 nmap('<leader>ff', builtin.find_files)
 nmap('<leader>fg', builtin.live_grep)
+nmap('<leader>fG', function()
+    local dir = vim.fn.input("Directory to grep: ", "./", "dir")
+    local file_glob = vim.fn.input("File glob pattern: ", "*")
+    builtin.live_grep({ search_dirs = { dir }, glob_pattern = file_glob })
+end)
+
 nmap('<leader>fb', builtin.buffers)
 nmap('<leader>fh', builtin.help_tags)
 nmap('<leader>fo', function()
@@ -109,11 +117,15 @@ nmap('<leader>j',
 nmap('<leader>J',
     ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
 
+-- Presentation
+
 local font = require("my.font")
 vim.keymap.set({ 'n' }, '<D-=>', font.increase_font)
 vim.keymap.set({ 'n' }, '<D-->', font.decrease_font)
 vim.keymap.set({ 'n' }, '<D-0>', font.reset_font)
 vim.keymap.set({ 'n' }, '<leader>p', font.present)
+
+-- Debugging
 
 vim.keymap.set('n', '<F5>', function() require('dap').continue() end)
 vim.keymap.set('n', '<F10>', function() require('dap').step_over() end)
