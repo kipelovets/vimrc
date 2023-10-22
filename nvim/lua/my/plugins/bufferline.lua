@@ -56,8 +56,6 @@ function M.config()
 			},
 		},
 	})
-
-	-- require("scope").setup()
 end
 
 return M
