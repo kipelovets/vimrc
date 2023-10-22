@@ -53,7 +53,7 @@ nmap('<leader>8', '<Cmd>BufferLineGoToBuffer 8<CR>')
 nmap('<leader>9', '<Cmd>BufferLineGoToBuffer 9<CR>')
 
 nmap(keybindings.new_tab, ':enew<cr>')
-nmap('<C-q>', ':bd<cr>')
+nmap('<c-q>', '<Plug>(smartq_this)')
 
 -- Telescope
 

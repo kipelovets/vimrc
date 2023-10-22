@@ -57,6 +57,7 @@
   "vim-highlighter": { "branch": "main", "commit": "e625c9a475b760f970c2f813cbe37e9d28cd51ed" },
   "vim-log-highlighting": { "branch": "master", "commit": "1037e26f3120e6a6a2c0c33b14a84336dee2a78f" },
   "vim-nightfly-colors": { "branch": "master", "commit": "9053e99131731f268258ab4d35d4841c3126ff9a" },
+  "vim-smartq": { "branch": "main", "commit": "5d863e4c6b1467d5831e14e078a614fab6836a08" },
   "vim-surround": { "branch": "master", "commit": "3d188ed2113431cf8dac77be61b842acb64433d9" },
   "vim-wipeout": { "branch": "master", "commit": "6e98c53c5c4221e2b5bf8f8711b43562640b4d0a" },
   "vimwiki": { "branch": "dev", "commit": "5d86b625f52e80476cb73c0a14ac62d51e7eb36f" },
