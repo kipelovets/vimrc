@@ -25,6 +25,12 @@ nmap(keybindings.select_all, 'ggVG')
 -- delete into black hole
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 
+nmap('<leader>/', function()
+    vim.api.nvim_command(':let @/=""')
+    require('noice').cmd("dismiss")
+end)
+
+-- Git
 
 nmap("<leader>gw", ":Gw<cr>")
 nmap("<leader>gs", ":G<cr>")
@@ -33,10 +39,8 @@ nmap("<leader>go", ":Git pull<cr>")
 nmap("<leader>gp", ":Git push<cr>")
 nmap("<leader>gf", ":Flog<cr>")
 
-nmap('<leader>/', function()
-    vim.api.nvim_command(':let @/=""')
-    require('noice').cmd("dismiss")
-end)
+
+-- Buffers
 
 vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<esc>:w<cr>")
 
@@ -85,18 +89,7 @@ nmap('<leader>gb', ':Telescope git_branches<cr>')
 nmap('<leader>fs', ':Telescope lsp_document_symbols<cr>')
 nmap('<leader>fa', ':Telescope lsp_dynamic_workspace_symbols<cr>')
 
-nmap('<leader>t', ':NvimTreeOpen<cr>')
-nmap('<leader>T', ':NvimTreeToggle<cr>')
-
-nmap('<leader>s', ':Alpha<cr>')
-
-vim.keymap.set(
-    { "n", "x" },
-    "<leader>rr",
-    function() require('refactoring').select_refactor() end
-)
-
-vim.keymap.set({ "i" }, "<c-t>", '<Plug>luasnip-expand-or-jump')
+-- Terminal
 
 nmap('<c-`>', ':ToggleTerm<cr>')
 nmap('<c-`>1', ':1ToggleTerm<cr>')
@@ -117,11 +110,6 @@ function _G.my_set_terminal_keymaps()
 end
 
 vim.cmd('autocmd! TermOpen term://* lua my_set_terminal_keymaps()')
-
-nmap('<leader>j',
-    ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>')
-nmap('<leader>J',
-    ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
 
 -- Presentation
 
@@ -168,3 +156,24 @@ nmap("<leader>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>"
 nmap("<leader>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output")
 nmap("<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", "Stop")
 nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary")
+
+-- Misc
+
+nmap('<leader>t', ':NvimTreeOpen<cr>')
+nmap('<leader>T', ':NvimTreeToggle<cr>')
+
+nmap('<leader>s', ':Alpha<cr>')
+
+vim.keymap.set(
+    { "n", "x" },
+    "<leader>rr",
+    function() require('refactoring').select_refactor() end
+)
+
+vim.keymap.set({ "i" }, "<c-t>", '<Plug>luasnip-expand-or-jump')
+
+nmap('<leader>j',
+    ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>')
+nmap('<leader>J',
+    ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
+
