@@ -89,6 +89,8 @@ nmap('<leader>gb', ':Telescope git_branches<cr>')
 nmap('<leader>fs', ':Telescope lsp_document_symbols<cr>')
 nmap('<leader>fa', ':Telescope lsp_dynamic_workspace_symbols<cr>')
 
+-- <c-d>/<c-u> - scroll preview
+
 -- Terminal
 
 nmap('<c-`>', ':ToggleTerm<cr>')
