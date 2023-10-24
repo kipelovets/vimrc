@@ -35,6 +35,14 @@ scoop install python
 
 ## PHP Language server
 
-* `psalm` - only supports diagnostics & goto definition, doesn't support symbol list and refactoring
-* `intellephense` - incorrect parent class detection
-* `phpactor` - supports goto, symbols, refactoring
+✅❌
+
+| LSP                 | diagnostic | goto | symbols | refactoring | formatting | problems                         |
+|---------------------|------------|------|---------|-------------|------------|----------------------------------|
+| psalm               | ✅         | ✅   | ❌      | ❌          |            |                                  |
+| intellephense       | ✅         | ✅   | ✅      | 💰          | ✅         | incorrect parent class detection |
+| phpactor            | ✅         | ✅   | ✅      | ✅          | ❌         |                                  |
+| php-language-server | ✅         | ✅   | ✅      | ❌          | ❌         | not supported since 2018         |
+| serenata            | ✅         | ✅   | ✅      | ✅          | ❌         | not supported for 1 year         |
+|                     |            |      |         |             |            |                                  |
+
