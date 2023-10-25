@@ -179,3 +179,5 @@ nmap('<leader>j',
 nmap('<leader>J',
     ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")));\'<cr>:set filetype=json<cr>')
 
+nmap("[<cr>", ":Hi {<cr>")
+nmap("]<cr>", ":Hi }<cr>")

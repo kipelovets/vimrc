@@ -15,8 +15,8 @@ keybindings.cmp_complete = '<C-Space>'
 keybindings.cmp_abort = '<C-e>'
 keybindings.cmp_next = '<Tab>'
 keybindings.diag_open = '<leader>do'
-keybindings.diag_prev = '<leader>d['
-keybindings.diag_next = '<leader>d]'
+keybindings.diag_prev = '[d'
+keybindings.diag_next = ']d'
 keybindings.diag_show = '<leader>dd'
 
 if jit.os == "OSX" then
