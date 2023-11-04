@@ -164,6 +164,8 @@ nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary"
 nmap('<leader>t', ':NvimTreeOpen<cr>')
 nmap('<leader>T', ':NvimTreeToggle<cr>')
 
+nmap('<leader>so', ':SymbolsOutline<cr>')
+
 nmap('<leader>s', ':Alpha<cr>')
 
 vim.keymap.set(
