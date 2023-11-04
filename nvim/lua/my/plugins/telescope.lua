@@ -11,7 +11,7 @@ return {
                 find_files = {
                     theme = "dropdown",
                     hidden = true,
-                    no_ignore = true,
+                    no_ignore = false,
                     file_ignore_patterns = {
                         "node_modules/"
                     }
