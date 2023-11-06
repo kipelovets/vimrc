@@ -6,6 +6,7 @@ return {
     },
     config = function()
         local project_actions = require("telescope._extensions.project.actions")
+        local actions = require("telescope.actions")
         require('telescope').setup({
             pickers = {
                 find_files = {
@@ -18,6 +19,11 @@ return {
                 },
                 buffers = {
                     theme = "dropdown",
+                    mappings = {
+                        i = {
+                            ["<c-d>"] = actions.delete_buffer,
+                        }
+                    }
                 },
                 oldfiles = {
                     theme = "dropdown",
@@ -47,7 +53,7 @@ return {
                     end
                 },
             },
-            
+
         })
     end
 }
