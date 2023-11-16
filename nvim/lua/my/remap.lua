@@ -38,6 +38,7 @@ nmap("<leader>gc", ":G commit<cr>")
 nmap("<leader>go", ":Git pull<cr>")
 nmap("<leader>gp", ":Git push<cr>")
 nmap("<leader>gf", ":Flog<cr>")
+nmap("<leader>gF", ":Flog -all<cr>")
 
 
 -- Buffers
