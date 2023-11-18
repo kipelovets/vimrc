@@ -3,5 +3,8 @@ return {
     version = "2.*",
     config = function ()
         require("luasnip.loaders.from_snipmate").lazy_load()
-    end
+    end,
+    dependencies = {
+        { 'saadparwaiz1/cmp_luasnip' },
+    },
 }

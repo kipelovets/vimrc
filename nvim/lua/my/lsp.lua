@@ -11,6 +11,7 @@ local on_attach = function(_, bufnr)
 
     nmap(keybindings.rename, vim.lsp.buf.rename, 'Rename')
     nmap(keybindings.code_action, vim.lsp.buf.code_action, 'Code Action')
+    nmap("<leader>cA", require("actions-preview").code_actions)
     nmap(keybindings.format, vim.lsp.buf.format, "Format code")
 
     nmap(keybindings.goto_definition, vim.lsp.buf.definition, 'Goto Definition')
@@ -41,7 +42,17 @@ local on_attach = function(_, bufnr)
             end,
             [keybindings.cmp_complete] = cmp.mapping.complete(),
             [keybindings.cmp_abort] = cmp.mapping.abort(),
-        }
+        },
+        snippet = {
+            expand = function(args)
+                require 'luasnip'.lsp_expand(args.body)
+            end
+        },
+
+        sources = {
+            { name = 'nvim_lsp' },
+            { name = 'luasnip' },
+        },
     }
 
     nmap(keybindings.diag_open, vim.diagnostic.open_float)
@@ -62,7 +73,7 @@ lspconfig.pylsp.setup({})
 lspconfig.sqlls.setup {
     root_dir = lspconfig.util.find_git_ancestor
 }
-lspconfig.phpactor.setup{}
-lspconfig.bashls.setup{}
+lspconfig.phpactor.setup {}
+lspconfig.bashls.setup {}
 
 lsp.setup()
