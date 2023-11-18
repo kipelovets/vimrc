@@ -28,6 +28,13 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 nmap('<leader>/', function()
     vim.api.nvim_command(':let @/=""')
     require('noice').cmd("dismiss")
+
+    local wins = vim.api.nvim_list_wins()
+    for _, win in ipairs(wins) do
+        if vim.api.nvim_win_get_config(win).relative ~= '' then
+            vim.api.nvim_win_close(win, false)
+        end
+    end
 end)
 
 -- Git
