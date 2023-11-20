@@ -54,6 +54,8 @@ vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<esc>:w<cr>")
 
 nmap(keybindings.prev_tab, ':BufferLineCyclePrev<cr>')
 nmap(keybindings.next_tab, ':BufferLineCycleNext<cr>')
+nmap(keybindings.tab_move_right, ':BufferLineMoveNext<cr>')
+nmap(keybindings.tab_move_left, ':BufferLineMovePrev<cr>')
 nmap('<leader>1', '<Cmd>BufferLineGoToBuffer 1<CR>')
 nmap('<leader>2', '<Cmd>BufferLineGoToBuffer 2<CR>')
 nmap('<leader>3', '<Cmd>BufferLineGoToBuffer 3<CR>')

@@ -29,6 +29,8 @@ if jit.os == "OSX" then
     keybindings.save = "<D-s>"
     keybindings.prev_tab = '<D-left>'
     keybindings.next_tab = '<D-right>'
+    keybindings.tab_move_right = '<D-S-right>'
+    keybindings.tab_move_left = '<D-S-left>'
     keybindings.new_tab = '<D-t>'
     keybindings.find_files = '<D-p>'
 else
@@ -41,6 +43,8 @@ else
     keybindings.save = "<C-s>"
     keybindings.prev_tab = '<C-{>'
     keybindings.next_tab = '<C-}>'
+    keybindings.tab_move_right = '<C-S-right>'
+    keybindings.tab_move_left = '<C-S-left>'
     keybindings.new_tab = '<C-t>'
     keybindings.find_files = '<C-p>'
 end
