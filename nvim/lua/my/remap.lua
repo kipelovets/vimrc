@@ -46,7 +46,8 @@ nmap("<leader>go", ":Git pull<cr>")
 nmap("<leader>gp", ":Git push<cr>")
 nmap("<leader>gf", ":Flog<cr>")
 nmap("<leader>gF", ":Flog -all<cr>")
-
+nmap("[g", ":lua require'gitsigns'.prev_hunk()<cr>")
+nmap("]g", ":lua require'gitsigns'.next_hunk()<cr>")
 
 -- Buffers
 
@@ -209,3 +210,5 @@ vim.keymap.set('n', 'g:', function()
     -- resize repl window and make it fixed height
     vim.cmd('resize 10 | setl winfixheight')
 end)
+
+
