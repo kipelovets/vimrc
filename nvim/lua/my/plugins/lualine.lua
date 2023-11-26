@@ -71,6 +71,7 @@ function M.config()
 					on_click = function()
 						require("telescope.builtin").git_status()
 					end,
+					separator = { left = "", right = "" },
 				},
 				{
 					function()
@@ -93,9 +94,16 @@ function M.config()
 					on_click = function()
 						vim.cmd("TroubleToggle")
 					end,
+					separator = { left = "", right = "" },
 				},
 			},
-			lualine_c = {},
+			lualine_c = {
+                {
+                    function ()
+                        return "%#SagaFolder#  %*" .. require("lspsaga.symbol.winbar").get_bar()
+                    end
+                }
+            },
 			lualine_x = {},
 			lualine_y = {
 				{
@@ -138,7 +146,7 @@ function M.config()
 						end
 						return msg
 					end,
-					-- color = { fg = colours.textLight, bg = colours.status },
+					-- color = { fg = colours.teAlice KlayxtLight, bg = colours.status },
 					padding = { left = 1, right = 2 },
 					icon = " ",
 					on_click = function()

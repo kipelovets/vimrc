@@ -10,7 +10,7 @@ local on_attach = function(_, bufnr)
     end
 
     nmap(keybindings.rename, vim.lsp.buf.rename, 'Rename')
-    nmap(keybindings.code_action, vim.lsp.buf.code_action, 'Code Action')
+    nmap(keybindings.code_action, ":Lspsaga code_action<cr>", 'Code Action')
     nmap("<leader>cA", require("actions-preview").code_actions)
     nmap(keybindings.format, vim.lsp.buf.format, "Format code")
 
@@ -56,8 +56,8 @@ local on_attach = function(_, bufnr)
     }
 
     nmap(keybindings.diag_open, vim.diagnostic.open_float)
-    nmap(keybindings.diag_prev, vim.diagnostic.goto_prev)
-    nmap(keybindings.diag_next, vim.diagnostic.goto_next)
+    nmap(keybindings.diag_prev, ':Lspsaga diagnostic_jump_prev<cr>')
+    nmap(keybindings.diag_next, ':Lspsaga diagnostic_jump_next<cr>')
     nmap(keybindings.diag_show, '<cmd>Telescope diagnostics<CR>')
 end
 
