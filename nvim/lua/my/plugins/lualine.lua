@@ -61,7 +61,11 @@ function M.config()
         },
         sections = {
             lualine_a = {
-                { "mode", padding = 2 },
+                {
+                    "mode",
+                    padding = 2,
+                    separator = { right = "" },
+                },
                 {
                     "macro-recording",
                     fmt = function()
