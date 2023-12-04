@@ -38,3 +38,6 @@ vim.api.nvim_set_hl(0, 'VimwikiLink', { fg = '#8BE9FD' })
 vim.cmd.colorscheme("catppuccin-frappe")
 
 vim.o.title = true
+
+vim.cmd("syntax match MyConclusion /Conclusion/")
+vim.cmd("hi MyConclusion guifg=red")
