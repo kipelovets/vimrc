@@ -191,7 +191,7 @@ function M.config()
                     padding = { left = 1, right = 0 },
                     fmt = function(str, _)
                         local loc = vim.split(str, ":")
-                        return string.format("%d/%d", loc[1], vim.api.nvim_buf_line_count(0))
+                        return string.format("%d : %d/%d", loc[2], loc[1], vim.api.nvim_buf_line_count(0))
                     end,
                     on_click = function()
                         vim.ui.input({
