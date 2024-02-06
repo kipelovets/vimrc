@@ -5,7 +5,8 @@ return {
         "nvim-treesitter/nvim-treesitter",
         "antoinemadec/FixCursorHold.nvim",
         "nvim-neotest/neotest-python",
-        "DasOhmoff/neotest-jest",
+        "nvim-neotest/neotest-jest",
+        "Issafalcon/neotest-dotnet",
     },
     config = function()
         require("neotest").setup({
@@ -17,8 +18,13 @@ return {
 
                 require('neotest-jest')({
                     jestCommand = "yarn test",
+                    jest_test_discovery = false,
                 }),
+
+                require("neotest-dotnet"),
             }
         })
-    end
+    end,
+    lazy = true,
+    event = { "BufEnter *.test.ts" }
 }
