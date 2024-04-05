@@ -36,8 +36,10 @@ vim.api.nvim_set_hl(0, 'VimwikiHeader3', { fg = '#BD93F9' })
 vim.api.nvim_set_hl(0, 'VimwikiLink', { fg = '#8BE9FD' })
 
 vim.cmd.colorscheme("catppuccin-frappe")
+-- Light: kanagawa-lotus
 
 vim.o.title = true
 
-vim.cmd("syntax match MyConclusion /Conclusion/")
-vim.cmd("hi MyConclusion guifg=red")
+
+vim.cmd("au FileType proto setlocal sts=2 sw=2 ts=2")
+

@@ -1,3 +1,5 @@
+require("my.settings-pre")
+
 require("my.lazy")
 require("lazy").setup("my.plugins", {
     change_detection = {
