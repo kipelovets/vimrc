@@ -1,0 +1,9 @@
+syntax on
+set nocp nobk noswf hid vb  " Compatibility
+set hls is nu cul bg=dark   " Search
+set et sw=4 sts=4 ts=4 si   " Tabs
+set mouse=a mousem=popup mh " Mouse
+set fdm=indent fdl=99       " Folding
+set bg=dark ch=1 cole=0     " Visual
+
+command! SudoWrite :w !sudo tee % > /dev/null
