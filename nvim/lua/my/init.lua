@@ -16,6 +16,6 @@ require("lazy").setup("my.plugins", {
         title = "Lazy",
     }
 })
-require("my.dap")
 require("my.settings")
+require("my.dap")
 require("my.remap")
