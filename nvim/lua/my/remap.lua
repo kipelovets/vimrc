@@ -173,7 +173,7 @@ nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary"
 
 -- Misc
 
-nmap('<leader>t', ':NvimTreeOpen<cr>')
+nmap('<leader>t', ':NvimTreeFindFile<cr>')
 nmap('<leader>T', ':NvimTreeToggle<cr>')
 
 nmap('<leader>so', ':SymbolsOutline<cr>')
