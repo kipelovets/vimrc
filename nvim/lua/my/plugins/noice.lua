@@ -13,13 +13,12 @@ return {
     },
     routes = {
         {
-            view = "confirm",
+            view = "popup",
             filter = {
                 any = {
                     {
                         event = "msg_show",
                         kind = { "echo", "echomsg", "" },
-                        -- before = true
                     },
                 },
             },
