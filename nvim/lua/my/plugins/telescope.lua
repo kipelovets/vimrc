@@ -14,7 +14,7 @@ return {
                     hidden = true,
                     no_ignore = false,
                     file_ignore_patterns = {
-                        "^./.git/",
+                        "^.git/",
                         "^node_modules/",
                     },
                     path_display = { "truncate" },
