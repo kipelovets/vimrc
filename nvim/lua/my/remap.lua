@@ -76,7 +76,6 @@ nmap('<leader>fp', ":Telescope project theme=dropdown<cr>")
 
 local builtin = require('telescope.builtin')
 nmap(keybindings.find_files, builtin.find_files)
-nmap('<leader>ff', builtin.find_files)
 nmap('<leader>fg', builtin.live_grep)
 nmap('<leader>fG', function()
     local dir = vim.fn.input("Directory to grep: ", "./", "dir")
