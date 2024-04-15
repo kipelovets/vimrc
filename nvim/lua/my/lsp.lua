@@ -75,5 +75,6 @@ lspconfig.sqlls.setup {
 }
 lspconfig.phpactor.setup {}
 lspconfig.bashls.setup {}
+lspconfig.terraformls.setup {}
 
 lsp.setup()
