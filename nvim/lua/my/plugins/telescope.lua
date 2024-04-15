@@ -47,6 +47,11 @@ return {
                 file_browser = {
                     theme = "ivy",
                     hijack_netrw = true,
+                    mappings = {
+                        n = {
+                            ["<esc>"] = "close",
+                        },
+                    },
                 },
                 gitmoji = {
                     action = function(entry)
