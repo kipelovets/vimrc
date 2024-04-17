@@ -39,24 +39,25 @@ end, "Clear search & popups")
 
 -- Git
 
-nmap("<leader>gw", ":Gw<cr>", "Git write")
-nmap("<leader>gs", ":G<cr>", "Git status")
-nmap("<leader>gc", ":G commit<cr>", "Git commit")
-nmap("<leader>go", ":Git pull<cr>", "Git pull")
-nmap("<leader>gp", ":Git push<cr>", "Git push")
-nmap("<leader>gf", ":Flog<cr>", "Git log")
-nmap("<leader>gF", ":Flog -all<cr>", "Git log all")
-nmap("[g", ":lua require'gitsigns'.prev_hunk()<cr>", "Goto previous hunk")
-nmap("]g", ":lua require'gitsigns'.next_hunk()<cr>", "Goto next hunk")
+nmap("<leader>gw", "<cmd>Gw<cr>", "Git write")
+nmap("<leader>gs", "<cmd>G<cr>", "Git status")
+nmap("<leader>gc", "<cmd>G commit<cr>", "Git commit")
+nmap("<leader>go", "<cmd>Git pull<cr>", "Git pull")
+nmap("<leader>gO", "<cmd>OpenInGHFileLines<cr>", "Git pull")
+nmap("<leader>gp", "<cmd>Git push<cr>", "Git push")
+nmap("<leader>gf", "<cmd>Flog<cr>", "Git log")
+nmap("<leader>gF", "<cmd>Flog -all<cr>", "Git log all")
+nmap("[g", "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Goto previous hunk")
+nmap("]g", "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Goto next hunk")
 
 -- Buffers
 
-vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<esc>:w<cr>", { desc = "Save" })
+vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<cmd>w<cr>", { desc = "Save" })
 
-nmap(keybindings.prev_tab, ":BufferLineCyclePrev<cr>", "Tab: previous")
-nmap(keybindings.next_tab, ":BufferLineCycleNext<cr>", "Tab: next")
-nmap(keybindings.tab_move_right, ":BufferLineMoveNext<cr>", "Tab: move right")
-nmap(keybindings.tab_move_left, ":BufferLineMovePrev<cr>", "Tab: move left")
+nmap(keybindings.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
+nmap(keybindings.next_tab, "<cmd>BufferLineCycleNext<cr>", "Tab: next")
+nmap(keybindings.tab_move_right, "<cmd>BufferLineMoveNext<cr>", "Tab: move right")
+nmap(keybindings.tab_move_left, "<cmd>BufferLineMovePrev<cr>", "Tab: move left")
 nmap("<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", "Tab: select #1")
 nmap("<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", "Tab: select #2")
 nmap("<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", "Tab: select #3")
@@ -67,12 +68,12 @@ nmap("<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", "Tab: select #7")
 nmap("<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", "Tab: select #8")
 nmap("<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", "Tab: select #9")
 
-nmap(keybindings.new_tab, ":enew<cr>", "Tab: new")
+nmap(keybindings.new_tab, "<cmd>enew<cr>", "Tab: new")
 nmap("<c-q>", "<Plug>(smartq_this)", "Tab: close")
 
 -- Telescope
 
-nmap("<leader>fp", ":Telescope project theme=dropdown<cr>", "Telescope: projects")
+nmap("<leader>fp", "<cmd>Telescope project theme=dropdown<cr>", "Telescope: projects")
 
 local builtin = require("telescope.builtin")
 nmap(keybindings.find_files, builtin.find_files, "Telescope: files")
@@ -92,23 +93,23 @@ nmap("<leader>fO", builtin.oldfiles, "Telescope: oldfiles across all dirs")
 nmap("<leader>fc", function()
     builtin.colorscheme { enable_preview = true, preview = true }
 end, "Telescope: colorschemes")
-nmap("<leader>fd", ":Telescope file_browser<cr>", "Telescope: file browser")
-nmap("<leader>fe", ":Telescope gitmoji theme=dropdown<cr>", "Telescope: gitmoji")
-nmap("<leader>ft", ":Telescope treesitter<cr>", "Telescope: treesitter document symbols")
-nmap("<leader>gb", ":Telescope git_branches<cr>", "Telescope: git branches")
-nmap("<leader>fs", ":Telescope lsp_document_symbols<cr>", "Telescope: LSP document symbols")
-nmap("<leader>fa", ":Telescope lsp_dynamic_workspace_symbols<cr>", "Telescope: LSP workspace symbols")
-nmap("<leader>fC", ":Telescope commands<cr>", "Telescope: VIM commands")
+nmap("<leader>fd", "<cmd>Telescope file_browser<cr>", "Telescope: file browser")
+nmap("<leader>fe", "<cmd>Telescope gitmoji theme=dropdown<cr>", "Telescope: gitmoji")
+nmap("<leader>ft", "<cmd>Telescope treesitter<cr>", "Telescope: treesitter document symbols")
+nmap("<leader>gb", "<cmd>Telescope git_branches<cr>", "Telescope: git branches")
+nmap("<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", "Telescope: LSP document symbols")
+nmap("<leader>fa", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Telescope: LSP workspace symbols")
+nmap("<leader>fC", "<cmd>Telescope commands<cr>", "Telescope: VIM commands")
 nmap("<leader>fm", "<cmd>Telescope marks<cr>", "Telescope: VIM marks")
 
 -- <c-d>/<c-u> - scroll preview
 
 -- Terminal
 
-nmap("<c-`>", ":ToggleTerm<cr>", "Terminal: open")
-nmap("<c-`>1", ":1ToggleTerm<cr>", "Terminal: open #1")
-nmap("<c-`>2", ":2ToggleTerm<cr>", "Terminal: open #2")
-nmap("<c-`>3", ":3ToggleTerm<cr>", "Terminal: open #3")
+nmap("<c-`>", "<cmd>ToggleTerm<cr>", "Terminal: open")
+nmap("<c-`>1", "<cmd>1ToggleTerm<cr>", "Terminal: open #1")
+nmap("<c-`>2", "<cmd>2ToggleTerm<cr>", "Terminal: open #2")
+nmap("<c-`>3", "<cmd>3ToggleTerm<cr>", "Terminal: open #3")
 
 -- Presentation
 
@@ -161,12 +162,12 @@ nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary"
 
 -- Misc
 
-nmap("<leader>t", ":NvimTreeFindFile<cr>", "NvimTree: open on current file")
-nmap("<leader>T", ":NvimTreeToggle<cr>", "NvimTree: toggle")
+nmap("<leader>t", "<cmd>NvimTreeFindFile<cr>", "NvimTree: open on current file")
+nmap("<leader>T", "<cmd>NvimTreeToggle<cr>", "NvimTree: toggle")
 
-nmap("<leader>so", ":SymbolsOutline<cr>", "Symbols outline")
+nmap("<leader>so", "<cmd>SymbolsOutline<cr>", "Symbols outline")
 
-nmap("<leader>s", ":Alpha<cr>", "Open Alpha start page")
+nmap("<leader>s", "<cmd>Alpha<cr>", "Open Alpha start page")
 
 vim.keymap.set(
     { "n", "x" },
