@@ -52,7 +52,7 @@ nmap("]g", "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Goto next hunk")
 
 -- Buffers
 
-vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<cmd>w<cr>", { desc = "Save" })
+vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<cmd>w<cr><esc>", { desc = "Save" })
 
 nmap(keybindings.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
 nmap(keybindings.next_tab, "<cmd>BufferLineCycleNext<cr>", "Tab: next")
