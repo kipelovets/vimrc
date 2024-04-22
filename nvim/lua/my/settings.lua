@@ -1,5 +1,6 @@
 if vim.g.neovide then
     vim.g.neovide_transparency = 0.98
+    vim.g.neovide_scroll_animation_length = 0.1
     if jit.os == "OSX" then
         vim.o.guifont = "Fira Code:h12"
     else
