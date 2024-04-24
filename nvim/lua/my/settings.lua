@@ -44,3 +44,4 @@ vim.o.title = true
 
 vim.cmd("au FileType proto setlocal sts=2 sw=2 ts=2")
 
+vim.o.diffopt = "internal,filler,closeoff,vertical"
