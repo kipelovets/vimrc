@@ -19,6 +19,7 @@ return {
                         -- Below example nvim-treesitter's `locals.scm` and `folds.scm`. They also provide highlights.scm and indent.scm.
                         ["]s"] = { query = "@scope", query_group = "locals", desc = "Next scope" },
                         ["]z"] = { query = "@fold", query_group = "folds", desc = "Next fold" },
+                        ["]t"] = "@type",
                     },
                     goto_next_end = {
                         ["]M"] = "@function.outer",
@@ -27,6 +28,7 @@ return {
                     goto_previous_start = {
                         ["[m"] = "@function.outer",
                         ["[["] = "@class.outer",
+                        ["[t"] = "@type",
                     },
                     goto_previous_end = {
                         ["[M"] = "@function.outer",
