@@ -8,7 +8,8 @@ vim.g.vimwiki_list = {
     }
 }
 vim.g.vimwiki_url_maxsave = 0
-
--- TODO: fix
-vim.cmd("syntax match MyConclusion /Conclusion/")
-vim.cmd("hi MyConclusion guifg=red")
+vim.g.vimwiki_hl_headers = 1
+vim.g.vimwiki_hl_cb_checked = 1
+vim.g.vimwiki_global_ext = 0
+vim.g.vimwiki_listsyms = ' ○◐●✓'
+vim.g.vimwiki_listsym_rejected = '✗'
