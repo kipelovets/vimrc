@@ -33,6 +33,9 @@ return {
                 colorschemes = {
                     theme = "dropdown",
                 },
+                git_branches = {
+                    pattern = "refs/heads/**",
+                },
             },
             extensions = {
                 project = {
