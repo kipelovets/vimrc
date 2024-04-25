@@ -60,7 +60,18 @@ return {
                     end
                 },
             },
-
+            defaults = {
+                history = {
+                    path = '~/.local/share/nvim/databases/telescope_history.sqlite3',
+                    limit = 100,
+                },
+                mappings = {
+                    i = {
+                        ["<s-down>"] = require('telescope.actions').cycle_history_next,
+                        ["<s-up>"] = require('telescope.actions').cycle_history_prev,
+                    },
+                },
+            },
         })
     end
 }
