@@ -13,3 +13,10 @@ vim.g.vimwiki_hl_cb_checked = 1
 vim.g.vimwiki_global_ext = 0
 vim.g.vimwiki_listsyms = ' ○◐●✓'
 vim.g.vimwiki_listsym_rejected = '✗'
+vim.g.nested_syntaxes = {
+    bash = "bash",
+    php = "php",
+    typescript = "typescript",
+    java = "java",
+    sql = "sql",
+}
