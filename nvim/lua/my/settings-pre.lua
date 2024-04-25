@@ -20,3 +20,5 @@ vim.g.nested_syntaxes = {
     java = "java",
     sql = "sql",
 }
+
+-- vim.g.sqlite_clib_path = vim.fn.stdpath("data") .. "/sqlite3.dll"
