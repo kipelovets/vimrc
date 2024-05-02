@@ -1,3 +1,5 @@
+require('java').setup()
+
 local lsp = require('lsp-zero').preset({})
 local keybindings = require('my.keybindings')
 
@@ -59,6 +61,10 @@ local on_attach = function(_, bufnr)
     nmap(keybindings.diag_prev, ':Lspsaga diagnostic_jump_prev<cr>')
     nmap(keybindings.diag_next, ':Lspsaga diagnostic_jump_next<cr>')
     nmap(keybindings.diag_show, '<cmd>Telescope diagnostics<CR>')
+
+    vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
+    vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
+    vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
 end
 
 lsp.on_attach(on_attach)
@@ -76,5 +82,6 @@ lspconfig.sqlls.setup {
 lspconfig.phpactor.setup {}
 lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
+lspconfig.jdtls.setup {}
 
 lsp.setup()
