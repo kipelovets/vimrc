@@ -39,14 +39,11 @@ end, "Clear search & popups")
 
 -- Git
 
-nmap("<leader>gw", "<cmd>Gw<cr>", "Git write")
-nmap("<leader>gs", "<cmd>G<cr>", "Git status")
-nmap("<leader>gc", "<cmd>G commit<cr>", "Git commit")
-nmap("<leader>go", "<cmd>Git pull<cr>", "Git pull")
+nmap("<leader>gs", "<cmd>Neogit<cr>", "Git status")
 nmap("<leader>gO", "<cmd>OpenInGHFileLines<cr>", "Git pull")
-nmap("<leader>gp", "<cmd>Git push<cr>", "Git push")
 nmap("<leader>gf", "<cmd>Flog<cr>", "Git log")
 nmap("<leader>gF", "<cmd>Flog -all<cr>", "Git log all")
+nmap("<leader>gff", "<cmd>Flog -path=%<cr>", "Git log current file")
 nmap("[g", "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Goto previous hunk")
 nmap("]g", "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Goto next hunk")
 
@@ -177,8 +174,6 @@ nmap("<leader>T", "<cmd>NvimTreeToggle<cr>", "NvimTree: toggle")
 
 nmap("<leader>so", "<cmd>SymbolsOutline<cr>", "Symbols outline")
 
-nmap("<leader>s", "<cmd>Alpha<cr>", "Open Alpha start page")
-
 vim.keymap.set(
     { "n", "x" },
     "<leader>rr",
@@ -213,3 +208,5 @@ vim.keymap.set("n", "g:", function()
     -- resize repl window and make it fixed height
     vim.cmd("resize 10 | setl winfixheight")
 end, { desc = "NeoRepl" })
+
+nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
