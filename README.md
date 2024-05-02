@@ -46,3 +46,15 @@ scoop install python
 | serenata            | ✅         | ✅   | ✅      | ✅          | ❌         | not supported for 1 year         |
 |                     |            |      |         |             |            |                                  |
 
+
+# Colors to add
+
+See more at 
+    https://vimcolorschemes.com/
+    https://dotfyle.com/neovim/colorscheme/trending
+
+https://github.com/jacoborus/tender.vim
+https://github.com/bluz71/vim-moonfly-colors
+https://github.com/savq/melange-nvim
+https://github.com/AlexvZyl/nordic.nvim
+https://github.com/ayu-theme/ayu-vim
