@@ -26,6 +26,11 @@ return {
             },
             view = {
                 preserve_window_proportions = true,
+                width = {
+                    min = 30,
+                    max = 200,
+                    padding = 1,
+                },
             },
         })
     end
