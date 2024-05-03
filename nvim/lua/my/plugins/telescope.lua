@@ -24,8 +24,9 @@ return {
                     mappings = {
                         i = {
                             ["<c-d>"] = actions.delete_buffer,
-                        }
-                    }
+                        },
+                    },
+                    path_display = { "truncate" },
                 },
                 oldfiles = {
                     theme = "dropdown",
@@ -45,7 +46,7 @@ return {
                     sync_with_nvim_tree = true,
                     on_project_selected = function(prompt_bufnr)
                         project_actions.change_working_directory(prompt_bufnr, false)
-                    end
+                    end,
                 },
                 file_browser = {
                     theme = "ivy",
@@ -60,7 +61,7 @@ return {
                     action = function(entry)
                         vim.fn.setreg('"', entry.value.value)
                         vim.notify("Emoji copied: " .. entry.value.value)
-                    end
+                    end,
                 },
             },
             defaults = {
