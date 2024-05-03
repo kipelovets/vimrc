@@ -24,7 +24,7 @@ function M.config()
             close_icon = "",
             left_trunc_marker = "",
             right_trunc_marker = "",
-            max_name_length = 18,
+            max_name_length = 25,
             max_prefix_length = 15, -- prefix used when a buffer is de-duplicated
             truncate_names = true,  -- whether or not tab names should be truncated
             tab_size = 22,
