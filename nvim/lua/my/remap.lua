@@ -46,6 +46,8 @@ nmap("<leader>gF", "<cmd>Flog -all<cr>", "Git log all")
 nmap("<leader>gff", "<cmd>Flog -path=%<cr>", "Git log current file")
 nmap("[g", "<cmd>lua require'gitsigns'.prev_hunk()<cr>", "Goto previous hunk")
 nmap("]g", "<cmd>lua require'gitsigns'.next_hunk()<cr>", "Goto next hunk")
+nmap('<leader>gp', "<cmd>lua require'gitsigns'.preview_hunk()<cr>", "Preview hunk")
+nmap('<leader>gd', "<cmd>lua require'gitsigns'.diffthis()<cr>", "Diff this")
 
 -- Buffers
 
