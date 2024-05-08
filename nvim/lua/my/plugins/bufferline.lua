@@ -61,6 +61,22 @@ function M.config()
                 end
                 return true
             end,
+            groups = {
+                options = {
+                    toggle_hidden_on_enter = true -- when you re-enter a hidden group this options re-opens that group so the buffer is visible
+                },
+                items = {
+                    {
+                        name = "Wiki", -- Mandatory
+                        -- highlight = {underline = true, sp = "blue"}, -- Optional
+                        priority = 1, -- determines where it will appear relative to other groups (Optional)
+                        icon = "󰖬", -- Optional
+                        matcher = function(buf) -- Mandatory
+                            return buf.filename ~= nil and buf.filename:match('%.wiki')
+                        end,
+                    },
+                }
+            }
         },
     })
 end
