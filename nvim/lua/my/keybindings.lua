@@ -33,6 +33,7 @@ if jit.os == "OSX" then
     keybindings.tab_move_left = '<D-S-left>'
     keybindings.new_tab = '<D-t>'
     keybindings.find_files = '<D-p>'
+    keybindings.maximize = '<d-c-f>'
 else
     keybindings.neovide = "<C-n>"
     keybindings.copy = "<C-c>"
@@ -47,6 +48,7 @@ else
     keybindings.tab_move_left = '<C-S-left>'
     keybindings.new_tab = '<C-t>'
     keybindings.find_files = '<C-p>'
+    keybindings.maximize = '<f11>'
 end
 
 return keybindings

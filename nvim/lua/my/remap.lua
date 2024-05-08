@@ -5,7 +5,8 @@ end
 local keybindings = require("my.keybindings")
 
 if vim.g.neovide then
-    nmap(keybindings.neovide, ":silent exec '!neovide'<cr>")
+    nmap(keybindings.neovide, "<cmd>silent exec '!neovide'<cr>")
+    nmap(keybindings.maximize, "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
 end
 
 -- keeping cursor in the center
