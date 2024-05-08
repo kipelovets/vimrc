@@ -145,7 +145,7 @@ function M.config()
             end
             project_name = project_name:gsub("/", "")
 
-            local cmd = "<cmd>lua require('my.utils').cd('" .. project_path .. "')<cr>"
+            local cmd = "<cmd>lua require('my.utils').cd('" .. project_path .. "', '" .. project_name .. "')<cr>"
 
             -- create button element
             local file_button_el = dashboard.button(

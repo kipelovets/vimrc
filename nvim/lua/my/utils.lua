@@ -1,10 +1,11 @@
 local M = {}
 
-M.cd = function(path)
+M.cd = function(path, name)
     local _utils = require("telescope._extensions.project.utils")
     print("CD -> " .. path)
     _utils.change_project_dir(path)
     vim.cmd("Alpha")
+    vim.o.titlestring = name
 end
 
 M.shorten_path = function(path)

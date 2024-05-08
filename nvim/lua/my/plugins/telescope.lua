@@ -5,7 +5,6 @@ return {
         'nvim-lua/plenary.nvim',
     },
     config = function()
-        local project_actions = require("telescope._extensions.project.actions")
         local actions = require("telescope.actions")
         require('telescope').setup({
             pickers = {
@@ -17,7 +16,6 @@ return {
                         "^.git/",
                         "^node_modules/",
                     },
-                    path_display = { "truncate" },
                 },
                 buffers = {
                     theme = "dropdown",
@@ -39,15 +37,6 @@ return {
                 },
             },
             extensions = {
-                project = {
-                    theme = "dropdown",
-                    order_by = "asc",
-                    search_by = "title",
-                    sync_with_nvim_tree = true,
-                    on_project_selected = function(prompt_bufnr)
-                        project_actions.change_working_directory(prompt_bufnr, false)
-                    end,
-                },
                 file_browser = {
                     theme = "ivy",
                     hijack_netrw = true,
