@@ -12,8 +12,8 @@ local on_attach = function(_, bufnr)
     end
 
     nmap(keybindings.rename, vim.lsp.buf.rename, 'Rename')
-    nmap(keybindings.code_action, ":Lspsaga code_action<cr>", 'Code Action')
-    nmap("<leader>cA", require("actions-preview").code_actions)
+    vim.keymap.set({ "n", "v" }, keybindings.code_action, ":Lspsaga code_action<cr>", { desc = 'Code Action' })
+    vim.keymap.set({ "n", "v" }, "<leader>cA", require("actions-preview").code_actions, { desc = 'Code Action menu' })
     nmap(keybindings.format, vim.lsp.buf.format, "Format code")
 
     nmap(keybindings.goto_definition, vim.lsp.buf.definition, 'Goto Definition')
