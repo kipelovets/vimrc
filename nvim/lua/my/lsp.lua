@@ -3,7 +3,7 @@ require('java').setup()
 local lsp = require('lsp-zero').preset({})
 local keybindings = require('my.keybindings')
 
-local on_attach = function(_, bufnr)
+local on_attach = function(client, bufnr)
     -- see :help lsp-zero-keybindings
     lsp.default_keymaps({ buffer = bufnr })
 
@@ -62,8 +62,10 @@ local on_attach = function(_, bufnr)
     nmap(keybindings.diag_next, ':Lspsaga diagnostic_jump_next<cr>')
     nmap(keybindings.diag_show, '<cmd>Telescope diagnostics<CR>')
 
-    vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
-    vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
+    if client.supports_method('textDocument/documentHighlight') then
+        vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
+        vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
+    end
     vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
 end
 
