@@ -72,7 +72,7 @@ function M.config()
                         priority = 1, -- determines where it will appear relative to other groups (Optional)
                         icon = "󰖬", -- Optional
                         matcher = function(buf) -- Mandatory
-                            return buf.filename ~= nil and buf.filename:match('%.wiki')
+                            return buf.path ~= nil and buf.path:match('%.wiki')
                         end,
                     },
                 }
