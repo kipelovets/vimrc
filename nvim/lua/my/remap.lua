@@ -112,8 +112,6 @@ nmap("<leader>fa", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Telescop
 nmap("<leader>fC", "<cmd>Telescope commands<cr>", "Telescope: VIM commands")
 nmap("<leader>fm", "<cmd>Telescope marks<cr>", "Telescope: VIM marks")
 
--- <c-d>/<c-u> - scroll preview
-
 -- Terminal
 
 nmap("<c-`>", "<cmd>ToggleTerm<cr>", "Terminal: open")
@@ -196,6 +194,9 @@ nmap("<leader>J",
 nmap("[<cr>", "<cmd>Hi {<cr>", "Higlight: previous")
 nmap("]<cr>", "<cmd>Hi }<cr>", "Highlight: next")
 
+nmap("<c-s-space>", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
+nmap("<leader><space>", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
+
 vim.keymap.set("n", "g:", function()
     -- get current buffer and window
     local buf = vim.api.nvim_get_current_buf()
@@ -213,3 +214,24 @@ vim.keymap.set("n", "g:", function()
 end, { desc = "NeoRepl" })
 
 nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
+
+-- TODO: use Treesitter to find namespace & classname & copy to clipboard
+vim.api.nvim_create_user_command('Xxx', function()
+    local sexpr = 'namespace_definition'
+    local ok, result_object = pcall(vim.treesitter.query.parse, 'php', sexpr)
+    if not ok then
+        error(string.format(
+            "Invalid query: '%s'\n error: %s",
+            sexpr,
+            result_object
+        ))
+    end
+    for _, node, _ in result_object:iter_captures(scope, 0, 0, -1) do
+        vim.pretty_print(node)
+    end
+end, {})
+
+vim.api.nvim_create_user_command('DiffBranch', function()
+    local output = vim.fn.system { 'git', 'merge-base', 'develop', 'HEAD' }
+    vim.cmd("Git diff " .. output .. " HEAD")
+end, {})
