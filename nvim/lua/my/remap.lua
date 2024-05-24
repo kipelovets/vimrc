@@ -237,3 +237,5 @@ vim.api.nvim_create_user_command('DiffBranch', function()
 end, {})
 
 vim.keymap.set("n", "gsd", "<cmd>GoToSymfonyDefinition<CR>", { desc = "[G]o to [S]ymfony [D]efinition" })
+
+nmap ('<Leader>m', '<plug>ToggleMarkbar')
