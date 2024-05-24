@@ -69,5 +69,7 @@ return {
                 path_display = { "truncate" },
             },
         })
+
+        require("telescope").load_extension("gitmoji")
     end
 }
