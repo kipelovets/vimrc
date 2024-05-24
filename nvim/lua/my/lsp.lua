@@ -71,6 +71,8 @@ end
 
 lsp.on_attach(on_attach)
 
+require("neodev").setup({ })
+
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 lspconfig.tsserver.setup({
