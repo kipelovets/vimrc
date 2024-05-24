@@ -18,4 +18,8 @@ require("lazy").setup("my.plugins", {
 })
 require("my.settings")
 require("my.dap")
+
+require("my.git")
+require("my.php")
+
 require("my.remap")
