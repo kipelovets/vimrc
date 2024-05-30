@@ -38,6 +38,8 @@ nmap("<leader>/", function()
     end
 end, "Clear search & popups")
 
+nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
+
 -- Git
 
 nmap("<leader>gs", "<cmd>Neogit<cr>", "Git status")
@@ -213,8 +215,8 @@ vim.keymap.set("n", "g:", function()
     vim.cmd("resize 10 | setl winfixheight")
 end, { desc = "NeoRepl" })
 
-nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
-
-nmap("gsd", "<cmd>GoToSymfonyDefinition<CR>", { desc = "[G]o to [S]ymfony [D]efinition" })
-
 nmap ('<Leader>m', '<plug>ToggleMarkbar')
+
+-- PHP
+nmap("gsd", "<cmd>GoToSymfonyDefinition<CR>", "[G]o to [S]ymfony [D]efinition")
+vim.keymap.set("v", "gss", require("my.php").open_service)
