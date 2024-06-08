@@ -23,5 +23,5 @@ vim.g.nested_syntaxes = {
 
 -- vim.g.sqlite_clib_path = vim.fn.stdpath("data") .. "/sqlite3.dll"
 
-vim.o.shada = "!,'0,<0,s10"
+vim.o.shada = "!,'1000,<0,s1000"
 vim.g.markbar_persist_mark_names = false
