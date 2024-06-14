@@ -25,6 +25,7 @@ nmap(keybindings.duplicate, "yyp")
 nmap(keybindings.select_all, "ggVG")
 -- delete into black hole
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
+nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>")
 
 nmap("<leader>/", function()
     vim.api.nvim_command(':let @/=""')
