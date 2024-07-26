@@ -74,6 +74,7 @@ function M.config()
                         matcher = function(buf) -- Mandatory
                             return buf.path ~= nil and buf.path:match('%.wiki')
                         end,
+                        auto_close = false,
                     },
                 }
             }

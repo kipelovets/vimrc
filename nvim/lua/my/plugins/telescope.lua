@@ -67,6 +67,7 @@ return {
                     },
                 },
                 path_display = { "truncate" },
+                sorting_strategy = "ascending",
             },
         })
 

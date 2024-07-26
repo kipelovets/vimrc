@@ -44,7 +44,7 @@ nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cu
 -- Git
 
 nmap("<leader>gs", "<cmd>Neogit<cr>", "Git status")
-nmap("<leader>gO", "<cmd>OpenInGHFileLines<cr>", "Git pull")
+nmap("<leader>gO", "<cmd>OpenInGHFileLines<cr>", "Open in GitHub")
 nmap("<leader>gf", "<cmd>Flog<cr>", "Git log")
 nmap("<leader>gF", "<cmd>Flog -all<cr>", "Git log all")
 nmap("<leader>gff", "<cmd>Flog -path=%<cr>", "Git log current file")
@@ -107,6 +107,7 @@ nmap("<leader>fc", function()
     builtin.colorscheme { enable_preview = true, preview = true }
 end, "Telescope: colorschemes")
 nmap("<leader>fd", "<cmd>Telescope file_browser<cr>", "Telescope: file browser")
+nmap("<leader>fD", "<cmd>Telescope file_browser<cr>", "Telescope: file browser")
 nmap("<leader>fe", "<cmd>Telescope gitmoji theme=dropdown<cr>", "Telescope: gitmoji")
 nmap("<leader>ft", "<cmd>Telescope treesitter<cr>", "Telescope: treesitter document symbols")
 nmap("<leader>gb", "<cmd>Telescope git_branches<cr>", "Telescope: git branches")
