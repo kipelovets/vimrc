@@ -80,17 +80,17 @@ nmap("<leader>fp", "<cmd>Telescope project theme=dropdown<cr>", "Telescope: proj
 
 local builtin = require("telescope.builtin")
 nmap(keybindings.find_files, builtin.find_files, "Telescope: files")
-nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
-nmap("<leader>fG", function()
+-- nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
+nmap("<D-S-f>", function()
     local dir = vim.fn.input("Directory to grep: ", "./", "dir")
     local file_glob = vim.fn.input("File glob pattern: ", "*")
     builtin.live_grep({ search_dirs = { dir }, glob_pattern = file_glob })
 end, "Telescope: grep in specific dir / glob pattern")
 
-nmap("<leader>fr", function()
+nmap("<D-f>", function()
     builtin.live_grep({ default_text = vim.fn.expand("<cword>") })
 end, "Telescope: find word under cursor")
-vim.keymap.set('v', '<leader>fr', function()
+vim.keymap.set('v', '<D-f>', function()
     local utils = require('my.utils')
     local lines = utils.get_visual_selection()
     print(vim.inspect(lines))
@@ -115,6 +115,7 @@ nmap("<leader>fs", "<cmd>Telescope lsp_document_symbols<cr>", "Telescope: LSP do
 nmap("<leader>fa", "<cmd>Telescope lsp_dynamic_workspace_symbols<cr>", "Telescope: LSP workspace symbols")
 nmap("<leader>fC", "<cmd>Telescope commands<cr>", "Telescope: VIM commands")
 nmap("<leader>fm", "<cmd>Telescope marks<cr>", "Telescope: VIM marks")
+nmap("<leader>fR", "<cmd>Telescope registers<cr>", "Telescope: VIM registers")
 
 -- Terminal
 
