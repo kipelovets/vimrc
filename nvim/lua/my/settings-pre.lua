@@ -1,3 +1,5 @@
+vim.g.mapleader = " "
+
 vim.g.vimwiki_conceallevel = 0
 vim.g.vimwiki_list = {
     {

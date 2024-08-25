@@ -1,12 +1,12 @@
 local nmap = function(shortcut, command, desc)
-    vim.keymap.set("n", shortcut, command, { desc = desc })
+    vim.keymap.set("n", shortcut, command, { desc = desc, remap = false })
 end
 
-local keybindings = require("my.keybindings")
+local shortcuts = require("my.shortcuts")
 
 if vim.g.neovide then
-    nmap(keybindings.neovide, "<cmd>silent exec '!neovide'<cr>")
-    nmap(keybindings.maximize, "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
+    nmap(shortcuts.neovide, "<cmd>silent exec '!neovide'<cr>")
+    nmap(shortcuts.maximize, "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
 end
 
 -- keeping cursor in the center
@@ -18,25 +18,34 @@ nmap("N", "Nzzzv")
 -- paste without replacing the buffer contents
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- system clipboard
-vim.keymap.set({ "n", "v" }, keybindings.copy, [["+y]])
-vim.keymap.set({ "n", "i" }, keybindings.paste, [[<Esc>"+p]])
-nmap(keybindings.copy_line, '^v$h"+yj')
-nmap(keybindings.duplicate, "yyp")
-nmap(keybindings.select_all, "ggVG")
+vim.keymap.set({ "n", "v" }, shortcuts.copy, [["+y]])
+vim.keymap.set({ "n", "i" }, shortcuts.paste, [[<Esc>"+p]])
+nmap(shortcuts.copy_line, '^v$h"+yj')
+nmap(shortcuts.duplicate, "yyp")
+nmap(shortcuts.select_all, "ggVG")
 -- delete into black hole
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>")
 
-nmap("<leader>/", function()
+nmap("<leader><leader>", function()
+    -- cleanup search
     vim.api.nvim_command(':let @/=""')
+    -- cleanup notifications
     require("noice").cmd("dismiss")
 
+    -- cleanup popup windows
     local wins = vim.api.nvim_list_wins()
     for _, win in ipairs(wins) do
         if vim.api.nvim_win_get_config(win).relative ~= '' then
             vim.api.nvim_win_close(win, false)
         end
     end
+
+    -- close DAP ui
+    require'dapui'.close()
+
+    -- close NvimTree
+    require'nvim-tree.api'.tree.close()
 end, "Clear search & popups")
 
 nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
@@ -55,12 +64,12 @@ nmap('<leader>gd', "<cmd>lua require'gitsigns'.diffthis()<cr>", "Diff this")
 
 -- Buffers
 
-vim.keymap.set({ "n", "i", "v" }, keybindings.save, "<cmd>w<cr><esc>", { desc = "Save" })
+vim.keymap.set({ "n", "i", "v" }, shortcuts.save, "<cmd>w<cr><esc>", { desc = "Save" })
 
-nmap(keybindings.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
-nmap(keybindings.next_tab, "<cmd>BufferLineCycleNext<cr>", "Tab: next")
-nmap(keybindings.tab_move_right, "<cmd>BufferLineMoveNext<cr>", "Tab: move right")
-nmap(keybindings.tab_move_left, "<cmd>BufferLineMovePrev<cr>", "Tab: move left")
+nmap(shortcuts.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
+nmap(shortcuts.next_tab, "<cmd>BufferLineCycleNext<cr>", "Tab: next")
+nmap(shortcuts.tab_move_right, "<cmd>BufferLineMoveNext<cr>", "Tab: move right")
+nmap(shortcuts.tab_move_left, "<cmd>BufferLineMovePrev<cr>", "Tab: move left")
 nmap("<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", "Tab: select #1")
 nmap("<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", "Tab: select #2")
 nmap("<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", "Tab: select #3")
@@ -71,7 +80,7 @@ nmap("<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", "Tab: select #7")
 nmap("<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", "Tab: select #8")
 nmap("<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", "Tab: select #9")
 
-nmap(keybindings.new_tab, "<cmd>enew<cr>", "Tab: new")
+nmap(shortcuts.new_tab, "<cmd>enew<cr>", "Tab: new")
 nmap("<c-q>", "<Plug>(smartq_this)", "Tab: close")
 
 -- Telescope
@@ -79,7 +88,7 @@ nmap("<c-q>", "<Plug>(smartq_this)", "Tab: close")
 nmap("<leader>fp", "<cmd>Telescope project theme=dropdown<cr>", "Telescope: projects")
 
 local builtin = require("telescope.builtin")
-nmap(keybindings.find_files, builtin.find_files, "Telescope: files")
+nmap(shortcuts.find_files, builtin.find_files, "Telescope: files")
 -- nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
 nmap("<D-S-f>", function()
     local dir = vim.fn.input("Directory to grep: ", "./", "dir")
@@ -200,7 +209,7 @@ nmap("[<cr>", "<cmd>Hi {<cr>", "Higlight: previous")
 nmap("]<cr>", "<cmd>Hi }<cr>", "Highlight: next")
 
 nmap("<c-s-space>", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
-nmap("<leader><space>", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
+nmap("<leader>x", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
 
 vim.keymap.set("n", "g:", function()
     -- get current buffer and window
