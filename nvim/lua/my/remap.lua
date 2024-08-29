@@ -1,5 +1,5 @@
 local nmap = function(shortcut, command, desc)
-    vim.keymap.set("n", shortcut, command, { desc = desc, remap = false })
+    vim.keymap.set("n", shortcut, command, { desc = desc, remap = false, silent = true })
 end
 
 local shortcuts = require("my.shortcuts")
@@ -43,9 +43,16 @@ nmap("<leader><leader>", function()
 
     -- close DAP ui
     require'dapui'.close()
+    vim.cmd("DapVirtualTextForceRefresh")
 
     -- close NvimTree
     require'nvim-tree.api'.tree.close()
+
+    -- close SymbolsOutline
+    vim.cmd("SymbolsOutlineClose")
+
+    -- close quickfix
+    vim.cmd("cclose")
 end, "Clear search & popups")
 
 nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
