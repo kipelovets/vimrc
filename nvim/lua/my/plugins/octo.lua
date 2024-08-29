@@ -7,6 +7,9 @@ return {
         'nvim-tree/nvim-web-devicons',
     },
     config = function()
+        if vim.fn.executable('hg') ~= 1 then
+            return
+        end
         require "octo".setup()
     end
 }
