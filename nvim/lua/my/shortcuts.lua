@@ -34,6 +34,8 @@ if jit.os == "OSX" then
     shortcuts.new_tab = '<D-t>'
     shortcuts.find_files = '<D-p>'
     shortcuts.maximize = '<d-c-f>'
+    shortcuts.find = '<d-f>'
+    shortcuts.find_ex = '<d-s-f>'
 else
     shortcuts.neovide = "<C-n>"
     shortcuts.copy = "<C-c>"
@@ -49,6 +51,8 @@ else
     shortcuts.new_tab = '<C-t>'
     shortcuts.find_files = '<C-p>'
     shortcuts.maximize = '<f11>'
+    shortcuts.find = '<c-f>'
+    shortcuts.find_ex = '<c-s-f>'
 end
 
 return shortcuts
