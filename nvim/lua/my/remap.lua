@@ -1,6 +1,9 @@
 local nmap = function(shortcut, command, desc)
     vim.keymap.set("n", shortcut, command, { desc = desc, remap = false, silent = true })
 end
+local tmap = function(shortcut, command, desc)
+    vim.keymap.set("t", shortcut, command, { desc = desc, remap = false, silent = true })
+end
 
 local shortcuts = require("my.shortcuts")
 
@@ -139,6 +142,23 @@ nmap("<c-`>", "<cmd>ToggleTerm<cr>", "Terminal: open")
 nmap("<c-`>1", "<cmd>1ToggleTerm<cr>", "Terminal: open #1")
 nmap("<c-`>2", "<cmd>2ToggleTerm<cr>", "Terminal: open #2")
 nmap("<c-`>3", "<cmd>3ToggleTerm<cr>", "Terminal: open #3")
+tmap('<d-k>', [[<C-\><C-N>:lua ClearTerm(0)<CR>]], "Terminal: clear")
+tmap('<d-s-k>', [[<C-\><C-N>:lua ClearTerm(1)<CR>]], "Terminal: clear and reset")
+
+
+function ClearTerm(reset)
+  vim.opt_local.scrollback = 1
+
+  vim.api.nvim_command("startinsert")
+  if reset == 1 then
+    vim.api.nvim_feedkeys("reset", 't', false)
+  else
+    vim.api.nvim_feedkeys("clear", 't', false)
+  end
+  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>', true, false, true), 't', true)
+
+  vim.opt_local.scrollback = 10000
+end
 
 -- Presentation
 
