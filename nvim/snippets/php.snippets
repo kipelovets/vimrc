@@ -10,6 +10,12 @@ snippet pubf
 		${0:${VISUAL}}
 	}
 
+snippet pubsf
+	public static function ${1}(${3}): void
+	{
+		${0:${VISUAL}}
+	}
+
 snippet constr
 	public function __construct(${0})
 	{
@@ -74,17 +80,17 @@ snippet asnu "$this->assertNull($a)"
 snippet asnnu "$this->assertNotNull($a)"
 	\$this->assertNotNull(${1});
 snippet test "public function testXYZ() { ... }"
-	public function test${1}()
+	public function test${1}(): void
 	{
 		${0:${VISUAL}}
 	}
 snippet setup "protected function setUp() { ... }"
-	protected function setUp()
+	protected function setUp(): void
 	{
 		${0:${VISUAL}}
 	}
 snippet teardown "protected function tearDown() { ... }"
-	protected function tearDown()
+	protected function tearDown(): void
 	{
 		${0:${VISUAL}}
 	}
