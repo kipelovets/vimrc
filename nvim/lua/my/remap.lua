@@ -52,7 +52,7 @@ nmap("<leader><leader>", function()
     require'nvim-tree.api'.tree.close()
 
     -- close SymbolsOutline
-    vim.cmd("SymbolsOutlineClose")
+    -- vim.cmd("SymbolsOutlineClose")
 
     -- close quickfix
     vim.cmd("cclose")
