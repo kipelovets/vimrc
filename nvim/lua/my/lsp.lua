@@ -66,6 +66,8 @@ local on_attach = function(client, bufnr)
         vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
     end
     vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
+
+    require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
 end
 
 lsp.on_attach(on_attach)
