@@ -8,7 +8,7 @@ end
 local shortcuts = require("my.shortcuts")
 
 if vim.g.neovide then
-    nmap(shortcuts.neovide, "<cmd>silent exec '!neovide'<cr>")
+    nmap(shortcuts.neovide, "<cmd>silent exec '!neovide &'<cr>")
     nmap(shortcuts.maximize, "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
 end
 
