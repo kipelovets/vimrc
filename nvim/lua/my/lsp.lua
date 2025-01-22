@@ -1,5 +1,3 @@
-require('java').setup()
-
 local lsp = require('lsp-zero').preset({})
 local shortcuts = require('my.shortcuts')
 
@@ -87,6 +85,5 @@ lspconfig.sqlls.setup {
 lspconfig.phpactor.setup {}
 lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
-lspconfig.jdtls.setup {}
 
 lsp.setup()
