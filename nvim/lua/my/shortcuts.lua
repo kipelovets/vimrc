@@ -36,6 +36,23 @@ if jit.os == "OSX" then
     shortcuts.maximize = '<d-c-f>'
     shortcuts.find = '<d-f>'
     shortcuts.find_ex = '<d-s-f>'
+elseif jit.os == "Linux" then
+    shortcuts.neovide = "<C-n>"
+    shortcuts.copy = "<C-c>"
+    shortcuts.paste = "<C-v>"
+    shortcuts.copy_line = '<C-c>'
+    shortcuts.duplicate = '<C-S-d>'
+    shortcuts.select_all = '<C-a>'
+    shortcuts.save = "<C-s>"
+    shortcuts.prev_tab = '<a-left>'
+    shortcuts.next_tab = '<a-right>'
+    shortcuts.tab_move_right = '<a-S-right>'
+    shortcuts.tab_move_left = '<a-S-left>'
+    shortcuts.new_tab = '<C-t>'
+    shortcuts.find_files = '<C-p>'
+    shortcuts.maximize = '<f11>'
+    shortcuts.find = '<c-f>'
+    shortcuts.find_ex = '<a-s-f>'
 else
     shortcuts.neovide = "<C-n>"
     shortcuts.copy = "<C-c>"
@@ -44,8 +61,8 @@ else
     shortcuts.duplicate = '<C-S-d>'
     shortcuts.select_all = '<C-a>'
     shortcuts.save = "<C-s>"
-    shortcuts.prev_tab = '<C-{>'
-    shortcuts.next_tab = '<C-}>'
+    shortcuts.prev_tab = '<C-left>'
+    shortcuts.next_tab = '<C-right>'
     shortcuts.tab_move_right = '<C-S-right>'
     shortcuts.tab_move_left = '<C-S-left>'
     shortcuts.new_tab = '<C-t>'
