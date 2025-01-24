@@ -74,7 +74,7 @@ require("neodev").setup({ })
 
 local lspconfig = require('lspconfig')
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-lspconfig.tsserver.setup({
+lspconfig.ts_ls.setup({
     on_attach = on_attach,
     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 })
