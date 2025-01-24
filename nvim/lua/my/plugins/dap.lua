@@ -50,13 +50,13 @@ return {
 
             require('telescope').load_extension('dap')
 
-            local DEBUGGER_PATH = vim.fn.stdpath "data" .. "/lazy/vscode-js-debug"
-            require("dap-vscode-js").setup {
-                node_path = "node",
-                debugger_path = DEBUGGER_PATH,
-                -- debugger_cmd = { "js-debug-adapter" },
-                adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
-            }
+            -- local DEBUGGER_PATH = vim.fn.stdpath "data" .. "/lazy/vscode-js-debug"
+            -- require("dap-vscode-js").setup {
+            --     node_path = "node",
+            --     debugger_path = DEBUGGER_PATH,
+            --     -- debugger_cmd = { "js-debug-adapter" },
+            --     adapters = { "pwa-node", "pwa-chrome", "pwa-msedge", "node-terminal", "pwa-extensionHost" }, -- which adapters to register in nvim-dap
+            -- }
 
             for _, language in ipairs { "typescript", "javascript" } do
                 require("dap").configurations[language] = {
@@ -94,13 +94,13 @@ return {
         end
     },
     { "mxsdev/nvim-dap-vscode-js", module = { "dap-vscode-js" } },
-    {
-        "microsoft/vscode-js-debug",
-        opt = true,
-        build = {
-            "npm install --legacy-peer-deps",
-            "npx gulp vsDebugServerBundle",
-            jit.os == "Windows" and "Ren dist out" or "mv dist out",
-        }
-    },
+    -- {
+    --     "microsoft/vscode-js-debug",
+    --     opt = true,
+    --     build = {
+    --         "npm install --legacy-peer-deps",
+    --         "npx gulp vsDebugServerBundle",
+    --         jit.os == "Windows" and "Ren dist out" or "mv dist out",
+    --     }
+    -- },
 }
