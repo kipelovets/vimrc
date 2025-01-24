@@ -67,15 +67,39 @@ function M.config()
                 },
                 items = {
                     {
-                        name = "Wiki", -- Mandatory
+                        name = "󰖬", -- Mandatory
                         -- highlight = {underline = true, sp = "blue"}, -- Optional
                         priority = 1, -- determines where it will appear relative to other groups (Optional)
-                        icon = "󰖬", -- Optional
+                        -- icon = "󰖬", -- Optional
                         matcher = function(buf) -- Mandatory
                             return buf.path ~= nil and buf.path:match('%.wiki')
                         end,
                         auto_close = false,
                     },
+                    -- {
+                    --     name = "",
+                    --     priority = 2,
+                    --     matcher = function(buf)
+                    --         return buf.path ~= nil and buf.path:match('%.vue')
+                    --     end,
+                    --     auto_close = false,
+                    -- },
+                    -- {
+                    --     name = "",
+                    --     priority = 3,
+                    --     matcher = function(buf)
+                    --         return buf.path ~= nil and buf.path:match('%.ts') and not buf.path:match('%.test.ts')
+                    --     end,
+                    --     auto_close = false,
+                    -- },
+                    -- {
+                    --     name = "󰙨",
+                    --     priority = 4,
+                    --     matcher = function(buf)
+                    --         return buf.path:match('%test.ts') or buf.path:match('%spec.ts')
+                    --     end,
+                    --     auto_close = false,
+                    -- },
                 }
             }
         },
