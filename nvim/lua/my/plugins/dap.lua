@@ -23,8 +23,9 @@ return {
                     request = 'launch',
                     name = 'Listen for Xdebug',
                     port = 9000,
+                    stopOnEntry = true,
                     pathMappings = {
-                        ["/app"] = "${workspaceFolder}"
+                        ["/var/www/html"] = "${workspaceFolder}"
                     }
                 }
             }
