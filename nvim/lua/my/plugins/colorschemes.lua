@@ -1,14 +1,15 @@
 return {
-    { 'rose-pine/neovim',               lazy = false, priority = 1000,  name = 'rose-pine' },
-    { 'uloco/bluloco.nvim',             lazy = false, priority = 1000,  dependencies = { 'rktjmp/lush.nvim' }, },
+    { 'rose-pine/neovim',               lazy = false, priority = 1000, name = 'rose-pine' },
+    { 'uloco/bluloco.nvim',             lazy = false, priority = 1000, dependencies = { 'rktjmp/lush.nvim' }, },
     { "folke/tokyonight.nvim",          lazy = false, priority = 1000, },
     { "oxfist/night-owl.nvim",          lazy = false, priority = 1000, },
     { "bluz71/vim-nightfly-colors",     lazy = false, priority = 1000, },
-    { "catppuccin/nvim",                lazy = false, priority = 1000,  name = 'catppuccin' },
+    { "catppuccin/nvim",                lazy = false, priority = 1000, name = 'catppuccin' },
     { "rebelot/kanagawa.nvim",          lazy = false, priority = 1000, },
     { 'Rigellute/shades-of-purple.vim', lazy = false, priority = 1000, },
     { 'kepano/flexoki-neovim',          lazy = false, priority = 1000, },
     { 'maxmx03/solarized.nvim',         lazy = false, priority = 1000, },
+    { 'projekt0n/github-nvim-theme',    lazy = false, priority = 1000, },
     {
         'maxmx03/fluoromachine.nvim',
         lazy = false,
@@ -16,7 +17,7 @@ return {
         opts = {
             glow = true,             -- false
             theme = 'fluoromachine', -- fluoromachine, retrowave, delta
-            transparent = false,      -- false
+            transparent = false,     -- false
         },
     },
     {
@@ -47,5 +48,18 @@ return {
             dim_inactive = true,
             transparent_mode = false,
         }
+    },
+    {
+        "baliestri/aura-theme",
+        lazy = false,
+        priority = 1000,
+        config = function(plugin)
+            vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
+        end
+    },
+    {
+        "EdenEast/nightfox.nvim",
+        lazy = false,
+        priority = 1000,
     }
 }
