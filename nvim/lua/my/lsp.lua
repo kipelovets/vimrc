@@ -70,14 +70,36 @@ end
 
 lsp.on_attach(on_attach)
 
-require("neodev").setup({ })
+require("neodev").setup({})
 
 local lspconfig = require('lspconfig')
+
+-- local vue_language_server_path = '/opt/homebrew/bin/vue-language-server'
+local mason_registry = require('mason-registry')
+local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
-lspconfig.ts_ls.setup({
-    on_attach = on_attach,
-    filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-})
+-- lspconfig.ts_ls.setup({
+--     on_attach = on_attach,
+--     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+--     init_options = {
+--         plugins = {
+--             {
+--                 name = '@vue/typescript-plugin',
+--                 location = vue_language_server_path,
+--                 languages = { 'vue' },
+--             },
+--         },
+--     },
+-- })
+lspconfig.volar.setup {
+  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+  init_options = {
+    vue = {
+      hybridMode = false,
+    },
+  },
+}
 lspconfig.pylsp.setup({})
 lspconfig.sqlls.setup {
     root_dir = lspconfig.util.find_git_ancestor
@@ -85,5 +107,6 @@ lspconfig.sqlls.setup {
 lspconfig.phpactor.setup {}
 lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
+lspconfig.eslint.setup {}
 
 lsp.setup()
