@@ -80,15 +80,15 @@ nmap(shortcuts.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
 nmap(shortcuts.next_tab, "<cmd>BufferLineCycleNext<cr>", "Tab: next")
 nmap(shortcuts.tab_move_right, "<cmd>BufferLineMoveNext<cr>", "Tab: move right")
 nmap(shortcuts.tab_move_left, "<cmd>BufferLineMovePrev<cr>", "Tab: move left")
--- nmap("<leader>1", "<Cmd>BufferLineGoToBuffer 1<CR>", "Tab: select #1")
--- nmap("<leader>2", "<Cmd>BufferLineGoToBuffer 2<CR>", "Tab: select #2")
--- nmap("<leader>3", "<Cmd>BufferLineGoToBuffer 3<CR>", "Tab: select #3")
--- nmap("<leader>4", "<Cmd>BufferLineGoToBuffer 4<CR>", "Tab: select #4")
--- nmap("<leader>5", "<Cmd>BufferLineGoToBuffer 5<CR>", "Tab: select #5")
--- nmap("<leader>6", "<Cmd>BufferLineGoToBuffer 6<CR>", "Tab: select #6")
--- nmap("<leader>7", "<Cmd>BufferLineGoToBuffer 7<CR>", "Tab: select #7")
--- nmap("<leader>8", "<Cmd>BufferLineGoToBuffer 8<CR>", "Tab: select #8")
--- nmap("<leader>9", "<Cmd>BufferLineGoToBuffer 9<CR>", "Tab: select #9")
+nmap("<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", "Tab: select #1")
+nmap("<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", "Tab: select #2")
+nmap("<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", "Tab: select #3")
+nmap("<D-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", "Tab: select #4")
+nmap("<D-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", "Tab: select #5")
+nmap("<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", "Tab: select #6")
+nmap("<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", "Tab: select #7")
+nmap("<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", "Tab: select #8")
+nmap("<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", "Tab: select #9")
 
 nmap(shortcuts.new_tab, "<cmd>enew<cr>", "Tab: new")
 nmap("<c-q>", "<Plug>(smartq_this)", "Tab: close")
@@ -285,3 +285,12 @@ vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
 -- Toggle previous & next buffers stored within Harpoon list
 vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end)
+
+vim.api.nvim_set_keymap('n', '<leader>D', '', {
+  noremap = true,
+  callback = function()
+    for _, client in ipairs(vim.lsp.buf_get_clients()) do
+      require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+    end
+  end
+})
