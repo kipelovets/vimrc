@@ -77,7 +77,9 @@ nmap('<leader>gd', "<cmd>lua require'gitsigns'.diffthis()<cr>", "Diff this")
 vim.keymap.set({ "n", "i", "v" }, shortcuts.save, "<cmd>w<cr><esc>", { desc = "Save" })
 
 nmap(shortcuts.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
+nmap("<c-s-tab>", "<cmd>BufferLineCyclePrev<cr>", "Tab: previous")
 nmap(shortcuts.next_tab, "<cmd>BufferLineCycleNext<cr>", "Tab: next")
+nmap("<c-tab>", "<cmd>BufferLineCycleNext<cr>", "Tab: next")
 nmap(shortcuts.tab_move_right, "<cmd>BufferLineMoveNext<cr>", "Tab: move right")
 nmap(shortcuts.tab_move_left, "<cmd>BufferLineMovePrev<cr>", "Tab: move left")
 nmap("<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", "Tab: select #1")
@@ -91,7 +93,10 @@ nmap("<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", "Tab: select #8")
 nmap("<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", "Tab: select #9")
 
 nmap(shortcuts.new_tab, "<cmd>enew<cr>", "Tab: new")
-nmap("<c-q>", "<Plug>(smartq_this)", "Tab: close")
+nmap("<c-q>", "<Plug>(smartq_this)", "Buf: close")
+
+nmap("<c-w><s-o>", "<cmd>Wipeout<cr>", "Buf: close others")
+nmap("<c-s-q>", "<cmd>%bd<cr>", "Buf: close all")
 
 -- Telescope
 
