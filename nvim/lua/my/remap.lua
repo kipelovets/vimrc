@@ -49,13 +49,13 @@ nmap("<leader><leader>", function()
     vim.cmd("DapVirtualTextForceRefresh")
 
     -- close NvimTree
-    require'nvim-tree.api'.tree.close()
+    -- require'nvim-tree.api'.tree.close()
 
     -- close SymbolsOutline
     -- vim.cmd("SymbolsOutlineClose")
 
     -- close quickfix
-    vim.cmd("cclose")
+    -- vim.cmd("cclose")
 end, "Clear search & popups")
 
 nmap(";", ":%s/\\<<c-r><c-w>\\>/<c-r><c-w>/g<Left><Left>", "Rename word under cursor in buffer")
