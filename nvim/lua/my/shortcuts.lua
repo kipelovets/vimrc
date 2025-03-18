@@ -15,8 +15,8 @@ shortcuts.cmp_complete = '<C-Space>'
 shortcuts.cmp_abort = '<C-e>'
 shortcuts.cmp_next = '<Tab>'
 shortcuts.diag_open = '<leader>do'
-shortcuts.diag_prev = '[d'
-shortcuts.diag_next = ']d'
+shortcuts.diag_prev = '[e'
+shortcuts.diag_next = ']e'
 shortcuts.diag_show = '<leader>dd'
 
 if jit.os == "OSX" then

@@ -104,7 +104,9 @@ nmap("<leader>fp", "<cmd>Telescope project theme=dropdown<cr>", "Telescope: proj
 
 local builtin = require("telescope.builtin")
 nmap(shortcuts.find_files, builtin.find_files, "Telescope: files")
--- nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
+nmap("<leader>p", builtin.find_files, "Telescope: files")
+nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
+
 nmap(shortcuts.find_ex, function()
     local dir = vim.fn.input("Directory to grep: ", "./", "dir")
     local file_glob = vim.fn.input("File glob pattern: ", "*")
@@ -171,7 +173,7 @@ local font = require("my.font")
 nmap('<D-=>', font.increase_font, "Font: increase")
 nmap('<D-->', font.decrease_font, "Font: decrease")
 nmap('<D-0>', font.reset_font, "Font: reset")
-nmap('<leader>p', font.present, "Start presentation")
+nmap('<leader><s-p>', font.present, "Start presentation")
 
 -- Debugging
 
