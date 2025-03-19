@@ -62,5 +62,7 @@ return {
         lazy = false,
         priority = 1000,
     },
-    { 'fcpg/vim-fahrenheit' }
+    { 'fcpg/vim-fahrenheit' },
+    { 'fcpg/vim-farout' },
+    { "tinted-theming/tinted-vim" },
 }
