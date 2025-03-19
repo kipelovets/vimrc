@@ -175,9 +175,12 @@ function M.config()
         require("alpha.term")
         header = {
             type = "terminal",
-            command = "bash ~/.config/nvim/gwent-logo.sh",
-            width = 80,
-            height = 20,
+            -- command = "bash ~/.config/nvim/gwent-logo.sh",
+            -- width = 80,
+            -- height = 20,
+            command = "bash ~/.config/nvim/larian-logo.sh",
+            width = 54,
+            height = 40,
             opts = {
                 position = "center",
                 hl = "String",
