@@ -232,6 +232,7 @@ vim.keymap.set(
 
 vim.keymap.set({ "i" }, "<c-t>", "<Plug>luasnip-expand-or-jump", { desc = "Luasnip: expand or jump" })
 
+nmap("<leader>cF", "<cmd>Neoformat<cr>", "Format with Neoformat")
 nmap("<leader>j",
     ':%!/opt/homebrew/bin/php -r \'echo json_encode(json_decode(file_get_contents("php://stdin")), JSON_PRETTY_PRINT);\'<cr>:set filetype=json<cr>',
     "JSON pretty format")
