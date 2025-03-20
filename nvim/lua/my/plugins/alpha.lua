@@ -178,8 +178,11 @@ function M.config()
             -- command = "bash ~/.config/nvim/gwent-logo.sh",
             -- width = 80,
             -- height = 20,
-            command = "bash ~/.config/nvim/larian-logo.sh",
-            width = 54,
+            -- command = "bash ~/.config/nvim/larian-logo.sh",
+            -- width = 54,
+            -- height = 40,
+            command = "bash ~/.config/nvim/larian-warsaw-logo.sh",
+            width = 58,
             height = 40,
             opts = {
                 position = "center",
