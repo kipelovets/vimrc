@@ -64,5 +64,4 @@ return {
     },
     { 'fcpg/vim-fahrenheit' },
     { 'fcpg/vim-farout' },
-    { "tinted-theming/tinted-vim" },
 }
