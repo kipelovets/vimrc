@@ -2,8 +2,18 @@ return {
     "nvim-treesitter/nvim-treesitter-textobjects",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     config = function()
+        ---@diagnostic disable-next-line: missing-fields
         require 'nvim-treesitter.configs'.setup {
             textobjects = {
+                swap = {
+                    enable = true,
+                    swap_next = {
+                        ["<leader>cm"] = "@function.outer",
+                    },
+                    swap_prev = {
+                        ["<leader>cM"] = "@function.outer",
+                    },
+                },
                 move = {
                     enable = true,
                     set_jumps = true, -- whether to set jumps in the jumplist
