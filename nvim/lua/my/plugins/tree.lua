@@ -2,7 +2,7 @@ return {
     "nvim-tree/nvim-tree.lua",
     config = function()
         local function grep_at_current_tree_node()
-            local node = require('nvim-tree.lib').get_node_at_cursor()
+            local node = require('nvim-tree.api').tree.get_node_under_cursor()
             if not node then return end
             require('telescope.builtin').live_grep({ search_dirs = { node.absolute_path } })
         end
