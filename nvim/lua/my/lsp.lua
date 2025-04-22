@@ -104,7 +104,18 @@ lspconfig.pylsp.setup({})
 lspconfig.sqlls.setup {
     root_dir = lspconfig.util.find_git_ancestor
 }
-lspconfig.phpactor.setup {}
+lspconfig.phpactor.setup {
+    on_attach = on_attach,
+    init_options = {
+        ["language_server_phpstan.enabled"] = true,
+        ["language_server_psalm.enabled"] = true,
+        ["language_server_php_cs_fixer.enabled"] = true,
+        ["symfony.enabled"] = true,
+        ["phpunit.enabled"] = true,
+        ["logging.enabled"] = true,
+        ["logging.level"] = "debug",
+    }
+}
 lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
 lspconfig.eslint.setup {}
