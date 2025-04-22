@@ -79,6 +79,7 @@
   "symfonyutils": { "branch": "main", "commit": "e678f2ec10467ec63b6944fb03c701d681cc2207" },
   "tabular": { "branch": "master", "commit": "12437cd1b53488e24936ec4b091c9324cafee311" },
   "telescope-dap.nvim": { "branch": "master", "commit": "783366bd6c1e7fa0a5c59c07db37f49c805a28df" },
+  "telescope-emoji.nvim": { "branch": "master", "commit": "86248d97be84a1ce83f0541500ef9edc99ea2aa1" },
   "telescope-file-browser.nvim": { "branch": "master", "commit": "626998e5c1b71c130d8bc6cf7abb6709b98287bb" },
   "telescope-gitmoji.nvim": { "branch": "master", "commit": "ce29ea06c2c78c9cbbb3e06f8bef46353d9078a1" },
   "telescope-project.nvim": { "branch": "master", "commit": "ce2c9fe209a68c7a924acde42d94ed8a2b2a52c5" },
