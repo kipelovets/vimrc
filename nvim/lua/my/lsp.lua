@@ -119,5 +119,6 @@ lspconfig.phpactor.setup {
 lspconfig.bashls.setup {}
 lspconfig.terraformls.setup {}
 lspconfig.eslint.setup {}
+lspconfig.lemminx.setup {}
 
 lsp.setup()
