@@ -26,9 +26,7 @@ vim.keymap.set({ "n", "i" }, shortcuts.paste, [[<Esc>"+p]])
 nmap(shortcuts.copy_line, '^v$h"+yj')
 nmap(shortcuts.duplicate, "yyp")
 nmap(shortcuts.select_all, "ggVG")
--- delete into black hole
-vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
-nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>")
+nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>", "Copy filename to clipboard")
 
 nmap("<leader><leader>", function()
     -- cleanup search
