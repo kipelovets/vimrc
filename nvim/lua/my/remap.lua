@@ -43,7 +43,7 @@ nmap("<leader><leader>", function()
     end
 
     -- close DAP ui
-    require'dapui'.close()
+    require 'dapui'.close()
     vim.cmd("DapVirtualTextForceRefresh")
 
     -- close NvimTree
@@ -102,6 +102,9 @@ nmap("<leader>fp", "<cmd>Telescope project theme=dropdown<cr>", "Telescope: proj
 
 local builtin = require("telescope.builtin")
 nmap(shortcuts.find_files, builtin.find_files, "Telescope: files")
+nmap(shortcuts.find_files_all, function()
+    builtin.find_files({ no_ignore = true })
+end, "Telescope: files (no ignore)")
 nmap("<leader>p", builtin.find_files, "Telescope: files")
 nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
 
@@ -153,17 +156,17 @@ tmap('<d-s-k>', [[<C-\><C-N>:lua ClearTerm(1)<CR>]], "Terminal: clear and reset"
 
 
 function ClearTerm(reset)
-  vim.opt_local.scrollback = 1
+    vim.opt_local.scrollback = 1
 
-  vim.api.nvim_command("startinsert")
-  if reset == 1 then
-    vim.api.nvim_feedkeys("reset", 't', false)
-  else
-    vim.api.nvim_feedkeys("clear", 't', false)
-  end
-  vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>', true, false, true), 't', true)
+    vim.api.nvim_command("startinsert")
+    if reset == 1 then
+        vim.api.nvim_feedkeys("reset", 't', false)
+    else
+        vim.api.nvim_feedkeys("clear", 't', false)
+    end
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<cr>', true, false, true), 't', true)
 
-  vim.opt_local.scrollback = 10000
+    vim.opt_local.scrollback = 10000
 end
 
 -- Presentation
@@ -261,7 +264,13 @@ vim.keymap.set("n", "g:", function()
     vim.cmd("resize 10 | setl winfixheight")
 end, { desc = "NeoRepl" })
 
-nmap ('<Leader>m', '<plug>ToggleMarkbar')
+-- markbar is disabled due to problems with ShaDa
+-- nmap ('<Leader>m', '<plug>ToggleMarkbar')
+
+nmap("<c-h>", "<cmd>wincmd h<cr>", "Window: left")
+nmap("<c-l>", "<cmd>wincmd l<cr>", "Window: right")
+nmap("<c-j>", "<cmd>wincmd j<cr>", "Window: down")
+nmap("<c-k>", "<cmd>wincmd k<cr>", "Window: up")
 
 -- PHP
 nmap("gsd", "<cmd>GoToSymfonyDefinition<CR>", "[G]o to [S]ymfony [D]efinition")
@@ -294,10 +303,13 @@ vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end)
 vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end)
 
 vim.api.nvim_set_keymap('n', '<leader>D', '', {
-  noremap = true,
-  callback = function()
-    for _, client in ipairs(vim.lsp.buf_get_clients()) do
-      require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+    noremap = true,
+    callback = function()
+        for _, client in ipairs(vim.lsp.buf_get_clients()) do
+            require("workspace-diagnostics").populate_workspace_diagnostics(client, 0)
+        end
     end
-  end
 })
+
+nmap('<leader>`', '<cmd>TtCamel<cr>', 'Convert to camelCase')
+nmap('<leader>~', '<cmd>TtSnake<cr>', 'Convert to snake_case')
