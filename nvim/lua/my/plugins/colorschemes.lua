@@ -64,4 +64,5 @@ return {
     },
     { 'fcpg/vim-fahrenheit' },
     { 'fcpg/vim-farout' },
+    { 'sainnhe/everforest' },
 }

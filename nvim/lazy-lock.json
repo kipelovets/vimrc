@@ -14,6 +14,7 @@
   "cmp_luasnip": { "branch": "master", "commit": "98d9cb5c2c38532bd9bdb481067b20fea8f32e90" },
   "diffview.nvim": { "branch": "main", "commit": "4516612fe98ff56ae0415a259ff6361a89419b0a" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
+  "everforest": { "branch": "master", "commit": "ffa5a2032fd41903135fa829bd4b49ba2e1d5d18" },
   "flexoki-neovim": { "branch": "main", "commit": "975654bce67514114db89373539621cff42befb5" },
   "fluoromachine.nvim": { "branch": "main", "commit": "d638ea221b4c6636978f49c1987d10ff2733c23d" },
   "fzf-lua": { "branch": "main", "commit": "6fd79d9c2531efca68e359cea43ebe689df8e064" },
