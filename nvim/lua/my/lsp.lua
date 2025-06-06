@@ -75,8 +75,8 @@ require("neodev").setup({})
 local lspconfig = require('lspconfig')
 
 -- local vue_language_server_path = '/opt/homebrew/bin/vue-language-server'
-local mason_registry = require('mason-registry')
-local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
+-- local mason_registry = require('mason-registry')
+-- local vue_language_server_path = mason_registry.get_package('vue-language-server'):get_install_path() .. '/node_modules/@vue/language-server'
 
 lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 -- lspconfig.ts_ls.setup({
