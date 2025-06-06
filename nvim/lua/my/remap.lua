@@ -184,6 +184,7 @@ nmap('<F10>', function() require('dap').step_over() end, "DAP: step over")
 nmap('<F11>', function() require('dap').step_into() end, "DAP: step into")
 nmap('<F12>', function() require('dap').step_out() end, "DAP: step out")
 nmap('<Leader>db', function() require('dap').toggle_breakpoint() end, "DAP: toggle breakpoint")
+nmap('<Leader>dB', function() require('dap').set_breakpoint(vim.fn.input('Condition: ')) end, "DAP: set breakpoint with condition")
 nmap('<Leader>dl', function() require('dap').run_last() end, "DAP: run last")
 vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end, {
     desc =
