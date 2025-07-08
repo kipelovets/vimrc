@@ -65,4 +65,7 @@ return {
     { 'fcpg/vim-fahrenheit' },
     { 'fcpg/vim-farout' },
     { 'sainnhe/everforest' },
+    { 'zenbones-theme/zenbones.nvim' },
+    { 'wadackel/vim-dogrun' },
+    { 'sainnhe/sonokai' },
 }
