@@ -121,4 +121,19 @@ lspconfig.terraformls.setup {}
 lspconfig.eslint.setup {}
 lspconfig.lemminx.setup {}
 
+
+vim.filetype.add {
+  pattern = {
+    ['api.*%.ya?ml'] = 'yaml.openapi',
+  },
+}
+lspconfig.vacuum.setup {
+    cmd = { 'vacuum', 'language-server' },
+    filetypes = { 'yaml.openapi', 'json.openapi' },
+    -- root_dir = function(fname)
+    --     return vim.fs.dirname(vim.fs.find('.git', { path = fname, upward = true })[1])
+    -- end,
+    -- single_file_support = true,
+}
+
 lsp.setup()
