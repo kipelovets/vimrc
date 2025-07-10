@@ -58,3 +58,7 @@ https://github.com/bluz71/vim-moonfly-colors
 https://github.com/savq/melange-nvim
 https://github.com/AlexvZyl/nordic.nvim
 https://github.com/ayu-theme/ayu-vim
+
+# Colors evaluation
+
+aura-soft-dark-soft-text - diff not visible in neogit
