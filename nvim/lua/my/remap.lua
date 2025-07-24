@@ -1,31 +1,34 @@
+local os_specific_shortcut = require("my.shortcuts")
+
 local nmap = function(shortcut, command, desc)
-    vim.keymap.set("n", shortcut, command, { desc = desc, remap = false, silent = true })
+    vim.keymap.set("n", os_specific_shortcut(shortcut), command, { desc = desc, remap = false, silent = true })
+end
+local vmap = function(shortcut, command, desc)
+    vim.keymap.set("v", os_specific_shortcut(shortcut), command, { desc = desc, remap = false, silent = true })
 end
 local tmap = function(shortcut, command, desc)
-    vim.keymap.set("t", shortcut, command, { desc = desc, remap = false, silent = true })
+    vim.keymap.set("t", os_specific_shortcut(shortcut), command, { desc = desc, remap = false, silent = true })
 end
 
-local shortcuts = require("my.shortcuts")
-
 if vim.g.neovide then
-    nmap(shortcuts.neovide, "<cmd>silent exec '!neovide &'<cr>")
-    nmap(shortcuts.maximize, "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
+    nmap("<d-n>", "<cmd>silent exec '!neovide &'<cr>")
+    nmap("<d-c-f>", "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
 end
 
 -- keeping cursor in the center
-nmap("<C-d>", "<C-d>zz")
-nmap("<C-u>", "<C-u>zz")
+nmap("<c-d>", "<C-d>zz")
+nmap("<c-u>", "<C-u>zz")
 nmap("n", "nzzzv")
 nmap("N", "Nzzzv")
 
 -- paste without replacing the buffer contents
 vim.keymap.set("x", "<leader>p", [["_dP]])
 -- system clipboard
-vim.keymap.set({ "n", "v" }, shortcuts.copy, [["+y]])
-vim.keymap.set({ "n", "i" }, shortcuts.paste, [[<Esc>"+p]])
-nmap(shortcuts.copy_line, '^v$h"+yj')
-nmap(shortcuts.duplicate, "yyp")
-nmap(shortcuts.select_all, "ggVG")
+vim.keymap.set({ "n", "v" }, "<d-c>", [["+y]])
+vim.keymap.set({ "n", "i" }, "<d-v>", [[<Esc>"+p]])
+nmap("<d-c>", '^v$h"+yj')
+nmap("<d-d>", "yyp")
+nmap("<d-a>", "ggVG")
 nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>", "Copy filename to clipboard")
 
 nmap("<leader><leader>", function()
@@ -72,26 +75,26 @@ nmap('<leader>gd', "<cmd>lua require'gitsigns'.diffthis()<cr>", "Diff this")
 
 -- Buffers
 
-vim.keymap.set({ "n", "i", "v" }, shortcuts.save, "<cmd>w<cr><esc>", { desc = "Save" })
+vim.keymap.set({ "n", "i", "v" }, "<d-s>", "<cmd>w<cr><esc>", { desc = "Save" })
 
-nmap(shortcuts.prev_tab, "<cmd>BufferLineCyclePrev<cr>", "Buffer: previous")
+nmap("<d-left>", "<cmd>BufferLineCyclePrev<cr>", "Buffer: previous")
 nmap("<c-s-tab>", "<cmd>BufferLineCyclePrev<cr>", "Buffer: previous")
-nmap(shortcuts.next_tab, "<cmd>BufferLineCycleNext<cr>", "Buffer: next")
+nmap("<d-right>", "<cmd>BufferLineCycleNext<cr>", "Buffer: next")
 nmap("<c-tab>", "<cmd>BufferLineCycleNext<cr>", "Buffer: next")
-nmap(shortcuts.tab_move_right, "<cmd>BufferLineMoveNext<cr>", "Buffer: move right")
-nmap(shortcuts.tab_move_left, "<cmd>BufferLineMovePrev<cr>", "Buffer: move left")
-nmap("<D-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer: select #1")
-nmap("<D-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", "Buffer: select #2")
-nmap("<D-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", "Buffer: select #3")
-nmap("<D-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", "Buffer: select #4")
-nmap("<D-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", "Buffer: select #5")
-nmap("<D-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", "Buffer: select #6")
-nmap("<D-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", "Buffer: select #7")
-nmap("<D-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", "Buffer: select #8")
-nmap("<D-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", "Buffer: select #9")
+nmap("<d-s-right>", "<cmd>BufferLineMoveNext<cr>", "Buffer: move right")
+nmap("<d-s-left>", "<cmd>BufferLineMovePrev<cr>", "Buffer: move left")
+nmap("<d-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer: select #1")
+nmap("<d-2>", "<Cmd>BufferLineGoToBuffer 2<CR>", "Buffer: select #2")
+nmap("<d-3>", "<Cmd>BufferLineGoToBuffer 3<CR>", "Buffer: select #3")
+nmap("<d-4>", "<Cmd>BufferLineGoToBuffer 4<CR>", "Buffer: select #4")
+nmap("<d-5>", "<Cmd>BufferLineGoToBuffer 5<CR>", "Buffer: select #5")
+nmap("<d-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", "Buffer: select #6")
+nmap("<d-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", "Buffer: select #7")
+nmap("<d-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", "Buffer: select #8")
+nmap("<d-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", "Buffer: select #9")
 nmap('<leader>q', "<cmd>:tabclose<cr>", "Tab close")
 
-nmap(shortcuts.new_tab, "<cmd>enew<cr>", "Tab: new")
+nmap("<d-t>", "<cmd>enew<cr>", "Tab: new")
 nmap("<c-q>", "<Plug>(smartq_this)", "Buf: close")
 
 nmap("<c-w><s-o>", "<cmd>Wipeout<cr>", "Buf: close others")
@@ -102,23 +105,30 @@ nmap("<c-s-q>", "<cmd>%bd<cr>", "Buf: close all")
 nmap("<leader>fp", "<cmd>Telescope project theme=dropdown<cr>", "Telescope: projects")
 
 local builtin = require("telescope.builtin")
-nmap(shortcuts.find_files, builtin.find_files, "Telescope: files")
-nmap(shortcuts.find_files_all, function()
+nmap("<d-p>", builtin.find_files, "Telescope: files")
+vmap("<d-p>", function()
+    local utils = require('my.utils')
+    local lines = utils.get_visual_selection()
+    print(vim.inspect(lines))
+    builtin.find_files({ default_text = lines })
+end, "Telescope: files")
+
+nmap("<d-s-p>", function()
     builtin.find_files({ no_ignore = true })
 end, "Telescope: files (no ignore)")
 nmap("<leader>p", builtin.find_files, "Telescope: files")
 nmap("<leader>fg", builtin.live_grep, "Telescope: grep")
 
-nmap(shortcuts.find_ex, function()
+nmap("<d-s-f>", function()
     local dir = vim.fn.input("Directory to grep: ", "./", "dir")
     local file_glob = vim.fn.input("File glob pattern: ", "*")
     builtin.live_grep({ search_dirs = { dir }, glob_pattern = file_glob })
 end, "Telescope: grep in specific dir / glob pattern")
 
-nmap(shortcuts.find, function()
+nmap("<d-f>", function()
     builtin.live_grep({ default_text = vim.fn.expand("<cword>") })
 end, "Telescope: find word under cursor")
-vim.keymap.set('v', shortcuts.find, function()
+vim.keymap.set('v', "<d-f>", function()
     local utils = require('my.utils')
     local lines = utils.get_visual_selection()
     print(vim.inspect(lines))
@@ -173,25 +183,26 @@ end
 -- Presentation
 
 local font = require("my.font")
-nmap('<D-=>', font.increase_font, "Font: increase")
-nmap('<D-->', font.decrease_font, "Font: decrease")
-nmap('<D-0>', font.reset_font, "Font: reset")
-nmap('<leader><s-p>', font.present, "Start presentation")
+nmap("<d-=>", font.increase_font, "Font: increase")
+nmap("<d-->", font.decrease_font, "Font: decrease")
+nmap("<d-0>", font.reset_font, "Font: reset")
+nmap("<leader><s-p>", font.present, "Start presentation")
 
 -- Debugging
 
-nmap('<F5>', function() require('dap').continue() end, "DAP: start listening / continue")
-nmap('<F10>', function() require('dap').step_over() end, "DAP: step over")
-nmap('<F11>', function() require('dap').step_into() end, "DAP: step into")
-nmap('<F12>', function() require('dap').step_out() end, "DAP: step out")
-nmap('<Leader>db', function() require('dap').toggle_breakpoint() end, "DAP: toggle breakpoint")
-nmap('<Leader>dB', function() require('dap').set_breakpoint(vim.fn.input('Condition: ')) end, "DAP: set breakpoint with condition")
-nmap('<Leader>dl', function() require('dap').run_last() end, "DAP: run last")
-vim.keymap.set({ 'n', 'v' }, '<Leader>dh', function() require('dap.ui.widgets').hover() end, {
+nmap("<f5>", function() require("dap").continue() end, "DAP: start listening / continue")
+nmap("<f10>", function() require("dap").step_over() end, "DAP: step over")
+nmap("<f11>", function() require("dap").step_into() end, "DAP: step into")
+nmap("<f12>", function() require("dap").step_out() end, "DAP: step out")
+nmap("<leader>db", function() require("dap").toggle_breakpoint() end, "DAP: toggle breakpoint")
+nmap("<leader>dB", function() require("dap").set_breakpoint(vim.fn.input("Condition: ")) end,
+    "DAP: set breakpoint with condition")
+nmap("<Leader>dl", function() require("dap").run_last() end, "DAP: run last")
+vim.keymap.set({ "n", "v" }, "<Leader>dh", function() require("dap.ui.widgets").hover() end, {
     desc =
     "DAP: hover widgets"
 })
-vim.keymap.set({ 'n', 'v' }, '<Leader>dp', function() require('dap.ui.widgets').preview() end, { desc = "DAP: preview" })
+vim.keymap.set({ "n", "v" }, "<Leader>dp", function() require("dap.ui.widgets").preview() end, { desc = "DAP: preview" })
 
 nmap("<leader>dR", "<cmd>lua require'dap'.run_to_cursor()<cr>", "Run to Cursor")
 nmap("<leader>dE", "<cmd>lua require'dapui'.eval(vim.fn.input '[Expression] > ')<cr>", "Evaluate Input")
@@ -313,5 +324,5 @@ vim.api.nvim_set_keymap('n', '<leader>D', '', {
     end
 })
 
-nmap('<leader>`', '<cmd>TtCamel<cr>', 'Convert to camelCase')
-nmap('<leader>~', '<cmd>TtSnake<cr>', 'Convert to snake_case')
+nmap("<leader>`", "<cmd>TtCamel<cr>", "Convert to camelCase")
+nmap("<leader>~", "<cmd>TtSnake<cr>", "Convert to snake_case")

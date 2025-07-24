@@ -1,78 +1,49 @@
-local shortcuts = {}
+local linux_keys = {
+    ["<d-n>"] = "<c-n>",
+    ["<d-v>"] = "<c-v>",
+    ["<d-c>"] = "<c-c>",
+    ["<d-d>"] = "<c-s-d>",
+    ["<d-a>"] = "<c-a>",
+    ["<d-s>"] = "<c-s>",
+    ["<d-left>"] = "<a-left>",
+    ["<d-right>"] = "<a-right>",
+    ["<d-s-right>"] = "<a-s-right>",
+    ["<d-s-left>"] = "<a-s-left>",
+    ["<d-t>"] = "<c-t>",
+    ["<d-p>"] = "<c-p>",
+    ["<d-s-p>"] = "<c-s-p>",
+    ["<d-c-f>"] = "<f11>",
+    ["<d-f>"] = "<c-f>",
+    ["<d-s-f>"] = "<a-s-f>",
+}
 
-shortcuts.rename = '<leader>cr'
-shortcuts.code_action = '<leader>ca'
-shortcuts.format = '<leader>cf'
-shortcuts.goto_definition = '<leader>cd'
-shortcuts.goto_references = '<leader>cu'
-shortcuts.implementations = '<leader>ci'
-shortcuts.symbols = '<leader>cs'
-shortcuts.all_symbols = '<leader>cS'
-shortcuts.doc = '<c-s-j>'
-shortcuts.signature = '<c-s-k>'
-shortcuts.cmp_confirm = '<CR>'
-shortcuts.cmp_complete = '<C-Space>'
-shortcuts.cmp_abort = '<C-e>'
-shortcuts.cmp_next = '<Tab>'
-shortcuts.diag_open = '<leader>do'
-shortcuts.diag_prev = '[e'
-shortcuts.diag_next = ']e'
-shortcuts.diag_show = '<leader>dd'
+local windows_keys = {
+    ["<d-n>"] = "<c-n>",
+    ["<d-v>"] = "<c-v>",
+    ["<d-c>"] = "<c-c>",
+    ["<d-d>"] = "<c-s-d>",
+    ["<d-a>"] = "<c-a>",
+    ["<d-s>"] = "<c-s>",
+    ["<d-left>"] = "<c-left>",
+    ["<d-right>"] = "<c-right>",
+    ["<d-s-right>"] = "<c-s-right>",
+    ["<d-s-left>"] = "<c-s-left>",
+    ["<d-t>"] = "<c-t>",
+    ["<d-p>"] = "<c-p>",
+    ["<d-s-p>"] = "<c-s-p>",
+    ["<d-c-f>"] = "<f11>",
+    ["<d-f>"] = "<c-f>",
+    ["<d-s-f>"] = "<c-s-f>",
+}
 
-if jit.os == "OSX" then
-    shortcuts.neovide = "<D-n>"
-    shortcuts.copy = "<D-c>"
-    shortcuts.paste = "<D-v>"
-    shortcuts.copy_line = '<D-c>'
-    shortcuts.duplicate = '<D-d>'
-    shortcuts.select_all = '<D-a>'
-    shortcuts.save = "<D-s>"
-    shortcuts.prev_tab = '<D-left>'
-    shortcuts.next_tab = '<D-right>'
-    shortcuts.tab_move_right = '<D-S-right>'
-    shortcuts.tab_move_left = '<D-S-left>'
-    shortcuts.new_tab = '<D-t>'
-    shortcuts.find_files = '<D-p>'
-    shortcuts.find_files_all = '<d-s-p>'
-    shortcuts.maximize = '<d-c-f>'
-    shortcuts.find = '<d-f>'
-    shortcuts.find_ex = '<d-s-f>'
-elseif jit.os == "Linux" then
-    shortcuts.neovide = "<C-n>"
-    shortcuts.copy = "<C-c>"
-    shortcuts.paste = "<C-v>"
-    shortcuts.copy_line = '<C-c>'
-    shortcuts.duplicate = '<C-S-d>'
-    shortcuts.select_all = '<C-a>'
-    shortcuts.save = "<C-s>"
-    shortcuts.prev_tab = '<a-left>'
-    shortcuts.next_tab = '<a-right>'
-    shortcuts.tab_move_right = '<a-S-right>'
-    shortcuts.tab_move_left = '<a-S-left>'
-    shortcuts.new_tab = '<C-t>'
-    shortcuts.find_files = '<C-p>'
-    shortcuts.find_files_all = '<c-s-p>'
-    shortcuts.maximize = '<f11>'
-    shortcuts.find = '<c-f>'
-    shortcuts.find_ex = '<a-s-f>'
-else
-    shortcuts.neovide = "<C-n>"
-    shortcuts.copy = "<C-c>"
-    shortcuts.paste = "<C-v>"
-    shortcuts.copy_line = '<C-c>'
-    shortcuts.duplicate = '<C-S-d>'
-    shortcuts.select_all = '<C-a>'
-    shortcuts.save = "<C-s>"
-    shortcuts.prev_tab = '<C-left>'
-    shortcuts.next_tab = '<C-right>'
-    shortcuts.tab_move_right = '<C-S-right>'
-    shortcuts.tab_move_left = '<C-S-left>'
-    shortcuts.new_tab = '<C-t>'
-    shortcuts.find_files = '<C-p>'
-    shortcuts.find_files_all = '<c-s-p>'
-    shortcuts.maximize = '<f11>'
-    shortcuts.find = '<c-f>'
-    shortcuts.find_ex = '<c-s-f>'
+local function os_specific_shortcut(shortcut)
+    if jit.os == "Windows" and windows_keys[shortcut] then
+        return windows_keys[shortcut]
+    elseif jit.os == "Linux" and linux_keys[shortcut] then
+        return linux_keys[shortcut]
+    end
+
+    return shortcut
 end
 
-return shortcuts
+return os_specific_shortcut

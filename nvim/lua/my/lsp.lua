@@ -1,5 +1,5 @@
 local lsp = require('lsp-zero').preset({})
-local shortcuts = require('my.shortcuts')
+local os_specific_shortcut = require('my.shortcuts')
 
 local on_attach = function(client, bufnr)
     lsp.default_keymaps({ buffer = bufnr })
@@ -8,39 +8,39 @@ local on_attach = function(client, bufnr)
         vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
     end
 
-    nmap(shortcuts.rename, vim.lsp.buf.rename, 'Rename')
-    vim.keymap.set({ "n", "v" }, shortcuts.code_action, ":Lspsaga code_action<cr>", { desc = 'Code Action' })
+    nmap("<leader>cr", vim.lsp.buf.rename, 'Rename')
+    vim.keymap.set({ "n", "v" }, "<leader>ca", ":Lspsaga code_action<cr>", { desc = 'Code Action' })
     vim.keymap.set({ "n", "v" }, "<leader>cA", require("actions-preview").code_actions, { desc = 'Code Action menu' })
-    nmap(shortcuts.format, vim.lsp.buf.format, "Format code")
+    nmap("<leader>cf", vim.lsp.buf.format, "Format code")
 
-    nmap(shortcuts.goto_definition, vim.lsp.buf.definition, 'Goto Definition')
-    nmap(shortcuts.goto_references, require('telescope.builtin').lsp_references, 'Goto References')
-    nmap(shortcuts.implementations, require('telescope.builtin').lsp_implementations, 'Implementations')
-    nmap(shortcuts.symbols, require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
-    nmap(shortcuts.all_symbols, require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
+    nmap("<leader>cd", vim.lsp.buf.definition, 'Goto Definition')
+    nmap("<leader>cu", require('telescope.builtin').lsp_references, 'Goto References')
+    nmap("<leader>ci", require('telescope.builtin').lsp_implementations, 'Implementations')
+    nmap("<leader>cs", require('telescope.builtin').lsp_document_symbols, 'Document Symbols')
+    nmap("<leader>cs", require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Workspace Symbols')
 
-    nmap(shortcuts.doc, vim.lsp.buf.hover, 'Hover Documentation')
-    nmap(shortcuts.signature, vim.lsp.buf.signature_help, 'Signature Documentation')
+    nmap("<c-s-j>", vim.lsp.buf.hover, 'Hover Documentation')
+    nmap("<c-s-k>", vim.lsp.buf.signature_help, 'Signature Documentation')
 
     local cmp = require("cmp")
     cmp.setup {
         mapping = {
-            [shortcuts.cmp_confirm] = function(fallback)
+            ["<cr>"] = function(fallback)
                 if cmp.visible() then
                     cmp.confirm({ select = true })
                 else
                     fallback()
                 end
             end,
-            [shortcuts.cmp_next] = function(fallback)
+            ["<tab>"] = function(fallback)
                 if cmp.visible() then
                     cmp.select_next_item()
                 else
                     fallback()
                 end
             end,
-            [shortcuts.cmp_complete] = cmp.mapping.complete(),
-            [shortcuts.cmp_abort] = cmp.mapping.abort(),
+            ["<c-space>"] = cmp.mapping.complete(),
+            ["<c-e>"] = cmp.mapping.abort(),
         },
         snippet = {
             expand = function(args)
@@ -54,10 +54,10 @@ local on_attach = function(client, bufnr)
         },
     }
 
-    nmap(shortcuts.diag_open, vim.diagnostic.open_float)
-    nmap(shortcuts.diag_prev, ':Lspsaga diagnostic_jump_prev<cr>')
-    nmap(shortcuts.diag_next, ':Lspsaga diagnostic_jump_next<cr>')
-    nmap(shortcuts.diag_show, '<cmd>Telescope diagnostics<CR>')
+    nmap("<leader>do", vim.diagnostic.open_float)
+    nmap("[e", ':Lspsaga diagnostic_jump_prev<cr>')
+    nmap("]e", ':Lspsaga diagnostic_jump_next<cr>')
+    nmap("<leader>dd", '<cmd>Telescope diagnostics<CR>')
 
     if client.supports_method('textDocument/documentHighlight') then
         vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
@@ -93,12 +93,12 @@ lspconfig.lua_ls.setup(lsp.nvim_lua_ls())
 --     },
 -- })
 lspconfig.volar.setup {
-  filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
-  init_options = {
-    vue = {
-      hybridMode = false,
+    filetypes = { 'typescript', 'javascript', 'javascriptreact', 'typescriptreact', 'vue' },
+    init_options = {
+        vue = {
+            hybridMode = false,
+        },
     },
-  },
 }
 lspconfig.pylsp.setup({})
 lspconfig.sqlls.setup {
@@ -123,9 +123,9 @@ lspconfig.lemminx.setup {}
 
 
 vim.filetype.add {
-  pattern = {
-    ['api.*%.ya?ml'] = 'yaml.openapi',
-  },
+    pattern = {
+        ['api.*%.ya?ml'] = 'yaml.openapi',
+    },
 }
 lspconfig.vacuum.setup {
     cmd = { 'vacuum', 'language-server' },
