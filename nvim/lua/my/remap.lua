@@ -29,7 +29,24 @@ vim.keymap.set({ "n", "i" }, "<d-v>", [[<Esc>"+p]])
 nmap("<d-c>", '^v$h"+yj')
 nmap("<d-d>", "yyp")
 nmap("<d-a>", "ggVG")
-nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>", "Copy filename to clipboard")
+nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>", "Copy filename & line number to clipboard")
+nmap("<leader>yg", function ()
+    local fhead = io.open(".git/HEAD")
+    if fhead then
+        local head = fhead:read()
+        fhead:close()
+        local branch = head:match('ref: refs/heads/(.+)$')
+        if not branch then
+            branch = head:sub(1, 6)
+        end
+        vim.fn.setreg("+", branch)
+        print("Copied: " .. branch)
+        return
+    end
+
+    print("Couldn't find current branch :(")
+end, "Copy Git branch to clipboard")
+
 
 nmap("<leader><leader>", function()
     -- cleanup search
