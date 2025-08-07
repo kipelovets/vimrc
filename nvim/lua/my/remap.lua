@@ -29,22 +29,13 @@ vim.keymap.set({ "n", "i" }, "<d-v>", [[<Esc>"+p]])
 nmap("<d-c>", '^v$h"+yj')
 nmap("<d-d>", "yyp")
 nmap("<d-a>", "ggVG")
-nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>", "Copy filename & line number to clipboard")
-nmap("<leader>yg", function ()
-    local fhead = io.open(".git/HEAD")
-    if fhead then
-        local head = fhead:read()
-        fhead:close()
-        local branch = head:match('ref: refs/heads/(.+)$')
-        if not branch then
-            branch = head:sub(1, 6)
-        end
-        vim.fn.setreg("+", branch)
-        print("Copied: " .. branch)
-        return
-    end
-
-    print("Couldn't find current branch :(")
+nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>",
+    "Copy filename & line number to clipboard")
+nmap("<leader>yg", function()
+    local utils  = require("my.utils")
+    local branch = utils.get_branch()
+    vim.fn.setreg("+", branch)
+    print("Copied: " .. branch)
 end, "Copy Git branch to clipboard")
 
 
@@ -281,7 +272,11 @@ vim.keymap.set(
     { desc = "Refactor" }
 )
 
-vim.keymap.set({ "i" }, "<c-t>", "<Plug>luasnip-expand-or-jump", { desc = "Luasnip: expand or jump" })
+vim.keymap.set({ "i" }, "<c-t>", "<Plug>luasnip-expand-or-jump<cr>", { desc = "Luasnip: expand or jump" })
+vim.api.nvim_set_keymap("i", "<a-down>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("s", "<a-down>", "<Plug>luasnip-next-choice", {})
+vim.api.nvim_set_keymap("i", "<a-up>", "<Plug>luasnip-prev-choice", {})
+vim.api.nvim_set_keymap("s", "<a-up>", "<Plug>luasnip-prev-choice", {})
 
 nmap("<leader>cF", "<cmd>Neoformat<cr>", "Format with Neoformat")
 nmap("<leader>j",

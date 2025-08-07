@@ -29,4 +29,20 @@ M.get_visual_selection = function()
     return table.concat(lines, "\n")
 end
 
+M.get_branch = function ()
+    local fhead = io.open(".git/HEAD")
+    if fhead then
+        local head = fhead:read()
+        fhead:close()
+        local branch = head:match('ref: refs/heads/(.+)$')
+        if not branch then
+            branch = head:sub(1, 6)
+        end
+
+        return branch
+    end
+
+    return ""
+end
+
 return M
