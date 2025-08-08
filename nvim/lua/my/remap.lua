@@ -372,3 +372,8 @@ vim.api.nvim_set_keymap('n', '<leader>D', '', {
 
 nmap("<leader>cc", "<cmd>TtCamel<cr>", "Convert to camelCase")
 nmap("<leader>sc", "<cmd>TtSnake<cr>", "Convert to snake_case")
+
+
+nmap("<leader>jv", ":JiraView<cr>", "View Jira issue")
+nmap("<leader>jo", ":JiraOpen<cr>", "Open Jira issue in browser")
+nmap("<leader>jl", function() require("my.utils").copy_issue() end, "List jiras assigned to me")
