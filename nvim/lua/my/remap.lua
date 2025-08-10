@@ -10,6 +10,12 @@ local tmap = function(shortcut, command, desc)
     vim.keymap.set("t", os_specific_shortcut(shortcut), command, { desc = desc, remap = false, silent = true })
 end
 
+local map = function(modes, shortcut, command, desc)
+    print(shortcut)
+    vim.keymap.set(modes, os_specific_shortcut(shortcut), command, { desc = desc, remap = false, silent = true })
+end
+
+
 if vim.g.neovide then
     nmap("<d-n>", "<cmd>silent exec '!neovide &'<cr>")
     nmap("<d-c-f>", "<cmd>let g:neovide_fullscreen = !g:neovide_fullscreen<cr>")
@@ -83,7 +89,7 @@ nmap('<leader>gd', "<cmd>lua require'gitsigns'.diffthis()<cr>", "Diff this")
 
 -- Buffers
 
-vim.keymap.set({ "n", "i", "v" }, "<d-s>", "<cmd>w<cr><esc>", { desc = "Save" })
+map({ "n", "i", "v" }, "<d-s>", "<cmd>w<cr><esc>", "Save")
 
 nmap("<d-left>", "<cmd>BufferLineCyclePrev<cr>", "Buffer: previous")
 nmap("<c-s-tab>", "<cmd>BufferLineCyclePrev<cr>", "Buffer: previous")
@@ -150,12 +156,12 @@ vmap("<d-s-f>", function()
 end, "Telescope: find selected text in specific dir / glob pattern")
 
 nmap("<d-f>", builtin.live_grep, "Telescope: find in files")
-vim.keymap.set('v', "<d-f>", function()
+vmap("<d-f>", function()
     local utils = require('my.utils')
     local lines = utils.get_visual_selection()
     print(vim.inspect(lines))
     builtin.live_grep({ default_text = lines })
-end, { desc = "Telescope: find selected text" })
+end, "Telescope: find selected text")
 
 nmap("<leader>fb", builtin.buffers, "Telescope: open buffers")
 nmap("<leader>fH", builtin.help_tags, "Telescope: help tags")
