@@ -16,7 +16,8 @@ return {
             vim.keymap.set('n', '<D-f>', grep_at_current_tree_node, opts('Find in dir'))
         end
 
-        require("nvim-tree").setup({
+        local nvimtree = require("nvim-tree")
+        nvimtree.setup({
             hijack_cursor = true,
             update_focused_file = {
                 enable = false, -- focus tree on opened file
@@ -87,5 +88,21 @@ return {
                 end
             end
         })
+
+
+        if not vim.g.neovide then
+            local function open_nvim_tree(data)
+                local real_file = vim.fn.filereadable(data.file) == 1
+
+                local no_name = data.file == "" and vim.bo[data.buf].buftype == ""
+
+                if not real_file and not no_name then
+                    return
+                end
+
+                require("nvim-tree.api").tree.toggle({ focus = false, find_file = true, })
+            end
+            vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
+        end
     end
 }

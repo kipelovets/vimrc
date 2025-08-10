@@ -204,7 +204,10 @@ function M.config()
         { type = "padding", val = 2 },
         get_mru(7),
     }
-    require("alpha").setup(theme.config)
+
+    if vim.g.neovide then
+        require("alpha").setup(theme.config)
+    end
 end
 
 return M
