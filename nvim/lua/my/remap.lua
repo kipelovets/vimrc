@@ -267,16 +267,17 @@ nmap("<leader>dx", "<cmd>lua require'dap'.terminate()<cr>", "Terminate")
 
 -- Testing
 
-nmap("<leader>ta", "<cmd>lua require('neotest').run.attach()<cr>", "Attach")
-nmap("<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Run File")
-nmap("<leader>tF", "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Debug File")
-nmap("<leader>tl", "<cmd>lua require('neotest').run.run_last()<cr>", "Run Last")
-nmap("<leader>tL", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Debug Last")
-nmap("<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", "Run Nearest")
-nmap("<leader>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Debug Nearest")
-nmap("<leader>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Output")
-nmap("<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", "Stop")
-nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Summary")
+nmap("<leader>ta", "<cmd>lua require('neotest').run.attach()<cr>", "Test: Attach")
+nmap("<leader>tf", "<cmd>lua require('neotest').run.run(vim.fn.expand('%'))<cr>", "Test: Run File")
+nmap("<leader>tF", "<cmd>lua require('neotest').run.run({vim.fn.expand('%'), strategy = 'dap'})<cr>", "Test: Debug File")
+nmap("<leader>tl", "<cmd>lua require('neotest').run.run_last()<cr>", "Test: Run Last")
+nmap("<leader>tL", "<cmd>lua require('neotest').run.run_last({ strategy = 'dap' })<cr>", "Test: Debug Last")
+nmap("<leader>tn", "<cmd>lua require('neotest').run.run()<cr>", "Test: Run Nearest")
+nmap("<leader>tN", "<cmd>lua require('neotest').run.run({strategy = 'dap'})<cr>", "Test: Debug Nearest")
+nmap("<leader>to", "<cmd>lua require('neotest').output.open({ enter = true })<cr>", "Test: Output")
+nmap("<leader>to", "<cmd>lua require('neotest').output_panel.open()<cr>", "Test: Output panel")
+nmap("<leader>tS", "<cmd>lua require('neotest').run.stop()<cr>", "Test: Stop")
+nmap("<leader>ts", "<cmd>lua require('neotest').summary.toggle()<cr>", "Test: Summary")
 
 -- Misc
 
