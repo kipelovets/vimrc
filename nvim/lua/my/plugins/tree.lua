@@ -13,7 +13,8 @@ return {
             local function opts(desc)
                 return { desc = "nvim-tree: " .. desc, buffer = bufnr, noremap = true, silent = true, nowait = true }
             end
-            vim.keymap.set('n', '<D-f>', grep_at_current_tree_node, opts('Find in dir'))
+            local os_specific_shortcut = require('my.shortcuts')
+            vim.keymap.set('n', os_specific_shortcut('<d-f>'), grep_at_current_tree_node, opts('Find in dir'))
         end
 
         local nvimtree = require("nvim-tree")
