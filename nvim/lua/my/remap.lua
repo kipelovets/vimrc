@@ -11,7 +11,6 @@ local tmap = function(shortcut, command, desc)
 end
 
 local map = function(modes, shortcut, command, desc)
-    print(shortcut)
     vim.keymap.set(modes, os_specific_shortcut(shortcut), command, { desc = desc, remap = false, silent = true })
 end
 
@@ -43,6 +42,7 @@ nmap("<leader>yg", function()
     vim.fn.setreg("+", branch)
     print("Copied: " .. branch)
 end, "Copy Git branch to clipboard")
+nmap("<leader>yc", "<cmd>PhpCopyClassName<cr>", "Copy PHP class name to clipboard")
 
 
 nmap("<leader><leader>", function()
@@ -326,10 +326,14 @@ end, { desc = "NeoRepl" })
 -- markbar is disabled due to problems with ShaDa
 -- nmap ('<Leader>m', '<plug>ToggleMarkbar')
 
+-- Windows
+
 nmap("<c-h>", "<cmd>wincmd h<cr>", "Window: left")
 nmap("<c-l>", "<cmd>wincmd l<cr>", "Window: right")
 nmap("<c-j>", "<cmd>wincmd j<cr>", "Window: down")
 nmap("<c-k>", "<cmd>wincmd k<cr>", "Window: up")
+nmap("<c-+>", "<cmd>res +1<cr>", "Windows: upsize")
+nmap("<c-_>", "<cmd>res -1<cr>", "Windows: upsize")
 
 -- PHP
 nmap("gsd", "<cmd>GoToSymfonyDefinition<CR>", "[G]o to [S]ymfony [D]efinition")
