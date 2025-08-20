@@ -5,13 +5,52 @@ local table_merge = function(first_table, second_table)
     return first_table
 end
 
-M.cd = function(path, name)
-    local _utils = require("telescope._extensions.project.utils")
+M.cd = function(path, name, close_alpha)
     print("CD -> " .. path)
+    local _utils = require("telescope._extensions.project.utils")
     _utils.change_project_dir(path)
-    vim.cmd("Alpha")
+    if close_alpha then
+        vim.cmd("Alpha")
+    end
     vim.o.titlestring = name
 end
+
+M.format_project_name = function(project)
+    local project_path = project.path:gsub("\\", "/")
+    local display_path = M.shorten_path(project_path)
+
+    local project_name = display_path:match("/[^/]+$")
+    if project_name == nil then
+        project_name = display_path
+    end
+    project_name = project_name:gsub("/", "")
+
+    return project_name
+end
+
+M.open_project = function(name)
+    local project_list = require("telescope._extensions.project.utils").get_projects("recent")
+    for i, project in ipairs(project_list) do
+        local project_name = M.format_project_name(project)
+        local project_path = project.path:gsub("\\", "/")
+
+        if project_name == name then
+            local _utils = require("telescope._extensions.project.utils")
+            _utils.change_project_dir(project_path)
+            vim.o.titlestring = name
+            return
+        end
+    end
+    print("Project not found: " .. name)
+end
+
+M.list_projects = function()
+    local project_list = require("telescope._extensions.project.utils").get_projects("recent")
+    for i, project in ipairs(project_list) do
+        print(M.format_project_name(project))
+    end
+end
+vim.api.nvim_create_user_command('PrintProjects', M.list_projects, {})
 
 M.shorten_path = function(path)
     local target_length = 35
