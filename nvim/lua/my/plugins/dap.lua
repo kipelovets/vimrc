@@ -2,7 +2,7 @@ return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            { "nvim-neotest/nvim-nio"},
+            { "nvim-neotest/nvim-nio" },
             { "rcarriga/nvim-dap-ui" },
             { "theHamsta/nvim-dap-virtual-text" },
             { "nvim-telescope/telescope-dap.nvim" },
@@ -15,6 +15,15 @@ return {
                 type = 'executable',
                 command = 'node',
                 args = { dap_config.vscode_php_debug_path .. '/out/phpDebug.js' }
+            }
+
+            dap.adapters["pwa-node"] = {
+                type = "server",
+                port = "${port}",
+                executable = {
+                    command = "js-debug-adapter",
+                    args = { "${port}" },
+                }
             }
 
             dap.configurations.php = {
@@ -60,7 +69,7 @@ return {
             -- }
 
             for _, language in ipairs { "typescript", "javascript" } do
-                require("dap").configurations[language] = {
+                dap.configurations[language] = {
                     {
                         type = "pwa-node",
                         request = "launch",

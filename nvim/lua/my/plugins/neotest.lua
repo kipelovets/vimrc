@@ -11,6 +11,9 @@ return {
     config = function()
         require("neotest").setup({
             log_level = vim.log.levels.DEBUG,
+            discovery = {
+                enabled = true,
+            },
             adapters = {
                 require("neotest-python")({
                     args = { "--log-level", "DEBUG", "--quiet" },
@@ -18,8 +21,12 @@ return {
                 }),
 
                 require('neotest-jest')({
-                    jestCommand = "yarn test",
+                    jestCommand = "npm test --",
                     jest_test_discovery = true,
+                    env = { CI = true },
+                    cwd = function(path)
+                        return vim.fn.getcwd()
+                    end,
                 }),
 
                 require("neotest-dotnet"),
