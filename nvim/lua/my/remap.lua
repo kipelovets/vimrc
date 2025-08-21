@@ -106,6 +106,7 @@ nmap("<d-6>", "<Cmd>BufferLineGoToBuffer 6<CR>", "Buffer: select #6")
 nmap("<d-7>", "<Cmd>BufferLineGoToBuffer 7<CR>", "Buffer: select #7")
 nmap("<d-8>", "<Cmd>BufferLineGoToBuffer 8<CR>", "Buffer: select #8")
 nmap("<d-9>", "<Cmd>BufferLineGoToBuffer 9<CR>", "Buffer: select #9")
+
 nmap('<leader>q', "<cmd>:tabclose<cr>", "Tab close")
 nmap('<d-}>', "<cmd>:tabnext<cr>", "Tab next")
 nmap('<d-{>', "<cmd>:tabprev<cr>", "Tab prev")
@@ -113,6 +114,10 @@ nmap('<d-z>', "<cmd>ZenMode<cr>", "Zen mode")
 
 nmap("<d-t>", "<cmd>enew<cr>", "Tab: new")
 nmap("<c-q>", "<Plug>(smartq_this)", "Buf: close")
+nmap("<leader>wq", function()
+    vim.cmd("BufferLineCycleNext")
+    vim.cmd("bd #")
+end, "Buf: close")
 
 nmap("<c-w><s-o>", "<cmd>Wipeout<cr>", "Buf: close others")
 nmap("<c-s-q>", "<cmd>%bd<cr>", "Buf: close all")
