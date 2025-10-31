@@ -1,3 +1,6 @@
+local M = {}
+local utils = require("my.utils")
+
 vim.api.nvim_create_user_command('PhpCopyClassName', function()
     local bufnr = vim.api.nvim_get_current_buf()
     local language_tree = vim.treesitter.get_parser(bufnr, "php")
@@ -24,8 +27,25 @@ vim.api.nvim_create_user_command('PhpCopyClassName', function()
     print("Classname copied: " .. result)
 end, {})
 
-local M = {}
-local utils = require("my.utils")
+vim.api.nvim_create_user_command('PhpJsonToArray', function(args)
+    local line_start = 0
+    local line_end = -1
+
+    if args.range > 0 then
+        line_start = args.range.line1
+        line_end = args.range.line2
+    end
+
+    local lines = vim.api.nvim_buf_get_lines(0, line_start, line_end, false)
+
+    for i, line in ipairs(lines) do
+        lines[i] = line:gsub("{", "[")
+        :gsub("}", "]")
+        :gsub(":", " =>")
+    end
+
+    vim.api.nvim_buf_set_lines(0, line_start, line_end, false, lines)
+end, { range = true })
 
 M.open_service = function(name)
     if nil == name then
