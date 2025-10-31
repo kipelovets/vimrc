@@ -113,7 +113,7 @@ M.setup = function()
     nmap('<d-{>', "<cmd>:tabprev<cr>", "Tab prev")
     nmap('<d-z>', "<cmd>ZenMode<cr>", "Zen mode")
 
-    nmap("<d-t>", "<cmd>enew<cr>", "Tab: new")
+    nmap("<d-t>", "<cmd>tabe %<cr>", "Tab: new")
     nmap("<c-q>", "<Plug>(smartq_this)", "Buf: close")
 
     nmap("<leader>wq", function()
