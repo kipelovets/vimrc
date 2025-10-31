@@ -57,15 +57,19 @@ return {
             vim.opt.rtp:append(plugin.dir .. "/packages/neovim")
         end
     },
+    { "EdenEast/nightfox.nvim",        lazy = false, priority = 1000 },
+    { 'fcpg/vim-fahrenheit',           lazy = false, priority = 1000 },
+    { 'fcpg/vim-farout',               lazy = false, priority = 1000 },
+    { 'sainnhe/everforest',            lazy = false, priority = 1000 },
+    { 'zenbones-theme/zenbones.nvim',  lazy = false, priority = 1000 },
+    { 'wadackel/vim-dogrun',           lazy = false, priority = 1000 },
+    { 'sainnhe/sonokai',               lazy = false, priority = 1000 },
     {
-        "EdenEast/nightfox.nvim",
+        'jpwol/thorn.nvim',
         lazy = false,
         priority = 1000,
+        opts = {
+            background = "cold"
+        }
     },
-    { 'fcpg/vim-fahrenheit' },
-    { 'fcpg/vim-farout' },
-    { 'sainnhe/everforest' },
-    { 'zenbones-theme/zenbones.nvim' },
-    { 'wadackel/vim-dogrun' },
-    { 'sainnhe/sonokai' },
 }
