@@ -192,6 +192,8 @@ M.setup = function()
     nmap("<leader>fM", "<cmd>Telescope marks<cr>", "Telescope: VIM marks")
     nmap("<leader>fmm", "<cmd>Telescope keymaps<cr>", "Telescope: normal keymaps")
     nmap("<leader>fR", "<cmd>Telescope registers<cr>", "Telescope: VIM registers")
+    nmap("<leader>fq", "<cmd>Telescope quickfix<cr>", "Telescope: quickfix")
+    nmap("<leader>fQ", "<cmd>Telescope quickfixhistory<cr>", "Telescope: quickfix history")
 
     -- Terminal
 
