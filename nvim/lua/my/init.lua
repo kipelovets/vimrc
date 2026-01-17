@@ -21,6 +21,7 @@ require("my.dap")
 
 require("my.git")
 require("my.php")
+require("my.commands")
 
 
 local auto_open_project = os.getenv("NVIM_PROJECT")
