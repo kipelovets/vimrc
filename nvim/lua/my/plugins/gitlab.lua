@@ -12,6 +12,7 @@ return {
         require("gitlab").setup({
             discussion_tree = {
                 draft_mode = true,
+                tree_type = "by_file_name",
             },
             discussion_signs = {
                 severity = vim.diagnostic.severity.WARN,
