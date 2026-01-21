@@ -381,6 +381,27 @@ M.setup = function()
     vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end)
     vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end)
 
+    -- Haunt
+
+    local haunt = require("haunt.api")
+    local haunt_picker = require("haunt.picker")
+    local prefix = "<leader>h"
+
+    map("n", prefix .. "a", function() haunt.annotate() end, "Annotate")
+    map("n", prefix .. "t", function() haunt.toggle_annotation() end, "Toggle annotation")
+    map("n", prefix .. "T", function() haunt.toggle_all_lines() end, "Toggle all annotations" )
+    map("n", prefix .. "d", function() haunt.delete() end, "Delete bookmark" )
+    map("n", prefix .. "C", function() haunt.clear_all() end, "Delete all bookmarks" )
+    map("n", prefix .. "p", function() haunt.prev() end, "Previous bookmark" )
+    map("n", prefix .. "n", function() haunt.next() end, "Next bookmark" )
+    map("n", prefix .. "l", function() haunt_picker.show() end, "Show Picker" )
+    map("n", prefix .. "q", function() haunt.to_quickfix() end, "Show Picker" )
+    map("n", prefix .. "Q", function() haunt.to_quickfix({ current_buffer = true }) end, "Show Picker" )
+    map("n", prefix .. "y", function() haunt.yank_locations({ current_buffer = true }) end, "Show Picker" )
+    map("n", prefix .. "Y", function() haunt.yank_locations() end, "Show Picker" )
+
+    -- Others
+
     vim.api.nvim_set_keymap('n', '<leader>D', '', {
         noremap = true,
         callback = function()
