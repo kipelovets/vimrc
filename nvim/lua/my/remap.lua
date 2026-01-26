@@ -36,6 +36,7 @@ M.setup = function()
     nmap("<d-c>", '^v$h"+yj')
     nmap("<d-d>", "yyp")
     nmap("<d-a>", "ggVG")
+    nmap("vv", "^v$h")
     nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>",
         "Copy filename & line number to clipboard")
     nmap("<leader>yg", function()
@@ -395,10 +396,10 @@ M.setup = function()
     map("n", prefix .. "p", function() haunt.prev() end, "Previous bookmark" )
     map("n", prefix .. "n", function() haunt.next() end, "Next bookmark" )
     map("n", prefix .. "l", function() haunt_picker.show() end, "Show Picker" )
-    map("n", prefix .. "q", function() haunt.to_quickfix() end, "Show Picker" )
-    map("n", prefix .. "Q", function() haunt.to_quickfix({ current_buffer = true }) end, "Show Picker" )
-    map("n", prefix .. "y", function() haunt.yank_locations({ current_buffer = true }) end, "Show Picker" )
-    map("n", prefix .. "Y", function() haunt.yank_locations() end, "Show Picker" )
+    map("n", prefix .. "q", function() haunt.to_quickfix() end, "To quickfix" )
+    map("n", prefix .. "Q", function() haunt.to_quickfix({ current_buffer = true }) end, "To quickfix (current buffer)" )
+    map("n", prefix .. "y", function() haunt.yank_locations({ current_buffer = true }) end, "Yank locations (current buffer)" )
+    map("n", prefix .. "Y", function() haunt.yank_locations() end, "Yank locations" )
 
     -- Others
 
