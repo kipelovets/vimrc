@@ -32,10 +32,10 @@ return {
 
         -- local lspconfig = require('lspconfig')
         --
-        -- lspconfig.ts_ls.setup({
-        --     on_attach = on_attach,
-        --     filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-        -- })
+        vim.lsp.config('ts_ls', {
+            filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+        })
+        vim.lsp.enable('ts_ls')
 
         -----------
         --
