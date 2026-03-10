@@ -390,16 +390,17 @@ M.setup = function()
 
     map("n", prefix .. "a", function() haunt.annotate() end, "Annotate")
     map("n", prefix .. "t", function() haunt.toggle_annotation() end, "Toggle annotation")
-    map("n", prefix .. "T", function() haunt.toggle_all_lines() end, "Toggle all annotations" )
-    map("n", prefix .. "d", function() haunt.delete() end, "Delete bookmark" )
-    map("n", prefix .. "C", function() haunt.clear_all() end, "Delete all bookmarks" )
-    map("n", prefix .. "p", function() haunt.prev() end, "Previous bookmark" )
-    map("n", prefix .. "n", function() haunt.next() end, "Next bookmark" )
-    map("n", prefix .. "l", function() haunt_picker.show() end, "Show Picker" )
-    map("n", prefix .. "q", function() haunt.to_quickfix() end, "To quickfix" )
-    map("n", prefix .. "Q", function() haunt.to_quickfix({ current_buffer = true }) end, "To quickfix (current buffer)" )
-    map("n", prefix .. "y", function() haunt.yank_locations({ current_buffer = true }) end, "Yank locations (current buffer)" )
-    map("n", prefix .. "Y", function() haunt.yank_locations() end, "Yank locations" )
+    map("n", prefix .. "T", function() haunt.toggle_all_lines() end, "Toggle all annotations")
+    map("n", prefix .. "d", function() haunt.delete() end, "Delete bookmark")
+    map("n", prefix .. "C", function() haunt.clear_all() end, "Delete all bookmarks")
+    map("n", prefix .. "p", function() haunt.prev() end, "Previous bookmark")
+    map("n", prefix .. "n", function() haunt.next() end, "Next bookmark")
+    map("n", prefix .. "l", function() haunt_picker.show() end, "Show Picker")
+    map("n", prefix .. "q", function() haunt.to_quickfix() end, "To quickfix")
+    map("n", prefix .. "Q", function() haunt.to_quickfix({ current_buffer = true }) end, "To quickfix (current buffer)")
+    map("n", prefix .. "y", function() haunt.yank_locations({ current_buffer = true }) end,
+        "Yank locations (current buffer)")
+    map("n", prefix .. "Y", function() haunt.yank_locations() end, "Yank locations")
 
     -- Others
 
@@ -421,13 +422,9 @@ M.setup = function()
     nmap("<leader>jl", function() require("my.utils").copy_issue() end, "List jiras assigned to me")
 end
 
-M.on_lsp_attach = function(client, bufnr)
-    local lsp = require('lsp-zero')
-
-    lsp.default_keymaps({ buffer = bufnr })
-
+M.on_lsp_attach = function(event)
     local nmap = function(keys, func, desc)
-        vim.keymap.set('n', keys, func, { buffer = bufnr, desc = desc })
+        vim.keymap.set('n', keys, func, { buffer = event.buf, desc = desc })
     end
 
     nmap("<leader>cr", vim.lsp.buf.rename, 'Rename')
@@ -481,13 +478,14 @@ M.on_lsp_attach = function(client, bufnr)
     nmap("]e", ':Lspsaga diagnostic_jump_next<cr>')
     nmap("<leader>dd", '<cmd>Telescope diagnostics<CR>')
 
-    if client.supports_method('textDocument/documentHighlight') then
+    local client = assert(vim.lsp.get_client_by_id(event.data.client_id))
+    if client:supports_method('textDocument/documentHighlight') then
         vim.cmd([[autocmd CursorHold  <buffer> lua vim.lsp.buf.document_highlight()]])
         vim.cmd([[autocmd CursorHoldI <buffer> lua vim.lsp.buf.document_highlight()]])
     end
     vim.cmd([[autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()]])
 
-    require("workspace-diagnostics").populate_workspace_diagnostics(client, bufnr)
+    require("workspace-diagnostics").populate_workspace_diagnostics(client, event.buf)
 end
 
 return M
