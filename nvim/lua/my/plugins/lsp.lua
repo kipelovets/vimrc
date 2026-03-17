@@ -48,6 +48,14 @@ return {
           filetypes = {'lua'},
         })
         vim.lsp.enable('lua_ls')
+
+        vim.lsp.config('expert', {
+            cmd = { 'expert', '--stdio' },
+            root_markers = { 'mix.exs', '.git' },
+            filetypes = { 'elixir', 'eelixir', 'heex' },
+        })
+        vim.lsp.enable('expert')
+
         -- lspconfig.pylsp.setup({})
         -- lspconfig.sqlls.setup {
         --     root_dir = lspconfig.util.find_git_ancestor
