@@ -1,12 +1,12 @@
 return {
-        -- LSP Support
-    'neovim/nvim-lspconfig', 
+    -- LSP Support
+    'neovim/nvim-lspconfig',
     lazy = false,
-    config = function ()
+    config = function()
         local on_lsp_attach = require('my.remap').on_lsp_attach
 
         vim.api.nvim_create_autocmd('LspAttach', {
-          callback = on_lsp_attach,
+            callback = on_lsp_attach,
         })
 
         -----------
@@ -44,8 +44,8 @@ return {
         -----------
 
         vim.lsp.config('lua_ls', {
-          cmd = {'lua-language-server'},
-          filetypes = {'lua'},
+            cmd = { 'lua-language-server' },
+            filetypes = { 'lua' },
         })
         vim.lsp.enable('lua_ls')
 
