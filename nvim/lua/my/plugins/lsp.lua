@@ -60,18 +60,21 @@ return {
         -- lspconfig.sqlls.setup {
         --     root_dir = lspconfig.util.find_git_ancestor
         -- }
-        -- lspconfig.phpactor.setup {
-        --     on_attach = on_lsp_attach,
-        --     init_options = {
-        --         ["language_server_phpstan.enabled"] = true,
-        --         ["language_server_psalm.enabled"] = true,
-        --         ["language_server_php_cs_fixer.enabled"] = true,
-        --         ["symfony.enabled"] = true,
-        --         ["phpunit.enabled"] = true,
-        --         ["logging.enabled"] = true,
-        --         ["logging.level"] = "debug",
-        --     }
-        -- }
+        vim.lsp.config('phpactor', {
+            cmd = { 'phpactor', 'language-server' },
+            init_options = {
+                ["language_server_phpstan.enabled"] = true,
+                ["language_server_psalm.enabled"] = true,
+                ["language_server_php_cs_fixer.enabled"] = true,
+                ["symfony.enabled"] = true,
+                ["phpunit.enabled"] = true,
+                ["logging.enabled"] = true,
+                ["logging.level"] = "debug",
+            },
+            filetypes = { 'php' },
+            workspace_required = false,
+        })
+        vim.lsp.enable('phpactor')
         -- lspconfig.bashls.setup {}
         -- lspconfig.terraformls.setup {}
         -- lspconfig.eslint.setup {}

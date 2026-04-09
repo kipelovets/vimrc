@@ -31,10 +31,10 @@ return {
                     type = 'php',
                     request = 'launch',
                     name = 'Listen for Xdebug',
-                    port = 9000,
+                    port = 9003,
                     -- stopOnEntry = true,
                     pathMappings = {
-                        ["/var/www/html"] = "${workspaceFolder}"
+                        ["/app"] = "${workspaceFolder}"
                     }
                 }
             }

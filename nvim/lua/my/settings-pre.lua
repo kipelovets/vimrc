@@ -3,10 +3,10 @@ vim.g.mapleader = " "
 vim.g.vimwiki_conceallevel = 0
 vim.g.vimwiki_list = {
     {
-        path = '~/vimwiki',
-        ext = 'wiki',
-        syntax = 'default',
-        diary_rel_path  = '/diary',
+        path           = '~/vimwiki',
+        ext            = 'wiki',
+        syntax         = 'default',
+        diary_rel_path = '/diary',
     }
 }
 vim.g.vimwiki_url_maxsave = 0
@@ -22,6 +22,7 @@ vim.g.nested_syntaxes = {
     java = "java",
     sql = "sql",
 }
+vim.g.vimwiki_key_mappings = { table_format = 0 }
 
 -- vim.g.sqlite_clib_path = vim.fn.stdpath("data") .. "/sqlite3.dll"
 

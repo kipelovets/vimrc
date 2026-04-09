@@ -31,8 +31,8 @@ M.setup = function()
     -- paste without replacing the buffer contents
     vim.keymap.set("x", "<leader>p", [["_dP]])
     -- system clipboard
-    vim.keymap.set({ "n", "v" }, "<d-c>", [["+y]])
-    vim.keymap.set({ "n", "i" }, "<d-v>", [[<Esc>"+p]])
+    map({ "n", "v" }, "<d-c>", [["+y]], "Copy to system clipboard")
+    map({ "n", "i" }, "<d-v>", [[<Esc>"+p]], "Copy to system clipboard")
     nmap("<d-c>", '^v$h"+yj')
     nmap("<d-d>", "yyp")
     nmap("<d-a>", "ggVG")
@@ -98,6 +98,7 @@ M.setup = function()
     nmap("<c-s-tab>", "<cmd>BufferLineCyclePrev<cr>", "Buffer: previous")
     nmap("<d-right>", "<cmd>BufferLineCycleNext<cr>", "Buffer: next")
     nmap("<c-tab>", "<cmd>BufferLineCycleNext<cr>", "Buffer: next")
+
     nmap("<d-s-right>", "<cmd>BufferLineMoveNext<cr>", "Buffer: move right")
     nmap("<d-s-left>", "<cmd>BufferLineMovePrev<cr>", "Buffer: move left")
     nmap("<d-1>", "<Cmd>BufferLineGoToBuffer 1<CR>", "Buffer: select #1")
