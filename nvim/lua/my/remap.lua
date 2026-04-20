@@ -358,30 +358,13 @@ M.setup = function()
     vim.keymap.set("v", "gss", require("my.php").open_service)
 
     -- Marks
-    local recall = require("recall")
-
-    vim.keymap.set("n", "<leader>mm", recall.toggle, { noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>mn", recall.goto_next, { noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>mp", recall.goto_prev, { noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>mc", recall.clear, { noremap = true, silent = true })
-    vim.keymap.set("n", "<leader>fm", ":Telescope recall<CR>", { noremap = true, silent = true })
-
-    -- Harpoon
-
-    local harpoon = require("harpoon")
-
-    vim.keymap.set("n", "<leader>ha", function() harpoon:list():add() end)
-    vim.keymap.set("n", "<leader>fh", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-
-    vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-    vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-    vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-    vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
-    vim.keymap.set("n", "<leader>5", function() harpoon:list():select(5) end)
-
-    -- Toggle previous & next buffers stored within Harpoon list
-    vim.keymap.set("n", "<leader>hp", function() harpoon:list():prev() end)
-    vim.keymap.set("n", "<leader>hn", function() harpoon:list():next() end)
+    -- local recall = require("recall")
+    --
+    -- vim.keymap.set("n", "<leader>mm", recall.toggle, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<leader>mn", recall.goto_next, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<leader>mp", recall.goto_prev, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<leader>mc", recall.clear, { noremap = true, silent = true })
+    -- vim.keymap.set("n", "<leader>fm", ":Telescope recall<CR>", { noremap = true, silent = true })
 
     -- Haunt
 
