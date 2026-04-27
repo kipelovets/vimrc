@@ -22,7 +22,7 @@ require("my.dap")
 require("my.git")
 require("my.php")
 require("my.commands")
-
+require("my.lsp")
 
 local auto_open_project = os.getenv("NVIM_PROJECT")
 if auto_open_project then
