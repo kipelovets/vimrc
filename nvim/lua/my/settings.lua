@@ -11,6 +11,7 @@ end
 vim.o.mouse = "a"
 vim.o.number = true
 vim.o.breakindent = true
+vim.o.equalalways = false
 vim.o.signcolumn = 'yes'
 vim.o.colorcolumn = "120"
 vim.o.termguicolors = true
