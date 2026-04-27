@@ -357,15 +357,6 @@ M.setup = function()
     nmap("gsd", "<cmd>GoToSymfonyDefinition<CR>", "[G]o to [S]ymfony [D]efinition")
     vim.keymap.set("v", "gss", require("my.php").open_service)
 
-    -- Marks
-    -- local recall = require("recall")
-    --
-    -- vim.keymap.set("n", "<leader>mm", recall.toggle, { noremap = true, silent = true })
-    -- vim.keymap.set("n", "<leader>mn", recall.goto_next, { noremap = true, silent = true })
-    -- vim.keymap.set("n", "<leader>mp", recall.goto_prev, { noremap = true, silent = true })
-    -- vim.keymap.set("n", "<leader>mc", recall.clear, { noremap = true, silent = true })
-    -- vim.keymap.set("n", "<leader>fm", ":Telescope recall<CR>", { noremap = true, silent = true })
-
     -- Haunt
 
     local haunt = require("haunt.api")
