@@ -1,7 +1,7 @@
 local M = {
     "nvim-lualine/lualine.nvim",
     enabled = true,
-    dependencies = { "nvim-tree/nvim-web-devicons" },
+    dependencies = { "nvim-tree/nvim-web-devicons", "catppuccin/nvim" },
     event = { "BufReadPost", "BufNewFile" },
 }
 
@@ -16,7 +16,7 @@ local is_git_repo = function()
 end
 
 function M.config()
-    local custom = require("lualine.themes.catppuccin")
+    -- local custom = require("lualine.themes.catppuccin")
 
     local lualine = require("lualine")
 
@@ -45,7 +45,7 @@ function M.config()
 
     lualine.setup({
         options = {
-            theme = custom,
+            theme = "catppuccin-nvim",
             globalstatus = true,
             section_separators = "",
             component_separators = "",
