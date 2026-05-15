@@ -136,6 +136,10 @@ vim.lsp.config('phpactor', {
 vim.lsp.enable('phpactor')
 -- lspconfig.bashls.setup {}
 -- lspconfig.terraformls.setup {}
+
+vim.lsp.config('eslint', {})
+vim.lsp.enable('eslint')
+
 -- lspconfig.eslint.setup {}
 -- lspconfig.lemminx.setup {}
 --
