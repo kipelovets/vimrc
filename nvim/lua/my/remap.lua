@@ -324,6 +324,10 @@ M.setup = function()
 
     nmap("<c-s-space>", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
     nmap("<leader>x", "<cmd>VimwikiToggleListItem<cr>", "Vimwiki: toggle checkbox")
+    nmap("<leader>vd", function () 
+        vim.cmd("put =strftime('%Y-%m-%d')")
+    end, "Insert current date YYYY-MM-DD")
+
 
     vim.keymap.set("n", "g:", function()
         -- get current buffer and window
