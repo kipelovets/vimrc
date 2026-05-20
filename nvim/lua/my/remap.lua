@@ -39,6 +39,8 @@ M.setup = function()
     nmap("vv", "^v$h")
     nmap("<leader>yl", "<cmd>let @+=expand('%').':'.line('.') | echo 'Copied '.@+<cr>",
         "Copy filename & line number to clipboard")
+    nmap("<leader>yf", "<cmd>let @+=expand('%:t') | echo 'Copied '.@+<cr>",
+        "Copy filename to clipboard")
     nmap("<leader>yg", function()
         local utils  = require("my.utils")
         local branch = utils.get_branch()
@@ -381,6 +383,12 @@ M.setup = function()
         "Yank locations (current buffer)")
     map("n", prefix .. "Y", function() haunt.yank_locations() end, "Yank locations")
 
+    -- Persistence sessions
+    nmap("<leader>sl", function() require("persistence").load() end, "Sessions: load")
+    nmap("<leader>fS", function() require("persistence").select() end, "Sessions: select to load")
+    nmap("<leader>sL", function() require("persistence").load({ last = true }) end, "Sessions: load last")
+    nmap("<leader>ss", function() require("persistence").save() end, "Sessions: save")
+
     -- Others
 
     vim.api.nvim_set_keymap('n', '<leader>D', '', {
@@ -393,7 +401,7 @@ M.setup = function()
     })
 
     nmap("<leader>cc", "<cmd>TtCamel<cr>", "Convert to camelCase")
-    nmap("<leader>sc", "<cmd>TtSnake<cr>", "Convert to snake_case")
+    nmap("<leader>cs", "<cmd>TtSnake<cr>", "Convert to snake_case")
 
 
     nmap("<leader>jv", ":JiraView<cr>", "View Jira issue")
