@@ -98,6 +98,20 @@ return {
         )
 
         ls.add_snippets("gitcommit", snippets)
+
+        local getDate = function ()
+            return os.date("%Y-%m-%d")
+        end
+
+        ls.add_snippets("vimwiki", {
+            s("@date", {
+                f(getDate),
+                t("")
+            }),
+            s("@ok", {
+                t("✅")
+            }),
+        })
     end,
     dependencies = {
         { 'saadparwaiz1/cmp_luasnip' },
